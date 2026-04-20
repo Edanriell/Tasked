@@ -1,13 +1,31 @@
 @import "tailwindcss";
 
 @theme {
-    --background-image-brand-gradient: linear-gradient(
+    --background-image-brand-violet: linear-gradient(
             316deg,
             #6f3bf4 7.48%,
             #1d36f8 32%,
             #5d49dd 56.84%,
             #0e073e 75%,
             #0e0656 100%
+    );
+
+    --background-image-brand-violet-reversed: linear-gradient(
+            -316deg,
+            #6f3bf4 7.48%,
+            #1d36f8 32%,
+            #5d49dd 56.84%,
+            #0e073e 75%,
+            #0e0656 100%
+    );
+
+    --background-image-brand-dark: linear-gradient(
+            -316deg,
+            #020412 7.48%,
+            #020310 32%,
+            #02030F 56.84%,
+            #02030F 75%,
+            #010009 100%
     );
 
     --background-image-vignette: radial-gradient(

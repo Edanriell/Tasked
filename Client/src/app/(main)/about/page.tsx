@@ -1,5 +1,9 @@
 const AboutPage = () => {
-	return <h1>About Page</h1>;
+	return (
+		<h1 className="font-(family-name:--font-barlow) font-bold leading-[114%] tracking-[0.01em] text-(--white-pallete-100)">
+			About Page
+		</h1>
+	);
 };
 
 export default AboutPage;

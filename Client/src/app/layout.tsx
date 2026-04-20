@@ -21,8 +21,8 @@ type RootLayoutProps = {
 
 const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 	return (
-		<html lang="en" className={`${FONTS.Barlow.variable} h-full antialiased`}>
-			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-gradient">
+		<html lang="en" className={`${FONTS.Barlow.variable} h-full`}>
+			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-violet">
 				<div className="z-30 absolute bg-vignette w-full h-full"></div>
 				<div className="z-10 absolute w-full h-full">
 					<Image src="/images/shadow_1.png" alt="" className="opacity-30" fill />
@@ -30,7 +30,7 @@ const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 				<div className="z-20 absolute w-full h-full">
 					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
 				</div>
-				<Header classes="relative z-40 flex items-center justify-between">
+				<Header classes="relative z-40 mr-[2.5rem]">
 					<UserProfile />
 				</Header>
 				<main className="relative z-50">{children}</main>
