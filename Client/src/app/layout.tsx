@@ -30,7 +30,7 @@ const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 				<div className="z-20 absolute w-full h-full">
 					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
 				</div>
-				<Header classes="relative z-40">
+				<Header classes="relative z-40 flex items-center justify-between">
 					<UserProfile />
 				</Header>
 				<main className="relative z-50">{children}</main>
