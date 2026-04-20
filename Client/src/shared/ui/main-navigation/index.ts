@@ -1,2 +1,1 @@
-export * from "./logotype";
 export * from "./main-navigation";
