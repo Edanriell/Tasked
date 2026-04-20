@@ -1,7 +1,7 @@
+import { clsx } from "clsx";
 import type { ComponentPropsWithoutRef, FC } from "react";
 
 import { Logotype, MainNavigation } from "@shared/ui";
-import { clsx } from "clsx";
 
 type HeaderProps = Omit<ComponentPropsWithoutRef<"header">, "className"> & {
 	classes?: string;

@@ -4,6 +4,6 @@ export const ROUTES = {
 	Features: "/features",
 	Pricing: "/pricing",
 	About: "/about",
-	Dashboard: "/dashboard",
+	Dashboard: "/",
 	Settings: "/settings"
 } as const;
