@@ -1,23 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import Image from "next/image";
 import type { FC, ReactNode } from "react";
 
 import { Header } from "@widgets/header";
 import { UserProfile } from "@widgets/user-profile";
 
+import { FONTS } from "@shared/config";
+
 import "./_styles/styles.css";
 import "./_styles/tailwind.css";
-
-const geistSans = Geist({
-	variable: "--font-geist-sans",
-	subsets: ["latin"]
-});
-
-const geistMono = Geist_Mono({
-	variable: "--font-geist-mono",
-	subsets: ["latin"]
-});
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -30,7 +21,7 @@ type RootLayoutProps = {
 
 const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 	return (
-		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+		<html lang="en" className={`${FONTS.Barlow.variable} h-full antialiased`}>
 			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-gradient">
 				<div className="z-30 absolute bg-vignette w-full h-full"></div>
 				<div className="z-10 absolute w-full h-full">
@@ -39,7 +30,7 @@ const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 				<div className="z-20 absolute w-full h-full">
 					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
 				</div>
-				<Header className="relative z-40">
+				<Header classes="relative z-40">
 					<UserProfile />
 				</Header>
 				<main className="relative z-50">{children}</main>
