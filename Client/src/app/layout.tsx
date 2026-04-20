@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Image from "next/image";
 import type { FC, ReactNode } from "react";
 
 import { Header } from "@widgets/header";
@@ -30,11 +31,18 @@ type RootLayoutProps = {
 const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 	return (
 		<html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-			<body className="min-h-full flex flex-col">
-				<Header>
+			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-gradient">
+				<div className="z-30 absolute bg-vignette w-full h-full"></div>
+				<div className="z-10 absolute w-full h-full">
+					<Image src="/images/shadow_1.png" alt="" className="opacity-30" fill />
+				</div>
+				<div className="z-20 absolute w-full h-full">
+					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
+				</div>
+				<Header className="relative z-40">
 					<UserProfile />
 				</Header>
-				<main>{children}</main>
+				<main className="relative z-50">{children}</main>
 			</body>
 		</html>
 	);

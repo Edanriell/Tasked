@@ -1,14 +1,12 @@
-import type { FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, FC } from "react";
 
 import { Logotype, MainNavigation } from "@shared/ui";
 
-type HeaderProps = {
-	children: ReactNode;
-};
+type HeaderProps = ComponentPropsWithoutRef<"header">;
 
-export const Header: FC<Readonly<HeaderProps>> = ({ children }) => {
+export const Header: FC<Readonly<HeaderProps>> = ({ children, ...props }) => {
 	return (
-		<header>
+		<header {...props}>
 			<Logotype />
 			<MainNavigation />
 			{children}

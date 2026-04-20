@@ -1,10 +1,26 @@
 @import "tailwindcss";
 
 @theme {
-    --breakpoint-xs: 375px;   /* small phones baseline */
-    --breakpoint-sm: 640px;   /* large phones */
-    --breakpoint-md: 768px;   /* tablets */
-    --breakpoint-lg: 1024px;  /* small laptops */
-    --breakpoint-xl: 1280px;  /* desktops */
-    --breakpoint-2xl: 1440px; /* your main design */
+    --background-image-brand-gradient: linear-gradient(
+            316deg,
+            #6f3bf4 7.48%,
+            #1d36f8 32%,
+            #5d49dd 56.84%,
+            #0e073e 75%,
+            #0e0656 100%
+    );
+
+    --background-image-vignette: radial-gradient(
+            59.06% 64.38% at 52.47% 43.67%,
+            rgba(1, 0, 9, 0) 65.71%,
+            rgba(1, 0, 9, 0.07) 75.37%,
+            #010009 100%
+    );
+
+    --breakpoint-xs: 375px;
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+    --breakpoint-2xl: 1440px;
 }
