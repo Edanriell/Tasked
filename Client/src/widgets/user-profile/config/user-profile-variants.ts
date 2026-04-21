@@ -1,3 +1,9 @@
+export const USER_PROFILE_VARIANTS = {
+	Opened: "opened",
+	Closed: "closed",
+	Hovered: "hovered"
+} as const;
+
 export const USER_PROFILE_CONTAINER_VARIANTS = {
 	opened: {
 		borderColor: "var(--white-pallete-15)",

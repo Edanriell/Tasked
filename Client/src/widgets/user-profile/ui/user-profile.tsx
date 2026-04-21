@@ -10,7 +10,8 @@ import {
 	USER_PROFILE_CONTAINER_VARIANTS,
 	USER_PROFILE_ITEMS,
 	USER_PROFILE_NAVIGATION_ITEM_VARIANTS,
-	USER_PROFILE_NAVIGATION_VARIANTS
+	USER_PROFILE_NAVIGATION_VARIANTS,
+	USER_PROFILE_VARIANTS
 } from "@widgets/user-profile/config";
 
 type UserProfileState = "opened" | "closed";
@@ -39,8 +40,8 @@ export const UserProfile: FC = () => {
 			onBlur={handleUserProfileClose}
 			onClick={handleUserProfileToggle}
 			className="absolute top-0 right-0 text-(--white-pallete-100) border-solid border-[0.063rem] rounded-[1.5rem] cursor-pointer overflow-hidden backdrop-blur-[1.25rem]"
-			animate={isUserProfileOpened ? "opened" : "closed"}
-			whileHover="hovered"
+			animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
+			whileHover={USER_PROFILE_VARIANTS.Hovered}
 			variants={USER_PROFILE_CONTAINER_VARIANTS}
 			aria-label="User profile"
 			aria-expanded={isUserProfileOpened}
@@ -69,7 +70,9 @@ export const UserProfile: FC = () => {
 						Account
 					</span>
 					<motion.svg
-						animate={{ rotate: isUserProfileOpened ? "opened" : "closed" }}
+						animate={{
+							rotate: isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed
+						}}
 						transition={{ type: "spring", stiffness: 300, damping: 25 }}
 						variants={USER_PROFILE_CHEVRON_VARIANTS}
 						width="16"
@@ -90,7 +93,7 @@ export const UserProfile: FC = () => {
 				</div>
 				<motion.ul
 					className="flex flex-col overflow-hidden"
-					animate={isUserProfileOpened ? "opened" : "closed"}
+					animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
 					variants={USER_PROFILE_NAVIGATION_VARIANTS}
 					initial={false}
 					transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -98,7 +101,7 @@ export const UserProfile: FC = () => {
 					{USER_PROFILE_ITEMS.map(({ href, label }) => (
 						<motion.li
 							key={href}
-							whileHover="hovered"
+							whileHover={USER_PROFILE_VARIANTS.Hovered}
 							transition={{ type: "spring", stiffness: 500, damping: 30 }}
 							variants={USER_PROFILE_NAVIGATION_ITEM_VARIANTS}
 							className="rounded-[0.5rem]"
