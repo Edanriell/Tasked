@@ -9,7 +9,6 @@ import {
 	USER_PROFILE_CHEVRON_VARIANTS,
 	USER_PROFILE_CONTAINER_VARIANTS,
 	USER_PROFILE_ITEMS,
-	USER_PROFILE_NAVIGATION_ITEM_VARIANTS,
 	USER_PROFILE_NAVIGATION_VARIANTS,
 	USER_PROFILE_VARIANTS
 } from "@widgets/user-profile/config";
@@ -47,7 +46,7 @@ export const UserProfile: FC = () => {
 			aria-expanded={isUserProfileOpened}
 			transition={{ layout: { type: "spring", stiffness: 400, damping: 30 } }}
 		>
-			<motion.nav layout aria-label="User navigation" className="py-[0.75rem] px-[1rem]">
+			<motion.nav layout aria-label="User profile navigation" className="py-[0.75rem] px-[1rem]">
 				<div className="flex items-center gap-x-[0.5rem]">
 					<svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 						<g clipPath="url(#clip0_38027_24332)">
@@ -92,7 +91,7 @@ export const UserProfile: FC = () => {
 					</motion.svg>
 				</div>
 				<motion.ul
-					className="flex flex-col overflow-hidden"
+					className="flex flex-col overflow-hidden gap-y-[0.125rem] mt-[0.25rem]"
 					animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
 					variants={USER_PROFILE_NAVIGATION_VARIANTS}
 					initial={false}
@@ -101,16 +100,21 @@ export const UserProfile: FC = () => {
 					{USER_PROFILE_ITEMS.map(({ href, label }) => (
 						<motion.li
 							key={href}
-							whileHover={USER_PROFILE_VARIANTS.Hovered}
-							transition={{ type: "spring", stiffness: 500, damping: 30 }}
-							variants={USER_PROFILE_NAVIGATION_ITEM_VARIANTS}
+							whileHover="hovered"
+							whileTap={{ scale: 0.98 }}
 							className="rounded-[0.5rem]"
 						>
 							<Link
 								href={href}
-								className="flex items-center gap-x-[0.5rem] whitespace-nowrap py-[0.4rem] pl-[0.4rem] pr-[0.8rem] font-(family-name:--font-barlow) text-[0.75rem] leading-[133%] tracking-[0.02em] text-(--white-pallete-100)"
+								className="relative flex items-center gap-x-[0.5rem] whitespace-nowrap py-[0.4rem] pl-[0.4rem] pr-[0.8rem] font-(family-name:--font-barlow) text-[0.75rem] font-medium leading-[133%] tracking-[0.02em] text-(--white-pallete-100) outline-none focus-visible:ring-1 focus-visible:ring-(--white-pallete-40) rounded-[0.5rem] overflow-hidden"
 							>
-								<span className="flex items-center justify-center w-[1.25rem] h-[1.25rem] rounded-[0.25rem] bg-(--white-pallete-10) text-(--white-pallete-80)">
+								<motion.div
+									className="absolute inset-0 bg-(--white-pallete-10) rounded-[0.5rem]"
+									initial={{ opacity: 0 }}
+									variants={{ hovered: { opacity: 1 } }}
+									transition={{ duration: 0.15, ease: "easeOut" }}
+								/>
+								<span className="relative z-10 flex items-center justify-center w-[1.25rem] h-[1.25rem] rounded-[0.25rem] bg-(--white-pallete-5) ring-1 ring-inset ring-(--white-pallete-10) text-(--white-pallete-80) shadow-sm">
 									{label === "Dashboard" && (
 										<svg
 											width="12"
@@ -148,7 +152,7 @@ export const UserProfile: FC = () => {
 										</svg>
 									)}
 								</span>
-								{label}
+								<span className="relative z-10">{label}</span>
 							</Link>
 						</motion.li>
 					))}

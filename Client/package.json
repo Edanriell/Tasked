@@ -7,9 +7,11 @@
 	"type": "module",
 	"scripts": {
 		"start:build": "next build",
-		"start:dev": "concurrently -n next,steiger,scan -c blue,yellow,magenta \"next dev\" \"steiger ./src --watch\" \"npx react-scan\"",
+		"start:dev": "concurrently -n next,steiger -c blue,yellow \"next dev\" \"steiger ./src --watch\"",
 		"start:lint": "eslint",
-		"start:start": "next start"
+		"start:start": "next start",
+		"scan:help": "pnpm exec react-scan --help",
+		"scan:init": "pnpm exec react-scan init --yes --cwd ."
 	},
 	"dependencies": {
 		"clsx": "^2.1.1",
@@ -22,7 +24,7 @@
 	},
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.7",
-		"@tailwindcss/postcss": "^4.2.2",
+		"@tailwindcss/postcss": "^4.2.4",
 		"@types/node": "^20.19.39",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
@@ -40,7 +42,7 @@
 		"prettier-plugin-tailwindcss": "^0.7.2",
 		"react-scan": "^0.5.3",
 		"steiger": "^0.5.11",
-		"tailwindcss": "^4.2.2",
+		"tailwindcss": "^4.2.4",
 		"typescript": "^5.9.3"
 	}
 }

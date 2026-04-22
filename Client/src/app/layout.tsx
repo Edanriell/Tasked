@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Script from "next/script";
 import type { FC, ReactNode } from "react";
 
 import { Header } from "@widgets/header";
@@ -23,6 +24,9 @@ const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 	return (
 		<html lang="en" className={`${FONTS.Barlow.variable} h-full`}>
 			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-violet">
+				{process.env.NODE_ENV === "development" && (
+					<Script src="https://unpkg.com/react-scan/dist/auto.global.js" crossOrigin="anonymous" strategy="beforeInteractive" />
+				)}
 				<div className="z-30 absolute bg-vignette w-full h-full"></div>
 				<div className="z-10 absolute w-full h-full">
 					<Image src="/images/shadow_1.png" alt="" className="opacity-30" fill />
