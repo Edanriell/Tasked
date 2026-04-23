@@ -1,3 +1,4 @@
+export * from "./divider";
 export * from "./featured-clients";
 export * from "./gradient-text";
 export * from "./icon";

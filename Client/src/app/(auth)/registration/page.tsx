@@ -2,6 +2,15 @@ import Link from "next/link";
 
 import { FeaturedClients, GradientText } from "@shared/ui";
 
+const FEATURED_CLIENTS = [
+	{ image: "/images/users/jensen_ackles.jpg", fullName: "Jensen Ackles" },
+	{ image: "/images/users/jared_padalecki.jpg", fullName: "Jared Padalecki" },
+	{ image: "/images/users/robert_palka.jpg", fullName: "Robert Palka" },
+	{ image: "/images/users/bartozs_zmarzlik.jpg", fullName: "Bartozs Zmarzlik" },
+	{ image: "/images/users/rupert_grind.jpg", fullName: "Rupert Grind" },
+	{ image: "/images/users/john_block.jpg", fullName: "John Block" }
+];
+
 const RegistrationPage = () => {
 	return (
 		<section
@@ -24,7 +33,10 @@ const RegistrationPage = () => {
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
 					</p>
-					<FeaturedClients />
+					<FeaturedClients
+						clients={FEATURED_CLIENTS}
+						label="Over 2568+ Designers & Creators Love Our Platform"
+					/>
 				</div>
 				<div className="relative">
 					<h2 id="form-heading">Register your account</h2>
