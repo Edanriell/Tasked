@@ -1,4 +1,6 @@
-import Link from "next/link";
+import { FC } from "react";
+
+import { Registration } from "@features/register";
 
 import { FeaturedClients, GradientText } from "@shared/ui";
 
@@ -11,15 +13,13 @@ const FEATURED_CLIENTS = [
 	{ image: "/images/users/john_block.jpg", fullName: "John Block" }
 ];
 
-const RegistrationPage = () => {
+const RegistrationPage: FC = () => {
 	return (
-		<section
-			className="relative rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1, 0, 9, 0.6)]"
-			aria-labelledby="form-heading"
-		>
+		<section className="relative rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1, 0, 9, 0.6)]">
+			<h1 className="sr-only">Create new account</h1>
 			<div className="w-full h-full grid grid-cols-[420px_340px] gap-[3rem] grid-rows-auto">
 				<div className="relative">
-					<h1 className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
+					<p className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
 						<span>Join Over 2568+</span>
 						<GradientText
 							className="font-(family-name:--font-barlow)! font-bold! text-[3rem]! tracking-[0.01em]! cursor-text"
@@ -28,7 +28,7 @@ const RegistrationPage = () => {
 						>
 							Expert Designers
 						</GradientText>
-					</h1>
+					</p>
 					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100)">
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
@@ -38,28 +38,7 @@ const RegistrationPage = () => {
 						label="Over 2568+ Designers & Creators Love Our Platform"
 					/>
 				</div>
-				<div className="relative">
-					<h2 id="form-heading">Register your account</h2>
-					<form action="">
-						<div>
-							<label htmlFor="">Full Name</label>
-							<input type="text" placeholder="Please write data" />
-						</div>
-						<div>
-							<label htmlFor="">Email</label>
-							<input type="email" placeholder="Please write data" />
-						</div>
-						<div>
-							<label htmlFor="">Password</label>
-							<input type="password" placeholder="Please write data" />
-						</div>
-						<button type="submit">Register Account</button>
-					</form>
-					<p>
-						Already Have An Account — <Link href="/login">Sign In Here</Link>
-					</p>
-					<button type="button">SignUp With Google Account</button>
-				</div>
+				<Registration />
 			</div>
 			<svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
 				<defs>

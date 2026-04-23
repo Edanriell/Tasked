@@ -14,17 +14,20 @@
 		"scan:init": "pnpm exec react-scan init --yes --cwd ."
 	},
 	"dependencies": {
+		"@tanstack/react-query": "^5.99.2",
 		"clsx": "^2.1.1",
 		"motion": "^12.38.0",
 		"next": "16.2.4",
 		"next-auth": "^4.24.14",
 		"react": "19.2.4",
 		"react-dom": "19.2.4",
+		"zod": "^4.3.6",
 		"zustand": "^5.0.12"
 	},
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.7",
 		"@tailwindcss/postcss": "^4.2.4",
+		"@tanstack/eslint-plugin-query": "^5.99.2",
 		"@types/node": "^20.19.39",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",

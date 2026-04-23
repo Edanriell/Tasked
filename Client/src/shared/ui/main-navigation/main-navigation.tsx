@@ -20,19 +20,13 @@ const NAVIGATION_ITEM_VARIANTS = {
 	Tapped: "tapped"
 } as const;
 
-const NAVIGATION_ITEM_WRAPPER_VARIANTS = {
+const NAVIGATION_WRAPPER_VARIANTS = {
 	tapped: { scale: 0.9 }
-} as const;
+};
 
-const NAVIGATION_ITEM_VARIANTS_1 = {
-	unhovered: { y: 0 },
+const NAVIGATION_LABEL_VARIANTS = {
 	hovered: { y: -NAVIGATION_ITEM_HEIGHT }
-} as const;
-
-const NAVIGATION_ITEM_VARIANTS_2 = {
-	unhovered: { y: 0 },
-	hovered: { y: -NAVIGATION_ITEM_HEIGHT }
-} as const;
+};
 
 export const MainNavigation: FC = () => {
 	return (
@@ -44,15 +38,15 @@ export const MainNavigation: FC = () => {
 						whileTap={NAVIGATION_ITEM_VARIANTS.Tapped}
 						whileHover={NAVIGATION_ITEM_VARIANTS.Hovered}
 						initial={false}
-						variants={NAVIGATION_ITEM_WRAPPER_VARIANTS}
+						variants={NAVIGATION_WRAPPER_VARIANTS}
 					>
 						<Link
 							className="flex flex-col overflow-hidden"
 							style={{ height: NAVIGATION_ITEM_HEIGHT }}
 							href={href}
 						>
-							<motion.span variants={NAVIGATION_ITEM_VARIANTS_1}>{label}</motion.span>
-							<motion.span variants={NAVIGATION_ITEM_VARIANTS_2}>{label}</motion.span>
+							<motion.span variants={NAVIGATION_LABEL_VARIANTS}>{label}</motion.span>
+							<motion.span variants={NAVIGATION_LABEL_VARIANTS}>{label}</motion.span>
 						</Link>
 					</motion.li>
 				))}

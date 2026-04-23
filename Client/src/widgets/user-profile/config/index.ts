@@ -1,2 +1,2 @@
-export * from "./user-profile";
-export * from "./user-profile-variants";
+export * from "./items";
+export * from "./variants";
