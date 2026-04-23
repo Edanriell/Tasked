@@ -1,1 +1,1 @@
-export { MOTION_ICON, MotionIcon } from "./motion-icons";
+export { MOTION_ICON, MotionIcon } from "./motion-icon";

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { GradientText } from "@shared/ui";
+import { FeaturedClients, GradientText } from "@shared/ui";
 
 const RegistrationPage = () => {
 	return (
@@ -20,21 +20,11 @@ const RegistrationPage = () => {
 							Expert Designers
 						</GradientText>
 					</h1>
-					<p>
+					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100)">
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
 					</p>
-					<p>
-						<span aria-hidden="true">
-							<img src="/avatars/1.jpg" alt="" />
-							<img src="/avatars/2.jpg" alt="" />
-							<img src="/avatars/3.jpg" alt="" />
-							<img src="/avatars/4.jpg" alt="" />
-							<img src="/avatars/5.jpg" alt="" />
-							<img src="/avatars/6.jpg" alt="" />
-						</span>
-						Over 2568+ Designers &amp; Creators Love Our Platform
-					</p>
+					<FeaturedClients />
 				</div>
 				<div className="relative">
 					<h2 id="form-heading">Register your account</h2>
