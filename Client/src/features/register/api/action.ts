@@ -3,11 +3,14 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
-import type { RegisterState } from "../model";
-import { RegisterSchema } from "../model";
+import type { RegistrationState } from "../model";
+import { RegistrationSchema } from "../model";
 
-export const registrationAction = async (_prevState: RegisterState, formData: FormData): Promise<RegisterState> => {
-	const validationResult = RegisterSchema.safeParse(formData);
+export const registrationAction = async (
+	_prevState: RegistrationState,
+	formData: FormData
+): Promise<RegistrationState> => {
+	const validationResult = RegistrationSchema.safeParse(formData);
 
 	if (!validationResult.success) {
 		return {

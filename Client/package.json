@@ -14,7 +14,7 @@
 		"scan:init": "pnpm exec react-scan init --yes --cwd ."
 	},
 	"dependencies": {
-		"@tanstack/react-query": "^5.99.2",
+		"@tanstack/react-query": "^5.100.5",
 		"clsx": "^2.1.1",
 		"motion": "^12.38.0",
 		"next": "16.2.4",
@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.7",
 		"@tailwindcss/postcss": "^4.2.4",
-		"@tanstack/eslint-plugin-query": "^5.99.2",
+		"@tanstack/eslint-plugin-query": "^5.100.5",
 		"@types/node": "^20.19.39",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
@@ -42,7 +42,7 @@
 		"prettier-plugin-packagejson": "^3.0.2",
 		"prettier-plugin-sh": "^0.18.1",
 		"prettier-plugin-style-order": "^0.2.2",
-		"prettier-plugin-tailwindcss": "^0.7.2",
+		"prettier-plugin-tailwindcss": "^0.7.3",
 		"react-scan": "^0.5.3",
 		"steiger": "^0.5.11",
 		"tailwindcss": "^4.2.4",
