@@ -7,3 +7,5 @@ export * from "./input";
 export * from "./logotype";
 export * from "./main-navigation";
 export * from "./motion-icon";
+export * from "./spinner";
+export * from "./submit-button";
