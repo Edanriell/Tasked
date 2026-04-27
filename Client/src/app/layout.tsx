@@ -23,21 +23,25 @@ type RootLayoutProps = {
 const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 	return (
 		<html lang="en" className={`${FONTS.Barlow.variable} h-full`}>
-			<body className="relative min-h-full flex flex-col bg-(--geek-blue-11) bg-brand-violet">
+			<body className="relative min-h-screen min-h-dvh flex flex-col bg-(--geek-blue-11) bg-brand-violet">
 				{process.env.NODE_ENV === "development" && (
-					<Script src="https://unpkg.com/react-scan/dist/auto.global.js" crossOrigin="anonymous" strategy="beforeInteractive" />
+					<Script
+						src="https://unpkg.com/react-scan/dist/auto.global.js"
+						crossOrigin="anonymous"
+						strategy="beforeInteractive"
+					/>
 				)}
-				<div className="z-30 absolute bg-vignette w-full h-full"></div>
-				<div className="z-10 absolute w-full h-full">
+				<div className="absolute inset-0 z-30 bg-vignette"></div>
+				<div className="absolute inset-0 z-10">
 					<Image src="/images/shadow_1.png" alt="" className="opacity-30" fill />
 				</div>
-				<div className="z-20 absolute w-full h-full">
+				<div className="absolute inset-0 z-20">
 					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
 				</div>
-				<Header classes="relative z-40 mr-[2.5rem]">
+				<Header classes="relative z-50 mr-[2.5rem]">
 					<UserProfile />
 				</Header>
-				<main className="relative z-50">{children}</main>
+				<main className="z-50 flex-1">{children}</main>
 			</body>
 		</html>
 	);

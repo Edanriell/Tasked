@@ -15,10 +15,10 @@ const FEATURED_CLIENTS = [
 
 const RegistrationPage: FC = () => {
 	return (
-		<section className="relative rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1, 0, 9, 0.6)]">
+		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1, 0, 9, 0.6)]">
 			<h1 className="sr-only">Create new account</h1>
-			<div className="w-full h-full grid grid-cols-[420px_340px] gap-[3rem] grid-rows-auto">
-				<div className="relative">
+			<div className="grid grid-cols-[420px_340px] gap-[3rem]">
+				<div className="relative col-start-1 col-end-2 row-start-1 row-end-2">
 					<p className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
 						<span>Join Over 2568+</span>
 						<GradientText
@@ -38,7 +38,9 @@ const RegistrationPage: FC = () => {
 						label="Over 2568+ Designers & Creators Love Our Platform"
 					/>
 				</div>
-				<Registration />
+				<div className="col-start-2 col-end-3 row-start-1 row-end-2">
+					<Registration />
+				</div>
 			</div>
 			<svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
 				<defs>
