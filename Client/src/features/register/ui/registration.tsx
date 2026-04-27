@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { Input } from "@shared/ui";
+import { Button, Input } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
@@ -13,7 +13,7 @@ export const Registration: FC = () => {
 	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
 
 	return (
-		<section className="relative z-[100] border-[0.50px] border-solid border-(--white-pallete-20) rounded-[16px] px-[32px] py-[48px] backdrop-blur-[58px] bg-[rgba(1, 0, 9, 0.15)] overflow-hidden">
+		<section className="relative z-[100] border-[0.50px] border-solid border-(--white-pallete-20) rounded-[16px] px-[32px] py-[48px] backdrop-blur-[58px] bg-[rgba(1,0,9,0.15)] overflow-hidden">
 			<svg
 				className="absolute top-0 right-0 z-10"
 				width="277"
@@ -84,14 +84,19 @@ export const Registration: FC = () => {
 					/>
 					{state?.errors?.password && <span>{state.errors.password[0]}</span>}
 				</div>
-				<button type="submit">Register Account</button>
+				<Button classes="w-full mt-[16px]" type="submit">
+					Register Account
+				</Button>
 			</form>
-			<p className="relative z-20">
-				Already Have An Account — <Link href="/login">Sign In Here</Link>
+			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[12px] leading-[133%] tracking-[0.01em] text-center text-(--neutrals-3) my-[16px]">
+				Already Have An Account —{" "}
+				<Link className="text-(--geek-blue-4)" href="/login">
+					Sign In Here
+				</Link>
 			</p>
-			<button className="relative z-20" type="button">
+			<Button classes="relative z-20 w-full" variant="secondary" type="button">
 				SignUp With Google Account
-			</button>
+			</Button>
 			<svg
 				className="absolute bottom-0 left-0 z-10"
 				width="340"

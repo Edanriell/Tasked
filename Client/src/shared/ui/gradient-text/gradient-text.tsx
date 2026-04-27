@@ -100,8 +100,8 @@ export const GradientText: FC<GradientTextProps> = ({
 		<motion.span
 			className={clsx(
 				"relative flex max-w-fit flex-row items-center justify-center",
-				"backdrop-blur transition-shadow duration-500 overflow-hidden",
-				showBorder && "py-1 px-2",
+				"transition-shadow duration-500 overflow-hidden",
+				showBorder && "py-1 px-2 backdrop-blur",
 				className
 			)}
 			onMouseEnter={handleMouseEnter}
@@ -125,7 +125,7 @@ export const GradientText: FC<GradientTextProps> = ({
 				</motion.span>
 			)}
 			<motion.span
-				className={clsx("inline-block relative z-2 text-transparent bg-clip-text")}
+				className={clsx("inline-block relative z-10 text-transparent bg-clip-text")}
 				style={{ ...gradientStyle, backgroundPosition, WebkitBackgroundClip: "text" }}
 			>
 				{children}
