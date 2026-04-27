@@ -1,7 +1,7 @@
 import { clsx } from "clsx";
 import type { ComponentPropsWithoutRef, FC, ReactElement } from "react";
 
-type ButtonVariants = "primary" | "secondary";
+export type ButtonVariants = "primary" | "secondary";
 
 type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "className"> & {
 	children: ReactElement | string;

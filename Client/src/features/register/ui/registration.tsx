@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { Button, Input } from "@shared/ui";
+import { Button, Input, SubmitButton } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
@@ -84,9 +84,7 @@ export const Registration: FC = () => {
 					/>
 					{state?.errors?.password && <span>{state.errors.password[0]}</span>}
 				</div>
-				<Button classes="w-full mt-[1rem]" type="submit">
-					Register Account
-				</Button>
+				<SubmitButton classes="w-full mt-[1rem]">Register Account</SubmitButton>
 			</form>
 			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 				Already Have An Account —{" "}

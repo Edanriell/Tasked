@@ -10,7 +10,7 @@ export const registrationAction = async (
 	_prevState: RegistrationState,
 	formData: FormData
 ): Promise<RegistrationState> => {
-	const validationResult = RegistrationSchema.safeParse(formData);
+	const validationResult = RegistrationSchema.safeParse(Object.fromEntries(formData.entries()));
 
 	if (!validationResult.success) {
 		return {
