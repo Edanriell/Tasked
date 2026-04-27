@@ -17,7 +17,7 @@ const RegistrationPage: FC = () => {
 	return (
 		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1,0,9,0.6)]">
 			<h1 className="sr-only">Create new account</h1>
-			<div className="grid grid-cols-[420px_340px] gap-[3rem]">
+			<div className="grid grid-cols-[26.25rem_21.25rem] gap-[3rem]">
 				<div className="relative">
 					<p className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
 						<span>Join Over 2568+</span>

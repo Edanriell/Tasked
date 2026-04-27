@@ -13,7 +13,7 @@ export const Registration: FC = () => {
 	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
 
 	return (
-		<section className="relative z-[100] border-[0.50px] border-solid border-(--white-pallete-20) rounded-[16px] px-[32px] py-[48px] backdrop-blur-[58px] bg-[rgba(1,0,9,0.15)] overflow-hidden">
+		<section className="relative z-[100] border-[0.031rem] border-solid border-(--white-pallete-20) rounded-[1rem] px-[2rem] py-[3rem] backdrop-blur-[3.625rem] bg-[rgba(1,0,9,0.15)] overflow-hidden">
 			<svg
 				className="absolute top-0 right-0 z-10"
 				width="277"
@@ -33,9 +33,9 @@ export const Registration: FC = () => {
 						width="493.035"
 						height="493.035"
 						filterUnits="userSpaceOnUse"
-						color-interpolation-filters="sRGB"
+						colorInterpolationFilters="sRGB"
 					>
-						<feFlood flood-opacity="0" result="BackgroundImageFix" />
+						<feFlood floodOpacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="68.2587" result="effect1_foregroundBlur_488_129570" />
 					</filter>
@@ -47,8 +47,8 @@ export const Registration: FC = () => {
 						gradientUnits="userSpaceOnUse"
 						gradientTransform="translate(246.518 54.0254) rotate(90) scale(110)"
 					>
-						<stop stop-color="#1D39C4" />
-						<stop offset="1" stop-color="#1D39C4" stop-opacity="0" />
+						<stop stopColor="#1D39C4" />
+						<stop offset="1" stopColor="#1D39C4" stopOpacity="0" />
 					</radialGradient>
 				</defs>
 			</svg>
@@ -84,11 +84,11 @@ export const Registration: FC = () => {
 					/>
 					{state?.errors?.password && <span>{state.errors.password[0]}</span>}
 				</div>
-				<Button classes="w-full mt-[16px]" type="submit">
+				<Button classes="w-full mt-[1rem]" type="submit">
 					Register Account
 				</Button>
 			</form>
-			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[12px] leading-[133%] tracking-[0.01em] text-center text-(--neutrals-3) my-[16px]">
+			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 				Already Have An Account —{" "}
 				<Link className="text-(--geek-blue-4)" href="/login">
 					Sign In Here
@@ -116,9 +116,9 @@ export const Registration: FC = () => {
 						width="875.551"
 						height="875.551"
 						filterUnits="userSpaceOnUse"
-						color-interpolation-filters="sRGB"
+						colorInterpolationFilters="sRGB"
 					>
-						<feFlood flood-opacity="0" result="BackgroundImageFix" />
+						<feFlood floodOpacity="0" result="BackgroundImageFix" />
 						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
 						<feGaussianBlur stdDeviation="88.3878" result="effect1_foregroundBlur_488_129571" />
 					</filter>
@@ -130,8 +130,8 @@ export const Registration: FC = () => {
 						gradientUnits="userSpaceOnUse"
 						gradientTransform="translate(104 437.775) rotate(90) scale(261)"
 					>
-						<stop stop-color="#1A34B6" />
-						<stop offset="1" stop-color="#1D39C4" stop-opacity="0" />
+						<stop stopColor="#1A34B6" />
+						<stop offset="1" stopColor="#1D39C4" stopOpacity="0" />
 					</radialGradient>
 				</defs>
 			</svg>
