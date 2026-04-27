@@ -13,37 +13,123 @@ export const Registration: FC = () => {
 	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
 
 	return (
-		<section className="relative">
-			<h2>Register your account</h2>
-			{state?.message && <p>{state.message}</p>}
-			<form action={action} noValidate>
-				<Input
-					label="Full name"
-					name="fullName"
-					type="text"
-					aria-describedby={state?.errors?.fullName ? "fullName-error" : undefined}
-				/>
-				{state?.errors?.fullName && <span>{state.errors.fullName[0]}</span>}
-				<Input
-					label="Email"
-					name="email"
-					type="email"
-					aria-describedby={state?.errors?.email ? "email-error" : undefined}
-				/>
-				{state?.errors?.email && <span>{state.errors.email[0]}</span>}
-				<Input
-					label="Password"
-					name="password"
-					type="password"
-					aria-describedby={state?.errors?.password ? "password-error" : undefined}
-				/>
-				{state?.errors?.password && <span>{state.errors.password[0]}</span>}
+		<section className="relative z-[100] border-[0.50px] border-solid border-(--white-pallete-20) rounded-[16px] px-[32px] py-[48px] backdrop-blur-[58px] bg-[rgba(1, 0, 9, 0.15)] overflow-hidden">
+			<svg
+				className="absolute top-0 right-0 z-10"
+				width="277"
+				height="301"
+				viewBox="0 0 277 301"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g filter="url(#filter0_f_488_129570)">
+					<circle cx="246.518" cy="54.0254" r="110" fill="url(#paint0_radial_488_129570)" />
+				</g>
+				<defs>
+					<filter
+						id="filter0_f_488_129570"
+						x="0.000244141"
+						y="-192.492"
+						width="493.035"
+						height="493.035"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
+					>
+						<feFlood flood-opacity="0" result="BackgroundImageFix" />
+						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+						<feGaussianBlur stdDeviation="68.2587" result="effect1_foregroundBlur_488_129570" />
+					</filter>
+					<radialGradient
+						id="paint0_radial_488_129570"
+						cx="0"
+						cy="0"
+						r="1"
+						gradientUnits="userSpaceOnUse"
+						gradientTransform="translate(246.518 54.0254) rotate(90) scale(110)"
+					>
+						<stop stop-color="#1D39C4" />
+						<stop offset="1" stop-color="#1D39C4" stop-opacity="0" />
+					</radialGradient>
+				</defs>
+			</svg>
+			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[127%] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
+				Register your account
+			</h2>
+			{state?.message && <p className="relative z-20">{state.message}</p>}
+			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
+				<div className="relative">
+					<Input
+						label="Full name"
+						name="fullName"
+						type="text"
+						aria-describedby={state?.errors?.fullName ? "fullName-error" : undefined}
+					/>
+					{state?.errors?.fullName && <span>{state.errors.fullName[0]}</span>}
+				</div>
+				<div className="relative">
+					<Input
+						label="Email"
+						name="email"
+						type="email"
+						aria-describedby={state?.errors?.email ? "email-error" : undefined}
+					/>
+					{state?.errors?.email && <span>{state.errors.email[0]}</span>}
+				</div>
+				<div className="relative">
+					<Input
+						label="Password"
+						name="password"
+						type="password"
+						aria-describedby={state?.errors?.password ? "password-error" : undefined}
+					/>
+					{state?.errors?.password && <span>{state.errors.password[0]}</span>}
+				</div>
 				<button type="submit">Register Account</button>
 			</form>
-			<p>
+			<p className="relative z-20">
 				Already Have An Account — <Link href="/login">Sign In Here</Link>
 			</p>
-			<button type="button">SignUp With Google Account</button>
+			<button className="relative z-20" type="button">
+				SignUp With Google Account
+			</button>
+			<svg
+				className="absolute bottom-0 left-0 z-10"
+				width="340"
+				height="489"
+				viewBox="0 0 340 489"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<g filter="url(#filter0_f_488_129571)">
+					<circle cx="104" cy="437.775" r="261" fill="url(#paint0_radial_488_129571)" />
+				</g>
+				<defs>
+					<filter
+						id="filter0_f_488_129571"
+						x="-333.776"
+						y="-0.000274658"
+						width="875.551"
+						height="875.551"
+						filterUnits="userSpaceOnUse"
+						color-interpolation-filters="sRGB"
+					>
+						<feFlood flood-opacity="0" result="BackgroundImageFix" />
+						<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape" />
+						<feGaussianBlur stdDeviation="88.3878" result="effect1_foregroundBlur_488_129571" />
+					</filter>
+					<radialGradient
+						id="paint0_radial_488_129571"
+						cx="0"
+						cy="0"
+						r="1"
+						gradientUnits="userSpaceOnUse"
+						gradientTransform="translate(104 437.775) rotate(90) scale(261)"
+					>
+						<stop stop-color="#1A34B6" />
+						<stop offset="1" stop-color="#1D39C4" stop-opacity="0" />
+					</radialGradient>
+				</defs>
+			</svg>
 		</section>
 	);
 };

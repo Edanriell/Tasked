@@ -10,11 +10,12 @@ type FeaturedClient = {
 type FeaturedClientsProps = {
 	clients: Array<FeaturedClient>;
 	label?: string;
+	classes?: string;
 };
 
-export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label }) => {
+export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label, classes }) => {
 	return (
-		<p className="flex flex-row gap-x-[0.875rem]">
+		<p className={clsx("flex flex-row gap-x-[0.875rem]", classes)}>
 			<span className="flex flex-row items-center shrink-0" aria-hidden="true">
 				{clients.map(({ image, fullName }, index) => (
 					<span

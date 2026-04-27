@@ -2,7 +2,7 @@ import type { FC } from "react";
 
 import { Registration } from "@features/register";
 
-import { FeaturedClients, GradientText } from "@shared/ui";
+import { Divider, FeaturedClients, GradientText } from "@shared/ui";
 
 const FEATURED_CLIENTS = [
 	{ image: "/images/users/jensen_ackles.jpg", fullName: "Jensen Ackles" },
@@ -18,7 +18,7 @@ const RegistrationPage: FC = () => {
 		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1, 0, 9, 0.6)]">
 			<h1 className="sr-only">Create new account</h1>
 			<div className="grid grid-cols-[420px_340px] gap-[3rem]">
-				<div className="relative col-start-1 col-end-2 row-start-1 row-end-2">
+				<div className="relative">
 					<p className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
 						<span>Join Over 2568+</span>
 						<GradientText
@@ -29,18 +29,18 @@ const RegistrationPage: FC = () => {
 							Expert Designers
 						</GradientText>
 					</p>
-					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100)">
+					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100) mt-[0.875rem]">
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
 					</p>
 					<FeaturedClients
 						clients={FEATURED_CLIENTS}
 						label="Over 2568+ Designers & Creators Love Our Platform"
+						classes="mt-[1.5rem] mr-[5.188rem]"
 					/>
+					<Divider classes="absolute bottom-0 left-0" />
 				</div>
-				<div className="col-start-2 col-end-3 row-start-1 row-end-2">
-					<Registration />
-				</div>
+				<Registration />
 			</div>
 			<svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
 				<defs>
