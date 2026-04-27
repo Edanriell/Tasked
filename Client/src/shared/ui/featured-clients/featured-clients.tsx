@@ -25,7 +25,7 @@ export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label }) =>
 						)}
 						style={{ zIndex: index }}
 					>
-						<Image className="object-cover" src={image} alt={fullName} fill />
+						<Image className="object-cover" src={image} alt={fullName} width={40} height={40} />
 					</span>
 				))}
 			</span>
