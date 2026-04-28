@@ -47,7 +47,7 @@ export const Spinner: FC<SpinnerProps> = ({
 					repeat: Number.POSITIVE_INFINITY,
 					repeatType: "loop"
 				}}
-				style={{ transformOrigin: "50px 50px" }}
+				style={{ transformOrigin: "3.125rem 3.125rem" }}
 			>
 				<motion.circle
 					cx="50"

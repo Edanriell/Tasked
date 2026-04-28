@@ -53,7 +53,7 @@ export const Registration: FC = () => {
 					</radialGradient>
 				</defs>
 			</svg>
-			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[27.94px] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
+			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[1.75rem] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
 				Register your account
 			</h2>
 			<ValidationErrorMessage classes="mb-[1rem]" message={state?.message} />
@@ -87,7 +87,7 @@ export const Registration: FC = () => {
 				</div>
 				<SubmitButton classes="w-full mt-[1rem]">Register Account</SubmitButton>
 			</form>
-			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[15.96px] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
+			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[1rem] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 				Already Have An Account —{" "}
 				<Link className="text-(--geek-blue-4)" href={ROUTES.Login}>
 					Sign In Here

@@ -8,16 +8,24 @@ type FeaturedClient = {
 };
 
 type FeaturedClientsProps = {
-	clients: Array<FeaturedClient>;
 	label?: string;
 	classes?: string;
 };
 
-export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label, classes }) => {
+const FEATURED_CLIENTS = [
+	{ image: "/images/users/jensen_ackles.jpg", fullName: "Jensen Ackles" },
+	{ image: "/images/users/jared_padalecki.jpg", fullName: "Jared Padalecki" },
+	{ image: "/images/users/robert_palka.jpg", fullName: "Robert Palka" },
+	{ image: "/images/users/bartozs_zmarzlik.jpg", fullName: "Bartozs Zmarzlik" },
+	{ image: "/images/users/rupert_grind.jpg", fullName: "Rupert Grind" },
+	{ image: "/images/users/john_block.jpg", fullName: "John Block" }
+] as Array<FeaturedClient>;
+
+export const FeaturedClients: FC<FeaturedClientsProps> = ({ label, classes }) => {
 	return (
 		<p className={clsx("flex flex-row gap-x-[0.875rem]", classes)}>
 			<span className="flex flex-row items-center shrink-0" aria-hidden="true">
-				{clients.map(({ image, fullName }, index) => (
+				{FEATURED_CLIENTS.map(({ image, fullName }, index) => (
 					<span
 						key={index + "-" + fullName}
 						className={clsx(
@@ -30,11 +38,9 @@ export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label, clas
 					</span>
 				))}
 			</span>
-			{label && (
-				<span className="font-(family-name:--font-barlow) font-semibold text-[0.875rem] leading-[18.06px] tracking-[0.01em] text-[#f8f8f8]">
-					{label}
-				</span>
-			)}
+			<span className="font-(family-name:--font-barlow) font-semibold text-[0.875rem] leading-[1.125rem] tracking-[0.01em] text-[#f8f8f8]">
+				Over 2568+ Designers & Creators Love Our Platform
+			</span>
 		</p>
 	);
 };

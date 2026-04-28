@@ -4,15 +4,6 @@ import { Login } from "@features/login";
 
 import { Divider, FeaturedClients, GradientText } from "@shared/ui";
 
-const FEATURED_CLIENTS = [
-	{ image: "/images/users/jensen_ackles.jpg", fullName: "Jensen Ackles" },
-	{ image: "/images/users/jared_padalecki.jpg", fullName: "Jared Padalecki" },
-	{ image: "/images/users/robert_palka.jpg", fullName: "Robert Palka" },
-	{ image: "/images/users/bartozs_zmarzlik.jpg", fullName: "Bartozs Zmarzlik" },
-	{ image: "/images/users/rupert_grind.jpg", fullName: "Rupert Grind" },
-	{ image: "/images/users/john_block.jpg", fullName: "John Block" }
-];
-
 const LoginPage: FC = () => {
 	return (
 		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1,0,9,0.6)]">
@@ -29,15 +20,11 @@ const LoginPage: FC = () => {
 							Dear Friend
 						</GradientText>
 					</p>
-					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[15.96px] tracking-[0.01em] text-(--white-pallete-100) mt-[0.875rem]">
+					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[1rem] tracking-[0.01em] text-(--white-pallete-100) mt-[0.875rem]">
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
 					</p>
-					<FeaturedClients
-						clients={FEATURED_CLIENTS}
-						label="Over 2568+ Designers & Creators Love Our Platform"
-						classes="mt-[1.5rem] mr-[5.188rem]"
-					/>
+					<FeaturedClients classes="mt-[1.5rem] mr-[5.188rem]" />
 					<Divider classes="absolute bottom-0 left-0" />
 				</div>
 				<Login />

@@ -31,7 +31,7 @@ const NAVIGATION_LABEL_VARIANTS = {
 export const MainNavigation: FC = () => {
 	return (
 		<nav aria-label="Main navigation">
-			<ul className="flex items-center gap-x-[3.236rem] font-(family-name:--font-barlow) text-(--white-pallete-100) font-bold text-[0.875rem] leading-[114%] tracking-[0.01em]">
+			<ul className="flex items-center gap-x-[3.236rem] font-(family-name:--font-barlow) text-(--white-pallete-100) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em]">
 				{MAIN_NAVIGATION_ITEMS.map(({ href, label }) => (
 					<motion.li
 						key={href}
