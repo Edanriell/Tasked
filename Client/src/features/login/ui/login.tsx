@@ -7,14 +7,14 @@ import { useActionState } from "react";
 import { ROUTES } from "@shared/config";
 import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
-import { registrationAction } from "../api";
-import type { RegistrationState } from "../model";
+import { loginAction } from "../api";
+import type { LoginState } from "../model";
 
-export const Registration: FC = () => {
-	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
+export const Login: FC = () => {
+	const [state, action] = useActionState<LoginState, FormData>(loginAction, null);
 
 	return (
-		<section className="relative z-[100] border-[0.031rem] border-solid border-(--white-pallete-20) rounded-[1rem] px-[2rem] py-[3rem] backdrop-blur-[3.625rem] bg-[rgba(1,0,9,0.15)] overflow-hidden">
+		<section className="relative z-[100] border-[0.031rem] border-solid border-(--white-pallete-20) rounded-[1rem] px-[2rem] py-[5.25rem] backdrop-blur-[3.625rem] bg-[rgba(1,0,9,0.15)] overflow-hidden">
 			<svg
 				className="absolute top-0 right-0 z-10"
 				width="277"
@@ -54,19 +54,10 @@ export const Registration: FC = () => {
 				</defs>
 			</svg>
 			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[27.94px] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
-				Register your account
+				Sign In To Your Account
 			</h2>
 			<ValidationErrorMessage classes="mb-[1rem]" message={state?.message} />
 			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
-				<div className="relative">
-					<Input
-						label="Full name"
-						name="fullName"
-						type="text"
-						aria-describedby={state?.errors?.fullName ? "fullName-error" : undefined}
-					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.fullName![0]} />
-				</div>
 				<div className="relative">
 					<Input
 						label="Email"
@@ -85,12 +76,12 @@ export const Registration: FC = () => {
 					/>
 					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.password![0]} />
 				</div>
-				<SubmitButton classes="w-full mt-[1rem]">Register Account</SubmitButton>
+				<SubmitButton classes="w-full mt-[1rem]">Login</SubmitButton>
 			</form>
 			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[15.96px] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
-				Already Have An Account —{" "}
-				<Link className="text-(--geek-blue-4)" href={ROUTES.Login}>
-					Sign In Here
+				You don&#39;t have an account —{" "}
+				<Link className="text-(--geek-blue-4)" href={ROUTES.Registration}>
+					Register Here
 				</Link>
 			</p>
 			<Button classes="relative z-20 w-full" variant="secondary" type="button">

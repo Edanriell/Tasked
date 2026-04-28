@@ -19,7 +19,7 @@ const RegistrationPage: FC = () => {
 			<h1 className="sr-only">Create new account</h1>
 			<div className="grid grid-cols-[26.25rem_21.25rem] gap-[3rem]">
 				<div className="relative">
-					<p className="font-(family-name:--font-barlow) font-bold text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
+					<p className="font-(family-name:--font-barlow) font-bold leading-[normal] text-[3rem] tracking-[0.01em] text-(--white-pallete-100)">
 						<span>Join Over 2568+</span>
 						<GradientText
 							className="font-(family-name:--font-barlow)! font-bold! text-[3rem]! tracking-[0.01em]! cursor-text"
@@ -29,7 +29,7 @@ const RegistrationPage: FC = () => {
 							Expert Designers
 						</GradientText>
 					</p>
-					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100) mt-[0.875rem]">
+					<p className="font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[15.96px] tracking-[0.01em] text-(--white-pallete-100) mt-[0.875rem]">
 						We take pride in offering unparalleled customer support to ensure your experience with our
 						platforms
 					</p>

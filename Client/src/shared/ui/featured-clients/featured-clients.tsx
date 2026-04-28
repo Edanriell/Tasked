@@ -31,7 +31,7 @@ export const FeaturedClients: FC<FeaturedClientsProps> = ({ clients, label, clas
 				))}
 			</span>
 			{label && (
-				<span className="font-(family-name:--font-barlow) font-semibold text-[0.875rem] leading-[129%] tracking-[0.01em] text-[#f8f8f8]">
+				<span className="font-(family-name:--font-barlow) font-semibold text-[0.875rem] leading-[18.06px] tracking-[0.01em] text-[#f8f8f8]">
 					{label}
 				</span>
 			)}

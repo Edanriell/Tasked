@@ -6,15 +6,12 @@ import { z } from "zod";
 import { ApiError, resolveApiError, serverApiClient } from "@shared/api";
 import { ROUTES } from "@shared/config";
 
-import type { RegistrationFormData, RegistrationState } from "../model";
-import { RegistrationSchema } from "../model";
+import type { LoginFormData } from "../model";
+import { LoginSchema, LoginState } from "../model";
 
-export const registrationAction = async (
-	_prevState: RegistrationState,
-	formData: FormData
-): Promise<RegistrationState> => {
-	const registerFormData = Object.fromEntries(formData.entries());
-	const validationResult = RegistrationSchema.safeParse(registerFormData);
+export const loginAction = async (_prevState: LoginState, formData: FormData): Promise<LoginState> => {
+	const loginFormData = Object.fromEntries(formData.entries());
+	const validationResult = LoginSchema.safeParse(loginFormData);
 
 	if (!validationResult.success) {
 		return {
@@ -22,10 +19,10 @@ export const registrationAction = async (
 		};
 	}
 
-	const payload: RegistrationFormData = validationResult.data;
+	const payload: LoginFormData = validationResult.data;
 
 	try {
-		await serverApiClient.post<void>(ROUTES.Registration, payload);
+		await serverApiClient.post<void>(ROUTES.Login, payload);
 	} catch (error) {
 		if (error instanceof ApiError) {
 			const resolved = resolveApiError(error);
