@@ -19,7 +19,7 @@ export const Input: FC<InputProps> = ({ label, name, placeholder = "Please write
 				{label}
 			</label>
 			<input
-				className="border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[0.625rem] px-[1rem] py-[0.75rem] bg-(--geek-blue-primary-opacity-150) font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100) placeholder:text-(--neutrals-3)"
+				className="border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[0.625rem] px-[1rem] py-[0.75rem] bg-(--geek-blue-primary-opacity-150) font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--white-pallete-100) placeholder:text-(--neutrals-3) caret-(--geek-blue-4) transition-[border-color,background-color,box-shadow,color] duration-200 ease-out hover:border-(--white-pallete-20) hover:bg-(--geek-blue-primary-opacity-200) selection:bg-(--daybreak-blue-400) selection:text-(--white-pallete-100) focus-visible:outline-none focus-visible:border-(--geek-blue-4) focus-visible:bg-(--geek-blue-primary-opacity-200) focus-visible:shadow-[0_0_0_0.125rem_var(--daybreak-blue-200)]"
 				id={inputId}
 				name={name}
 				placeholder={placeholder}
