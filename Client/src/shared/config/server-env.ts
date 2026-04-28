@@ -17,8 +17,8 @@ export type ServerEnv = z.infer<typeof serverEnvSchema>;
 
 export const envServer: ServerEnv = serverEnvSchema.parse({
 	WEBSITE_URL: process.env.WEBSITE_URL,
-	AUTH_URL: process.env.NEXTAUTH_URL,
-	AUTH_SECRET: process.env.NEXTAUTH_SECRET,
+	AUTH_URL: process.env.AUTH_URL,
+	AUTH_SECRET: process.env.AUTH_SECRET,
 	KEYCLOAK_CLIENT_ID: process.env.KEYCLOAK_CLIENT_ID,
 	KEYCLOAK_CLIENT_SECRET: process.env.KEYCLOAK_CLIENT_SECRET,
 	KEYCLOAK_ISSUER: process.env.KEYCLOAK_ISSUER,
