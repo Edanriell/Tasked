@@ -18,9 +18,46 @@ export const registrationAction = async (
 		};
 	}
 
-	// TODO
-	// Sending data
-	// TanStack Query ?
+	const endpoint = process.env.REGISTRATION_API_URL;
 
-	redirect("/");
+	if (!endpoint) {
+		return {
+			message: "Registration service is temporarily unavailable."
+		};
+	}
+
+	try {
+		const response = await fetch(endpoint, {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify(validationResult.data),
+			cache: "no-store"
+		});
+
+		if (!response.ok) {
+			let message = "Something went wrong while creating your account. Please try again.";
+			const contentType = response.headers.get("content-type") || "";
+
+			if (contentType.includes("application/json")) {
+				const payload = (await response.json()) as { message?: string };
+				message = payload.message || message;
+			}
+
+			return { message };
+		}
+
+		// Redirect should happen only after confirmed success response.
+		redirect("/");
+
+		return {
+			success: true,
+			message: "Account created successfully."
+		};
+	} catch {
+		return {
+			message: "Network error. Please check your connection and try again."
+		};
+	}
 };

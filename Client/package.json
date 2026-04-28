@@ -42,7 +42,7 @@
 		"prettier-plugin-packagejson": "^3.0.2",
 		"prettier-plugin-sh": "^0.18.1",
 		"prettier-plugin-style-order": "^0.2.2",
-		"prettier-plugin-tailwindcss": "^0.7.3",
+		"prettier-plugin-tailwindcss": "^0.7.4",
 		"react-scan": "^0.5.3",
 		"steiger": "^0.5.11",
 		"tailwindcss": "^4.2.4",
