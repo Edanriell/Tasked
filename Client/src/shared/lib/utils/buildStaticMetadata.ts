@@ -15,7 +15,7 @@ export function buildStaticMetadata({
 	openGraph,
 	imagePath
 }: BuildStaticMetadataParameters): Metadata {
-	const metadataBase = new URL(envServer.SITE_URL);
+	const metadataBase = new URL(envServer.WEBSITE_URL);
 	const imageUrl = imagePath ? new URL(imagePath, metadataBase).toString() : undefined;
 
 	return {
