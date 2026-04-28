@@ -3,6 +3,9 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
 
+import { ApiError, resolveApiError, serverApiClient } from "@shared/api";
+import { ROUTES } from "@shared/config";
+
 import type { RegistrationState } from "../model";
 import { RegistrationSchema } from "../model";
 
@@ -18,46 +21,25 @@ export const registrationAction = async (
 		};
 	}
 
-	const endpoint = process.env.REGISTRATION_API_URL;
-
-	if (!endpoint) {
-		return {
-			message: "Registration service is temporarily unavailable."
-		};
-	}
-
 	try {
-		const response = await fetch(endpoint, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json"
-			},
-			body: JSON.stringify(validationResult.data),
-			cache: "no-store"
-		});
+		await serverApiClient.post<void>(ROUTES.Registration, validationResult.data);
+	} catch (error) {
+		if (error instanceof ApiError) {
+			const resolved = resolveApiError(error);
 
-		if (!response.ok) {
-			let message = "Something went wrong while creating your account. Please try again.";
-			const contentType = response.headers.get("content-type") || "";
-
-			if (contentType.includes("application/json")) {
-				const payload = (await response.json()) as { message?: string };
-				message = payload.message || message;
+			if (resolved.shouldLog) {
+				console.error(error);
 			}
 
-			return { message };
+			return {
+				message: resolved.message
+			};
 		}
 
-		// Redirect should happen only after confirmed success response.
-		redirect("/");
-
-		return {
-			success: true,
-			message: "Account created successfully."
-		};
-	} catch {
 		return {
 			message: "Network error. Please check your connection and try again."
 		};
 	}
+
+	redirect(ROUTES.Dashboard);
 };
