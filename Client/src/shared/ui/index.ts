@@ -9,3 +9,4 @@ export * from "./main-navigation";
 export * from "./motion-icon";
 export * from "./spinner";
 export * from "./submit-button";
+export * from "./validation-error-message";

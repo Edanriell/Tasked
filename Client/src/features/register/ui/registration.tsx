@@ -1,11 +1,10 @@
 "use client";
 
-import { AnimatePresence, motion } from "motion/react";
 import Link from "next/link";
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { Button, Icon, ICON, Input, SubmitButton } from "@shared/ui";
+import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
@@ -56,18 +55,7 @@ export const Registration: FC = () => {
 			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[127%] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
 				Register your account
 			</h2>
-			<AnimatePresence>
-				{state?.message && (
-					<motion.span
-						initial={{ opacity: 0, x: 12 }}
-						animate={{ opacity: 1, x: 0 }}
-						exit={{ opacity: 0, x: 12 }}
-						className="block relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--accent-color-dengerous-1)"
-					>
-						{state.message}
-					</motion.span>
-				)}
-			</AnimatePresence>
+			<ValidationErrorMessage classes="mb-[1rem]" message={state?.message} />
 			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
 				<div className="relative">
 					<Input
@@ -76,18 +64,7 @@ export const Registration: FC = () => {
 						type="text"
 						aria-describedby={state?.errors?.fullName ? "fullName-error" : undefined}
 					/>
-					<AnimatePresence>
-						{state?.errors?.fullName && (
-							<motion.span
-								initial={{ opacity: 0, x: 12 }}
-								animate={{ opacity: 1, x: 0 }}
-								exit={{ opacity: 0, x: 12 }}
-								className="block font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--accent-color-dengerous-2) mt-[0.5rem]"
-							>
-								{state.errors.fullName[0]}
-							</motion.span>
-						)}
-					</AnimatePresence>
+					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.fullName![0]} />
 				</div>
 				<div className="relative">
 					<Input
@@ -96,18 +73,7 @@ export const Registration: FC = () => {
 						type="email"
 						aria-describedby={state?.errors?.email ? "email-error" : undefined}
 					/>
-					<AnimatePresence>
-						{state?.errors?.email && (
-							<motion.span
-								initial={{ opacity: 0, x: 12 }}
-								animate={{ opacity: 1, x: 0 }}
-								exit={{ opacity: 0, x: 12 }}
-								className="block font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--accent-color-dengerous-2) mt-[0.5rem]"
-							>
-								{state.errors.email[0]}
-							</motion.span>
-						)}
-					</AnimatePresence>
+					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.email![0]} />
 				</div>
 				<div className="relative">
 					<Input
@@ -116,18 +82,7 @@ export const Registration: FC = () => {
 						type="password"
 						aria-describedby={state?.errors?.password ? "password-error" : undefined}
 					/>
-					<AnimatePresence>
-						{state?.errors?.password && (
-							<motion.span
-								initial={{ opacity: 0, x: 12 }}
-								animate={{ opacity: 1, x: 0 }}
-								exit={{ opacity: 0, x: 12 }}
-								className="block font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-(--accent-color-dengerous-2) mt-[0.5rem]"
-							>
-								{state.errors.password[0]}
-							</motion.span>
-						)}
-					</AnimatePresence>
+					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.password![0]} />
 				</div>
 				<SubmitButton classes="w-full mt-[1rem]">Register Account</SubmitButton>
 			</form>
