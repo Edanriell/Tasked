@@ -4,7 +4,7 @@ import Link from "next/link";
 import type { FC } from "react";
 import { useActionState } from "react";
 
-import { Button, Input, SubmitButton } from "@shared/ui";
+import { Button, Icon, ICON, Input, SubmitButton } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
@@ -93,7 +93,10 @@ export const Registration: FC = () => {
 				</Link>
 			</p>
 			<Button classes="relative z-20 w-full" variant="secondary" type="button">
-				SignUp With Google Account
+				<span className="flex items-center justify-center gap-x-[0.25rem]">
+					<Icon name={ICON.Google} />
+					<span>SignUp With Google Account</span>
+				</span>
 			</Button>
 			<svg
 				className="absolute bottom-0 left-0 z-10"

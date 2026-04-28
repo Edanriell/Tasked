@@ -1,4 +1,4 @@
-import { envClient } from "@shared/config/client-env";
+import { envClient } from "../config/env";
 
 import type { ApiRequestOptions } from "./base-api-client";
 import { BaseApiClient } from "./base-api-client";

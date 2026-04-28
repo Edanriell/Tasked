@@ -2,7 +2,7 @@ import "server-only";
 
 import { cookies } from "next/headers";
 
-import { envServer } from "@shared/config/server-env";
+import { envServer } from "../config/env";
 
 import type { ApiRequestOptions } from "./base-api-client";
 import { BaseApiClient } from "./base-api-client";
