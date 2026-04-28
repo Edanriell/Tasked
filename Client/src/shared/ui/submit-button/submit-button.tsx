@@ -31,7 +31,7 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ variant = "primary", child
 
 	return (
 		<Button disabled={pending} aria-disabled={pending} variant={variant} classes={classes} type="submit">
-			<motion.span layout className="relative flex justify-center items-center gap-x-[0.6rem]">
+			<motion.span className="relative flex justify-center items-center gap-x-[0.6rem]">
 				{children}
 				{pending && <Spinner size={14} {...spinnerColors} />}
 			</motion.span>
