@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import { FC } from "react";
+import type { FC } from "react";
 
 import { ROUTES } from "@shared/config";
 

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { type FC } from "react";
+import type { FC } from "react";
 
 type SpinnerProps = {
 	size?: number;

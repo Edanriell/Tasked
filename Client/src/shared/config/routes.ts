@@ -1,11 +1,15 @@
 export const ROUTES = {
-	Home: "/home",
+	Home: "/",
+	Registration: "/registration",
+	Login: "/login",
 	Overview: "/overview",
 	Features: "/features",
 	Pricing: "/pricing",
 	About: "/about",
 	Dashboard: "/",
-	Settings: "/settings",
-	Registration: "/registration",
-	Login: "/login"
+	Tasks: "/tasks",
+	Project: (id: string) => `/projects/${id}`,
+	Projects: "/projects",
+	Messages: "/messages",
+	Settings: "/settings"
 } as const;

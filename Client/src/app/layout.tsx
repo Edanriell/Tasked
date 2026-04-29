@@ -3,9 +3,6 @@ import Image from "next/image";
 import Script from "next/script";
 import type { FC, ReactNode } from "react";
 
-import { Header } from "@widgets/header";
-import { UserProfile } from "@widgets/user-profile";
-
 import { FONTS } from "@shared/config";
 
 import "./_styles/styles.css";
@@ -38,10 +35,7 @@ const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
 				<div className="absolute inset-0 z-20">
 					<Image src="/images/shadow_2.png" alt="" className="opacity-80" fill />
 				</div>
-				<Header classes="relative z-50 mr-[2.5rem]">
-					<UserProfile />
-				</Header>
-				<main className="z-50 flex-1">{children}</main>
+				{children}
 			</body>
 		</html>
 	);

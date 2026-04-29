@@ -1,6 +1,7 @@
 export * from "./button";
 export * from "./divider";
 export * from "./featured-clients";
+export * from "./gradient-border";
 export * from "./gradient-text";
 export * from "./icon";
 export * from "./input";

@@ -14,7 +14,7 @@
 		"scan:init": "pnpm exec react-scan init --yes --cwd ."
 	},
 	"dependencies": {
-		"@tanstack/react-query": "^5.100.5",
+		"@tanstack/react-query": "^5.100.6",
 		"clsx": "^2.1.1",
 		"motion": "^12.38.0",
 		"next": "16.2.4",
@@ -27,7 +27,7 @@
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.7",
 		"@tailwindcss/postcss": "^4.2.4",
-		"@tanstack/eslint-plugin-query": "^5.100.5",
+		"@tanstack/eslint-plugin-query": "^5.100.6",
 		"@types/node": "^20.19.39",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
