@@ -5,7 +5,7 @@ import type { FC } from "react";
 import { useActionState } from "react";
 
 import { ROUTES } from "@shared/config";
-import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
+import { Button, ICON, Icon, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
@@ -85,7 +85,13 @@ export const Registration: FC = () => {
 					/>
 					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.password![0]} />
 				</div>
-				<SubmitButton classes="w-full mt-[1rem]">Register Account</SubmitButton>
+				<SubmitButton
+					childrenDisplayedWhenPending={false}
+					classes="w-full mt-[1rem] max-h-[40px]!"
+					spinnerClasses="mt-[-4px]"
+				>
+					Register Account
+				</SubmitButton>
 			</form>
 			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[1rem] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 				Already Have An Account —{" "}
@@ -93,11 +99,13 @@ export const Registration: FC = () => {
 					Sign In Here
 				</Link>
 			</p>
-			<Button classes="relative z-20 w-full" variant="secondary" type="button">
-				<span className="flex items-center justify-center gap-x-[0.25rem]">
-					<Icon name={ICON.Google} />
-					<span>SignUp With Google Account</span>
-				</span>
+			<Button
+				leadingIcon={<Icon name={ICON.Google} />}
+				classes="relative z-20 w-full"
+				variant="secondary"
+				type="button"
+			>
+				SignUp With Google Account
 			</Button>
 			<svg
 				className="absolute bottom-0 left-0 z-10"

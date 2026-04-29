@@ -11,6 +11,7 @@ type SpinnerProps = {
 	backgroundColor?: string;
 	trackColor?: string;
 	activeColor?: string;
+	className?: string;
 };
 
 export const Spinner: FC<SpinnerProps> = ({
@@ -20,7 +21,8 @@ export const Spinner: FC<SpinnerProps> = ({
 	spinDamping = 16,
 	backgroundColor = "var(--geek-blue-primary-opacity-100)",
 	trackColor = "var(--geek-blue-primary-opacity-200)",
-	activeColor = "var(--geek-blue-5)"
+	activeColor = "var(--geek-blue-5)",
+	className
 }) => {
 	return (
 		<motion.svg
@@ -29,6 +31,7 @@ export const Spinner: FC<SpinnerProps> = ({
 			preserveAspectRatio="xMidYMid"
 			width={size}
 			height={size}
+			className={className}
 			aria-hidden="true"
 			style={{
 				display: "block",

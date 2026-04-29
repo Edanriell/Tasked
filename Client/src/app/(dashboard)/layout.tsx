@@ -14,6 +14,22 @@ type DashboardLayoutProps = {
 	children: ReactNode;
 };
 
+// TODO
+// Sidebar widget, will contain 3 slots
+// Slots will contain other widgets
+// <Sidebar>
+//  <Sidebar.Header>
+//    <UserInfo />
+//  </Sidebar.Header>
+//  <Sidebar.Content>
+//    <MainNavigation />
+//    <ProjectsNavigation />
+//  </Sidebar.Content>
+//  <Sidebar.Footer>
+//    <Promotion /> or <ChangeLog />
+//  </Sidebar.Footer>
+// </Sidebar>
+
 const DashboardLayout: FC<Readonly<DashboardLayoutProps>> = ({ children }) => {
 	return (
 		<div className="grid grid-cols-[228px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1">

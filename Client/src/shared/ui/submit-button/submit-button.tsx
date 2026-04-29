@@ -1,20 +1,31 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { FC, ReactElement } from "react";
+import { FC, ReactElement } from "react";
 import { useFormStatus } from "react-dom";
 
 import type { ButtonVariants } from "@shared/ui";
 import { Button, Spinner } from "@shared/ui";
+import { clsx } from "clsx";
 
 type SubmitButtonProps = {
 	children: ReactElement | string;
 	variant?: ButtonVariants;
 	classes?: string;
+	spinnerClasses?: string;
+	childrenDisplayedWhenPending?: boolean;
 };
 
-export const SubmitButton: FC<SubmitButtonProps> = ({ variant = "primary", children, classes }) => {
+export const SubmitButton: FC<SubmitButtonProps> = ({
+	variant = "primary",
+	children,
+	classes,
+	spinnerClasses,
+	childrenDisplayedWhenPending = true
+}) => {
 	const { pending } = useFormStatus();
+
+	const displayChildren = !pending || childrenDisplayedWhenPending;
 
 	const spinnerColors =
 		variant === "secondary"
@@ -31,9 +42,15 @@ export const SubmitButton: FC<SubmitButtonProps> = ({ variant = "primary", child
 
 	return (
 		<Button disabled={pending} aria-disabled={pending} variant={variant} classes={classes} type="submit">
-			<motion.span className="relative flex justify-center items-center gap-x-[0.6rem]">
-				{children}
-				{pending && <Spinner size={14} {...spinnerColors} />}
+			<motion.span className="relative">
+				{displayChildren && children}
+				{pending && (
+					<Spinner
+						className={clsx("inline-block! ml-[4px]", { "ml-[unset]!": !displayChildren }, spinnerClasses)}
+						size={24}
+						{...spinnerColors}
+					/>
+				)}
 			</motion.span>
 		</Button>
 	);
