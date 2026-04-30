@@ -39,7 +39,7 @@ export const Sidebar: Sidebar = ({ children }) => {
 	validateSidebarChildren(children);
 
 	return (
-		<aside className="my-[0.75rem] ml-[0.75rem] bg-indigo-500" aria-labelledby="dashboard-sidebar-title">
+		<aside className="relative my-[0.75rem] ml-[0.75rem] bg-indigo-500" aria-labelledby="dashboard-sidebar-title">
 			<h2 id="dashboard-sidebar-title" className="sr-only">
 				Dashboard sidebar
 			</h2>
