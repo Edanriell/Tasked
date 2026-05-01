@@ -4,6 +4,7 @@ import { Children, isValidElement } from "react";
 import { SidebarContent } from "./sidebar-content";
 import { SidebarFooter } from "./sidebar-footer";
 import { SidebarHeader } from "./sidebar-header";
+import { SidebarTrigger } from "./sidebar-trigger";
 
 type SidebarComponents = {
 	Header: typeof SidebarHeader;
@@ -42,32 +43,7 @@ export const Sidebar: Sidebar = ({ children }) => {
 			<h2 id="dashboard-sidebar-title" className="sr-only">
 				Dashboard sidebar
 			</h2>
-			<button
-				type="button"
-				aria-label="Collapse sidebar"
-				aria-expanded="true"
-				aria-controls="dashboard-main-nav dashboard-projects-nav"
-			>
-				<span className="sr-only">Toggle sidebar</span>
-				<svg
-					width="7"
-					height="13"
-					viewBox="0 0 7 13"
-					fill="none"
-					xmlns="http://www.w3.org/2000/svg"
-					aria-hidden="true"
-					focusable="false"
-				>
-					<path
-						d="M5.48167 11.31L1.135 6.96333C0.621667 6.45 0.621667 5.61 1.135 5.09667L5.48167 0.75"
-						stroke="white"
-						strokeWidth="1.5"
-						strokeMiterlimit="10"
-						strokeLinecap="round"
-						strokeLinejoin="round"
-					/>
-				</svg>
-			</button>
+			<SidebarTrigger />
 			{children}
 		</aside>
 	);

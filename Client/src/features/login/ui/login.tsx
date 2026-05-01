@@ -91,7 +91,7 @@ export const Login: FC = () => {
 				</Link>
 			</p>
 			<Button
-				leadingIcon={<Icon name={ICON.Google} />}
+				leadingIcon={<Icon type={ICON.Google} />}
 				classes="relative z-20 w-full"
 				variant="secondary"
 				type="button"

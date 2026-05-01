@@ -7,15 +7,15 @@ export const ICON = {
 	Google: "Google"
 } as const;
 
-type IconName = (typeof ICON)[keyof typeof ICON];
+type IconType = (typeof ICON)[keyof typeof ICON];
 
 type IconProps = SVGProps<SVGSVGElement> & {
-	name: IconName;
+	type: IconType;
 	size?: number;
 };
 
-export const Icon: FC<IconProps> = ({ name, size, ...props }) => {
-	switch (name) {
+export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
+	switch (type) {
 		case ICON.User:
 			return (
 				<svg
