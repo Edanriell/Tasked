@@ -8,8 +8,10 @@ export const ICON = {
 	Home: "Home",
 	Tasks: "Tasks",
 	Projects: "Projects",
+	CreateProject: "CreateProject",
 	Messages: "Messages",
-	MainSettings: "MainSettings"
+	MainSettings: "MainSettings",
+	Improvements: "Improvements"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];
@@ -107,13 +109,14 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 		case ICON.Home:
 			return (
 				<svg
-					width="16"
-					height="16"
+					width={size ?? 16}
+					height={size ?? 16}
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 					focusable="false"
+					{...props}
 				>
 					<path
 						d="M8 12V10"
@@ -134,13 +137,14 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 		case ICON.Tasks:
 			return (
 				<svg
-					width="16"
-					height="16"
+					width={size ?? 16}
+					height={size ?? 16}
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 					focusable="false"
+					{...props}
 				>
 					<path
 						d="M8.24609 5.91992H11.7461"
@@ -182,13 +186,14 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 		case ICON.Projects:
 			return (
 				<svg
-					width="16"
-					height="16"
+					width={size ?? 16}
+					height={size ?? 16}
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 					focusable="false"
+					{...props}
 				>
 					<path
 						d="M14.4408 6.96033L13.7874 9.747C13.2274 12.1537 12.1208 13.127 10.0408 12.927C9.70744 12.9003 9.34744 12.8403 8.96077 12.747L7.84077 12.4803C5.06077 11.8203 4.20077 10.447 4.8541 7.66033L5.50744 4.867C5.64077 4.30033 5.80077 3.807 6.00077 3.40033C6.78077 1.787 8.10744 1.35366 10.3341 1.88033L11.4474 2.14033C14.2408 2.79366 15.0941 4.17366 14.4408 6.96033Z"
@@ -223,13 +228,14 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 		case ICON.Messages:
 			return (
 				<svg
-					width="16"
-					height="16"
+					width={size ?? 16}
+					height={size ?? 16}
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 					focusable="false"
+					{...props}
 				>
 					<path
 						d="M14.6673 6.66634V8.66634C14.6673 11.333 13.334 12.6663 10.6673 12.6663H10.334C10.1273 12.6663 9.92732 12.7663 9.80065 12.933L8.80065 14.2663C8.36065 14.853 7.64065 14.853 7.20065 14.2663L6.20065 12.933C6.09398 12.7863 5.84732 12.6663 5.66732 12.6663H5.33398C2.66732 12.6663 1.33398 11.9997 1.33398 8.66634V5.33301C1.33398 2.66634 2.66732 1.33301 5.33398 1.33301H9.33398"
@@ -272,13 +278,14 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 		case ICON.MainSettings:
 			return (
 				<svg
-					width="16"
-					height="16"
+					width={size ?? 16}
+					height={size ?? 16}
 					viewBox="0 0 16 16"
 					fill="none"
 					xmlns="http://www.w3.org/2000/svg"
 					aria-hidden="true"
 					focusable="false"
+					{...props}
 				>
 					<path
 						d="M2 6.07292V9.91958C2 11.3329 2 11.3329 3.33333 12.2329L7 14.3529C7.55333 14.6729 8.45333 14.6729 9 14.3529L12.6667 12.2329C14 11.3329 14 11.3329 14 9.92625V6.07292C14 4.66625 14 4.66625 12.6667 3.76625L9 1.64625C8.45333 1.32625 7.55333 1.32625 7 1.64625L3.33333 3.76625C2 4.66625 2 4.66625 2 6.07292Z"
@@ -293,6 +300,46 @@ export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
 						strokeWidth="1.5"
 						strokeLinecap="round"
 						strokeLinejoin="round"
+					/>
+				</svg>
+			);
+		case ICON.CreateProject:
+			return (
+				<svg
+					width={size ?? 16}
+					height={size ?? 16}
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+					focusable="false"
+					{...props}
+				>
+					<path
+						d="M8.00065 1.33301C4.32732 1.33301 1.33398 4.32634 1.33398 7.99967C1.33398 11.673 4.32732 14.6663 8.00065 14.6663C11.674 14.6663 14.6673 11.673 14.6673 7.99967C14.6673 4.32634 11.674 1.33301 8.00065 1.33301ZM10.6673 8.49967H8.50065V10.6663C8.50065 10.9397 8.27398 11.1663 8.00065 11.1663C7.72732 11.1663 7.50065 10.9397 7.50065 10.6663V8.49967H5.33398C5.06065 8.49967 4.83398 8.27301 4.83398 7.99967C4.83398 7.72634 5.06065 7.49967 5.33398 7.49967H7.50065V5.33301C7.50065 5.05967 7.72732 4.83301 8.00065 4.83301C8.27398 4.83301 8.50065 5.05967 8.50065 5.33301V7.49967H10.6673C10.9407 7.49967 11.1673 7.72634 11.1673 7.99967C11.1673 8.27301 10.9407 8.49967 10.6673 8.49967Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.Improvements:
+			return (
+				<svg
+					width={size ?? 16}
+					height={size ?? 16}
+					viewBox="0 0 16 16"
+					fill="none"
+					xmlns="http://www.w3.org/2000/svg"
+					aria-hidden="true"
+					focusable="false"
+					{...props}
+				>
+					<path
+						d="M11.5262 2.7597L11.4795 5.28637C11.4729 5.63304 11.6929 6.09304 11.9729 6.2997L13.6262 7.55304C14.6862 8.35304 14.5129 9.33304 13.2462 9.73304L11.0929 10.4064C10.7329 10.5197 10.3529 10.913 10.2595 11.2797L9.7462 13.2397C9.33953 14.7864 8.3262 14.9397 7.4862 13.5797L6.31286 11.6797C6.09953 11.333 5.59286 11.073 5.19286 11.093L2.9662 11.2064C1.37286 11.2864 0.919529 10.3664 1.95953 9.15304L3.27953 7.6197C3.5262 7.33304 3.63953 6.7997 3.5262 6.4397L2.8462 4.2797C2.45286 3.01304 3.15953 2.31304 4.41953 2.72637L6.3862 3.37304C6.71953 3.4797 7.21953 3.40637 7.49953 3.1997L9.55286 1.7197C10.6662 0.92637 11.5529 1.39304 11.5262 2.7597Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M14.2935 13.6464L12.2735 11.6264C12.0802 11.4331 11.7602 11.4331 11.5669 11.6264C11.3735 11.8198 11.3735 12.1398 11.5669 12.3331L13.5869 14.3531C13.6869 14.4531 13.8135 14.4998 13.9402 14.4998C14.0669 14.4998 14.1935 14.4531 14.2935 14.3531C14.4869 14.1598 14.4869 13.8398 14.2935 13.6464Z"
+						fill="currentColor"
 					/>
 				</svg>
 			);
