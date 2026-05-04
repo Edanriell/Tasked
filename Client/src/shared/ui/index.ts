@@ -8,6 +8,7 @@ export * from "./input";
 export * from "./logotype";
 export * from "./main-navigation";
 export * from "./motion-icon";
+export * from "./skeleton";
 export * from "./spinner";
 export * from "./submit-button";
 export * from "./validation-error-message";
