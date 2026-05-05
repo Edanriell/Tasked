@@ -12,7 +12,7 @@ export const ICON = {
 	MainSettings: "MainSettings"
 } as const;
 
-type IconType = (typeof ICON)[keyof typeof ICON];
+export type IconType = (typeof ICON)[keyof typeof ICON];
 
 type IconProps = SVGProps<SVGSVGElement> & {
 	type: IconType;

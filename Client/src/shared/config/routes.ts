@@ -1,3 +1,5 @@
+export type Route = (typeof ROUTES)[keyof typeof ROUTES];
+
 export const ROUTES = {
 	Home: "/",
 	Registration: "/registration",

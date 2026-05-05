@@ -1,2 +1,1 @@
-export { GradientText } from "./gradient-text";
-
+export * from "./gradient-text";
