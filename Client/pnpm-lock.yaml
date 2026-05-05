@@ -14,6 +14,9 @@ importers:
       clsx:
         specifier: ^2.1.1
         version: 2.1.1
+      colorthief:
+        specifier: ^3.3.1
+        version: 3.3.1(sharp@0.34.5)
       motion:
         specifier: ^12.38.0
         version: 12.38.0(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
@@ -29,6 +32,9 @@ importers:
       react-dom:
         specifier: 19.2.4
         version: 19.2.4(react@19.2.4)
+      tinycolor2:
+        specifier: ^1.6.0
+        version: 1.6.0
       zod:
         specifier: ^4.4.3
         version: 4.4.3
@@ -54,6 +60,9 @@ importers:
       '@types/react-dom':
         specifier: ^19.2.3
         version: 19.2.3(@types/react@19.2.14)
+      '@types/tinycolor2':
+        specifier: ^1.4.6
+        version: 1.4.6
       babel-plugin-react-compiler:
         specifier: 1.0.0
         version: 1.0.0
@@ -676,8 +685,8 @@ packages:
     peerDependencies:
       preact: 10.x
 
-  '@react-grab/cli@0.1.34':
-    resolution: {integrity: sha512-L2eAxN46Vq2Ss3nDegrH7wQVMeWH03ahawp+OdzUtQWqL3cq6Bt149q9XhY3cWc9fJsxuWjLfCn+3T9uApIlBA==}
+  '@react-grab/cli@0.1.35':
+    resolution: {integrity: sha512-kFjiFpb0kVtZtaugWSxC16u7F7YbpVHmkPyfBd6T/3tZs7V7+i+JiKwIlubhaq6CYEEtilT66Q97hml5pq5dJg==}
     hasBin: true
 
   '@reteps/dockerfmt@0.5.2':
@@ -834,6 +843,9 @@ packages:
 
   '@types/react@19.2.14':
     resolution: {integrity: sha512-ilcTH/UniCkMdtexkoCN0bI7pMcJDvmQFPvuPvmEaYA/NSfFTAgdUSLAoVjaRJm7+6PvcM+q1zYOwS4wTYMF9w==}
+
+  '@types/tinycolor2@1.4.6':
+    resolution: {integrity: sha512-iEN8J0BoMnsWBqjVbWH/c0G0Hh7O21lpR2/+PrvAVgWdzL7eexIFm4JN/Wn10PTcmNdtS6U67r499mlWMXOxNw==}
 
   '@typescript-eslint/eslint-plugin@8.59.3':
     resolution: {integrity: sha512-PwFvSKsXGShKGW6n5bZOhGHEcCZXM8HofLK9fNsEwZXzFRjoY+XT1Vsf1zgyXdwTr0ZYz1/2tkZ0DBTT9jZjhw==}
@@ -1191,6 +1203,15 @@ packages:
 
   color-name@1.1.4:
     resolution: {integrity: sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==}
+
+  colorthief@3.3.1:
+    resolution: {integrity: sha512-a3qzYXy51h6p3725pV8rnJwUBGTtvYQge2pVhKJwL+vETUD5pCi6VKmQyu51pBHdUbu/BPEXbwFLS0GnxXNhGA==}
+    hasBin: true
+    peerDependencies:
+      sharp: '>=0.33.0'
+    peerDependenciesMeta:
+      sharp:
+        optional: true
 
   commander@12.1.0:
     resolution: {integrity: sha512-Vw8qHK3bZM9y/P10u3Vib8o/DdkvA2OtPtZvD871QKjy74Wj1WSKFILMPRPSdUSx5RFK1arlJzEtA4PkFgnbuA==}
@@ -2489,8 +2510,8 @@ packages:
     peerDependencies:
       react: ^19.2.4
 
-  react-grab@0.1.34:
-    resolution: {integrity: sha512-jtdOdv0kb90oqL+pMszSh9DOLgVRaX4ZE6XN4GkDEpNNUqveQfZT014+EeJraljpqQfuWKW+96NrrRqUD93D2g==}
+  react-grab@0.1.35:
+    resolution: {integrity: sha512-Sm16fg3ezABaMlLA7TIaGI9oQNrR8LhxuddDnLD+kjzMJLEwLZmTbQL1HU1sUlsq+k9ePMGnUhG+B+TQfLwPDQ==}
     hasBin: true
     peerDependencies:
       react: '>=17.0.0'
@@ -2762,6 +2783,9 @@ packages:
   tapable@2.3.3:
     resolution: {integrity: sha512-uxc/zpqFg6x7C8vOE7lh6Lbda8eEL9zmVm/PLeTPBRhh1xCgdWaQ+J1CUieGpIfm2HdtsUpRv+HshiasBMcc6A==}
     engines: {node: '>=6'}
+
+  tinycolor2@1.6.0:
+    resolution: {integrity: sha512-XPaBkWQJdsf3pLKJV9p4qN/S+fm2Oj8AIPo1BTUhg5oxkvm9+SVEGFdhyOz7tTdUTfvxMiAs4sp6/eZO2Ew+pw==}
 
   tinyexec@1.1.2:
     resolution: {integrity: sha512-dAqSqE/RabpBKI8+h26GfLq6Vb3JVXs30XYQjdMjaj/c2tS8IYYMbIzP599KtRj7c57/wYApb3QjgRgXmrCukA==}
@@ -3429,7 +3453,7 @@ snapshots:
       '@preact/signals-core': 1.14.2
       preact: 10.29.2
 
-  '@react-grab/cli@0.1.34':
+  '@react-grab/cli@0.1.35':
     dependencies:
       commander: 14.0.3
       ignore: 7.0.5
@@ -3564,6 +3588,8 @@ snapshots:
   '@types/react@19.2.14':
     dependencies:
       csstype: 3.2.3
+
+  '@types/tinycolor2@1.4.6': {}
 
   '@typescript-eslint/eslint-plugin@8.59.3(@typescript-eslint/parser@8.59.3(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3))(eslint@9.39.4(jiti@2.7.0))(typescript@5.9.3)':
     dependencies:
@@ -3941,6 +3967,10 @@ snapshots:
       color-name: 1.1.4
 
   color-name@1.1.4: {}
+
+  colorthief@3.3.1(sharp@0.34.5):
+    optionalDependencies:
+      sharp: 0.34.5
 
   commander@12.1.0: {}
 
@@ -5313,9 +5343,9 @@ snapshots:
       react: 19.2.4
       scheduler: 0.27.0
 
-  react-grab@0.1.34(react@19.2.4):
+  react-grab@0.1.35(react@19.2.4):
     dependencies:
-      '@react-grab/cli': 0.1.34
+      '@react-grab/cli': 0.1.35
       bippy: 0.5.40(react@19.2.4)
     optionalDependencies:
       react: 19.2.4
@@ -5335,7 +5365,7 @@ snapshots:
       prompts: 2.4.2
       react: 19.2.4
       react-dom: 19.2.4(react@19.2.4)
-      react-grab: 0.1.34(react@19.2.4)
+      react-grab: 0.1.35(react@19.2.4)
     optionalDependencies:
       esbuild: 0.25.12
       unplugin: 2.1.0
@@ -5671,6 +5701,8 @@ snapshots:
   tailwindcss@4.3.0: {}
 
   tapable@2.3.3: {}
+
+  tinycolor2@1.6.0: {}
 
   tinyexec@1.1.2: {}
 
