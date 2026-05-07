@@ -1,19 +1,41 @@
-import type { FC } from "react";
-import { Suspense } from "react";
+import type { FC, ReactElement } from "react";
+import { Children, isValidElement, Suspense } from "react";
 
-import { Icon, ICON } from "@shared/ui";
-
+import { ProjectNavigationActions } from "./project-navigation-actions";
 import { ProjectNavigationLinks } from "./project-navigation-links";
 
-export const ProjectsNavigation: FC = () => {
+type ProjectsNavigationComponents = {
+	Actions: typeof ProjectNavigationActions;
+};
+
+type ProjectsNavigationProps = {
+	children?: ReactElement | ReactElement[];
+};
+
+type ProjectsNavigation = FC<ProjectsNavigationProps> & ProjectsNavigationComponents;
+
+const validateProjectsNavigationChildren = (children: ReactElement | ReactElement[]) => {
+	Children.forEach(children, (child) => {
+		if (!(isValidElement(child) && child.type === ProjectNavigationActions)) {
+			throw new Error(`
+				Component <ProjectsNavigation> can only accept children of type <ProjectsNavigation.Actions>.
+				Received child of type ${child.type}.
+				Please ensure that all children of <Sidebar> are of the correct type. 
+			`);
+		}
+	});
+};
+
+export const ProjectsNavigation: ProjectsNavigation = ({ children }) => {
+	if (children) {
+		validateProjectsNavigationChildren(children);
+	}
+
 	return (
 		<nav id="dashboard-projects-nav" aria-labelledby="dashboard-projects-nav-title">
 			<div>
 				<h3 id="dashboard-projects-nav-title">Projects</h3>
-				<button type="button" aria-label="Create new project">
-					<Icon type={ICON.CreateProject} />
-					<span className="sr-only">Create New Project</span>
-				</button>
+				{children}
 			</div>
 			<Suspense fallback={<p>Loading Projects...</p>}>
 				<ProjectNavigationLinks />
@@ -21,3 +43,5 @@ export const ProjectsNavigation: FC = () => {
 		</nav>
 	);
 };
+
+ProjectsNavigation.Actions = ProjectNavigationActions;
