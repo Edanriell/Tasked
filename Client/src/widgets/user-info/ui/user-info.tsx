@@ -5,7 +5,13 @@ export const UserInfo: FC = () => {
 	return (
 		<div>
 			<figure>
-				<Image src="/images/users/john_block.jpg" alt="Di Smolskii avatar" width={40} height={40} />
+				<Image
+					src="/images/users/di_smolskii.png"
+					className="bg-[#b6c3ec]"
+					alt="Di Smolskii avatar"
+					width={40}
+					height={40}
+				/>
 				<figcaption>
 					<strong>Di Smolskii</strong>
 					<small>Product Designer</small>

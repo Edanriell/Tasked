@@ -107,16 +107,15 @@ export const Sidebar: Sidebar = ({ children }) => {
 	validateSidebarChildren(children);
 
 	return (
-		<aside
-			className="relative my-[0.75rem] ml-[0.75rem] border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) overflow-hidden"
-			aria-labelledby="dashboard-sidebar-title"
-		>
-			<h2 id="dashboard-sidebar-title" className="sr-only">
-				Dashboard sidebar
-			</h2>
-			<SidebarBackground />
+		<aside className="relative my-[0.75rem] ml-[0.75rem]" aria-labelledby="dashboard-sidebar-title">
 			<SidebarTrigger />
-			{children}
+			<div className="relative border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) overflow-hidden h-full">
+				<h2 id="dashboard-sidebar-title" className="sr-only">
+					Dashboard sidebar
+				</h2>
+				<SidebarBackground />
+				{children}
+			</div>
 		</aside>
 	);
 };
