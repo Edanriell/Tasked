@@ -1,22 +1,53 @@
+import type { StaticImageData } from "next/image";
 import Image from "next/image";
-import { FC } from "react";
+import type { FC } from "react";
 
-export const UserInfo: FC = () => {
+import UserImage from "@public/images/users/di_smolskii.png";
+
+// Todo
+// Here fetch will be implemented, right now we have here mock data
+type UserInfoResponse = {
+	fullName: string;
+	role: string;
+	image: string | StaticImageData;
+};
+
+// Todo
+// We should pass user id here to be able to fetch user data
+const getUserInfo = async (): Promise<UserInfoResponse> => {
+	return new Promise((resolve) => {
+		return setTimeout(() => {
+			return resolve({
+				fullName: "Di Smolskii",
+				role: "Product Designer",
+				image: UserImage
+			});
+		}, 6000);
+	});
+};
+
+export const UserInfo: FC = async () => {
+	const { fullName, role, image } = await getUserInfo();
+
 	return (
-		<div>
-			<figure>
+		<figure className="flex items-center gap-x-[0.5rem] pt-[1rem] pb-[1.063rem] mx-[0.75rem]">
+			<div className="relative w-[2.5rem] h-[2.5rem] bg-[#b6c3ec] rounded-[6.25rem] overflow-hidden">
 				<Image
-					src="/images/users/di_smolskii.png"
-					className="bg-[#b6c3ec]"
-					alt="Di Smolskii avatar"
-					width={40}
-					height={40}
+					src={image}
+					className="absolute top-[0.25rem] right-[0.125rem] object-cover w-[3.125rem] h-[3.125rem]"
+					alt={`User ${fullName} profile picture`}
+					width={50}
+					height={50}
 				/>
-				<figcaption>
-					<strong>Di Smolskii</strong>
-					<small>Product Designer</small>
-				</figcaption>
-			</figure>
-		</div>
+			</div>
+			<figcaption className="flex flex-col gap-y-[0.25rem]">
+				<strong className="font-(family-name:--font-barlow) font-bold text-[0.875rem] tracking-[0.01em] text-(--white-pallete-100) [text-shadow:0_0_1rem_var(--white-pallete-100)]">
+					{fullName}
+				</strong>
+				<small className="font-(family-name:--font-barlow) font-medium text-[0.625rem] tracking-[0.01em] uppercase text-(--neutrals-3)">
+					{role}
+				</small>
+			</figcaption>
+		</figure>
 	);
 };

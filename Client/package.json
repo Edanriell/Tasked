@@ -14,10 +14,10 @@
 		"scan:init": "pnpm exec react-scan init --yes --cwd ."
 	},
 	"dependencies": {
-		"@tanstack/react-query": "^5.100.10",
+		"@tanstack/react-query": "^5.100.11",
 		"clsx": "^2.1.1",
 		"colorthief": "^3.3.1",
-		"motion": "^12.38.0",
+		"motion": "^12.39.0",
 		"next": "16.2.4",
 		"next-auth": "^4.24.14",
 		"react": "19.2.4",
@@ -29,7 +29,7 @@
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.8",
 		"@tailwindcss/postcss": "^4.3.0",
-		"@tanstack/eslint-plugin-query": "^5.100.10",
+		"@tanstack/eslint-plugin-query": "^5.100.11",
 		"@types/node": "^20.19.41",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",

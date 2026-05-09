@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import type { FC, ReactNode } from "react";
-
-import { CreateProject } from "@features/create-project";
+import { Suspense } from "react";
 
 import { ChangeLog } from "@widgets/change-log";
 import { MainNavigation } from "@widgets/main-navigation";
 import { ProjectsNavigation } from "@widgets/projects-navigation";
 import { Sidebar } from "@widgets/sidebar";
-import { UserInfo } from "@widgets/user-info";
+import { UserInfo, UserInfoSkeleton } from "@widgets/user-info";
+
+import { CreateProject } from "@features/create-project";
 
 export const metadata: Metadata = {
 	title: "Create Next App",
@@ -118,7 +119,9 @@ const DashboardLayout: FC<Readonly<DashboardLayoutProps>> = ({ children }) => {
 		<div className="grid grid-cols-[228px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 bg-(--geek-blue-11)">
 			<Sidebar>
 				<Sidebar.Header>
-					<UserInfo />
+					<Suspense fallback={<UserInfoSkeleton />}>
+						<UserInfo />
+					</Suspense>
 				</Sidebar.Header>
 				<Sidebar.Content>
 					<MainNavigation />
