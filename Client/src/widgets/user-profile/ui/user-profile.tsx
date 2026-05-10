@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { Icon, ICON, MOTION_ICON, MotionIcon } from "@shared/ui";
@@ -19,7 +18,7 @@ import {
 
 type UserProfileState = "opened" | "closed";
 
-export const UserProfile: FC = () => {
+export const UserProfile = () => {
 	const [userProfileState, setUserProfileState] = useState<UserProfileState>("closed");
 	const [activeNavigationItemIndex, setActiveNavigationItemIndex] = useState<number | null>(null);
 	const userProfileRef = useRef<HTMLDivElement>(null);

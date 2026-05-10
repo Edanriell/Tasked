@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from "react";
+import type { ReactElement } from "react";
 import { Children, isValidElement } from "react";
 
 import { SidebarContent } from "./sidebar-content";
@@ -16,9 +16,9 @@ type SidebarProps = {
 	children: ReactElement | ReactElement[];
 };
 
-type Sidebar = FC<SidebarProps> & SidebarComponents;
+type Sidebar = ((props: Readonly<SidebarProps>) => ReactElement) & SidebarComponents;
 
-const SidebarBackground: FC = () => {
+const SidebarBackground = () => {
 	return (
 		<svg
 			className="absolute top-0 left-0 -z-10 w-full h-full"
@@ -103,7 +103,7 @@ const validateSidebarChildren = (children: ReactElement | ReactElement[]) => {
 	});
 };
 
-export const Sidebar: Sidebar = ({ children }) => {
+export const Sidebar = (({ children }: Readonly<SidebarProps>) => {
 	validateSidebarChildren(children);
 
 	return (
@@ -118,7 +118,7 @@ export const Sidebar: Sidebar = ({ children }) => {
 			</div>
 		</aside>
 	);
-};
+}) as Sidebar;
 
 Sidebar.Header = SidebarHeader;
 Sidebar.Content = SidebarContent;

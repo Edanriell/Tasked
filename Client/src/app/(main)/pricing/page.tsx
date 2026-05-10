@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-const PricingPage: FC = () => {
+const PricingPage = () => {
 	return (
 		<h1 className="font-(family-name:--font-barlow) font-bold leading-[1.125rem] tracking-[0.01em] text-(--white-pallete-100)">
 			Pricing Page

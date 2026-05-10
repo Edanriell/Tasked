@@ -1,5 +1,3 @@
-import type { FC } from "react";
-
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
 import Sleekpay from "@public/images/projects/sleekpay.svg";
@@ -26,7 +24,7 @@ const getProjects = (): Promise<Array<Project>> => {
 	});
 };
 
-export const ProjectNavigationLinks: FC = async () => {
+export const ProjectNavigationLinks = async () => {
 	const projects = await getProjects();
 
 	return (

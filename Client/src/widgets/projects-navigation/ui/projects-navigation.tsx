@@ -1,4 +1,4 @@
-import type { FC, ReactElement } from "react";
+import type { ReactElement } from "react";
 import { Children, isValidElement, Suspense } from "react";
 
 import { ProjectNavigationActions } from "./project-navigation-actions";
@@ -12,7 +12,7 @@ type ProjectsNavigationProps = {
 	children?: ReactElement | ReactElement[];
 };
 
-type ProjectsNavigation = FC<ProjectsNavigationProps> & ProjectsNavigationComponents;
+type ProjectsNavigation = ((props: Readonly<ProjectsNavigationProps>) => ReactElement) & ProjectsNavigationComponents;
 
 const validateProjectsNavigationChildren = (children: ReactElement | ReactElement[]) => {
 	Children.forEach(children, (child) => {
@@ -26,7 +26,7 @@ const validateProjectsNavigationChildren = (children: ReactElement | ReactElemen
 	});
 };
 
-export const ProjectsNavigation: ProjectsNavigation = ({ children }) => {
+export const ProjectsNavigation = (({ children }: Readonly<ProjectsNavigationProps>) => {
 	if (children) {
 		validateProjectsNavigationChildren(children);
 	}
@@ -42,6 +42,6 @@ export const ProjectsNavigation: ProjectsNavigation = ({ children }) => {
 			</Suspense>
 		</nav>
 	);
-};
+}) as ProjectsNavigation;
 
 ProjectsNavigation.Actions = ProjectNavigationActions;

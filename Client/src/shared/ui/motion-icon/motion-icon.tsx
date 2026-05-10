@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { ComponentProps, FC } from "react";
+import type { ComponentProps } from "react";
 
 export const MOTION_ICON = {
 	Chevron: "Chevron",
@@ -15,7 +15,7 @@ type MotionIconProps = ComponentProps<typeof motion.svg> & {
 	size?: number;
 };
 
-export const MotionIcon: FC<MotionIconProps> = ({ type, size, ...props }) => {
+export const MotionIcon = ({ type, size, ...props }: Readonly<MotionIconProps>) => {
 	switch (type) {
 		case MOTION_ICON.Chevron:
 			return (

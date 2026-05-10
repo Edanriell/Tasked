@@ -2,14 +2,13 @@
 
 import { clsx } from "clsx";
 import { AnimatePresence, motion } from "motion/react";
-import type { FC } from "react";
 
 type ValidationErrorMessageProps = {
 	message?: string | null;
 	classes?: string;
 };
 
-export const ValidationErrorMessage: FC<ValidationErrorMessageProps> = ({ message, classes }) => {
+export const ValidationErrorMessage = ({ message, classes }: Readonly<ValidationErrorMessageProps>) => {
 	return (
 		<AnimatePresence>
 			{message && (

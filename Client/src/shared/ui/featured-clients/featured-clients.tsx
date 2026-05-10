@@ -1,6 +1,5 @@
 import clsx from "clsx";
 import Image from "next/image";
-import type { FC } from "react";
 
 type FeaturedClient = {
 	image: string;
@@ -21,7 +20,7 @@ const FEATURED_CLIENTS = [
 	{ image: "/images/users/john_block.jpg", fullName: "John Block" }
 ] as Array<FeaturedClient>;
 
-export const FeaturedClients: FC<FeaturedClientsProps> = ({ label, classes }) => {
+export const FeaturedClients = ({ label, classes }: Readonly<FeaturedClientsProps>) => {
 	return (
 		<p className={clsx("flex flex-row gap-x-[0.875rem]", classes)}>
 			<span className="flex flex-row items-center shrink-0" aria-hidden="true">

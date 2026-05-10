@@ -1,6 +1,5 @@
 import type { StaticImageData } from "next/image";
 import Image from "next/image";
-import type { FC } from "react";
 
 import UserImage from "@public/images/users/di_smolskii.png";
 
@@ -26,7 +25,7 @@ const getUserInfo = async (): Promise<UserInfoResponse> => {
 	});
 };
 
-export const UserInfo: FC = async () => {
+export const UserInfo = async () => {
 	const { fullName, role, image } = await getUserInfo();
 
 	return (

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Script from "next/script";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import { FONTS } from "@shared/config";
 
@@ -17,7 +17,7 @@ type RootLayoutProps = {
 	children: ReactNode;
 };
 
-const RootLayout: FC<Readonly<RootLayoutProps>> = ({ children }) => {
+const RootLayout = ({ children }: Readonly<RootLayoutProps>) => {
 	return (
 		<html lang="en" className={`${FONTS.Barlow.variable} h-full`}>
 			<body className="relative min-h-screen min-h-dvh flex flex-col bg-(--geek-blue-11) bg-brand-violet">

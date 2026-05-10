@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-const HomePage: FC = () => {
+const HomePage = () => {
 	return (
 		<main>
 			<h1>Dashboard Main Page</h1>

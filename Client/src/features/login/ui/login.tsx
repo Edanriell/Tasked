@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import type { FC } from "react";
 import { useActionState } from "react";
 
 import { ROUTES } from "@shared/config";
@@ -10,7 +9,7 @@ import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from 
 import { loginAction } from "../api";
 import type { LoginState } from "../model";
 
-export const Login: FC = () => {
+export const Login = () => {
 	const [state, action] = useActionState<LoginState, FormData>(loginAction, null);
 
 	return (

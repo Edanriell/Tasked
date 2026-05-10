@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 
 import { Header } from "@widgets/header";
@@ -14,7 +14,7 @@ type MarketingLayoutProps = {
 	children: ReactNode;
 };
 
-const MarketingLayout: FC<Readonly<MarketingLayoutProps>> = ({ children }) => {
+const MarketingLayout = ({ children }: Readonly<MarketingLayoutProps>) => {
 	return (
 		<Fragment>
 			<Header classes="relative z-50 mr-[2.5rem]">

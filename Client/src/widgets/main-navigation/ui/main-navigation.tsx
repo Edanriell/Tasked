@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 import { mainNavigationItems } from "../config";
 
 import { MainNavigationLink } from "./main-navigation-link";
 
-export const MainNavigation: FC = () => {
+export const MainNavigation = () => {
 	return (
 		<nav id="dashboard-main-nav" aria-labelledby="dashboard-main-nav-title">
 			<h3 id="dashboard-main-nav-title">Main</h3>

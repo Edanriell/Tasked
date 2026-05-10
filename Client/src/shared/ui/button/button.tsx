@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import type { ComponentPropsWithoutRef, FC, ReactNode } from "react";
+import type { ComponentPropsWithoutRef, ReactNode } from "react";
 
 export type ButtonVariants = "primary" | "secondary" | "danger" | "success";
 
@@ -11,7 +11,7 @@ type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "className"> & {
 	trailingIcon?: ReactNode;
 };
 
-export const Button: FC<ButtonProps> = ({
+export const Button = ({
 	variant = "primary",
 	children,
 	classes,
@@ -19,7 +19,7 @@ export const Button: FC<ButtonProps> = ({
 	trailingIcon,
 	disabled,
 	...props
-}) => {
+}: Readonly<ButtonProps>) => {
 	return (
 		<button
 			className={clsx(

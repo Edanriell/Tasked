@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 type LogotypeProps = {
 	color?: string;
 };
 
-export const Logotype: FC<LogotypeProps> = ({ color = "white" }) => {
+export const Logotype = ({ color = "white" }: Readonly<LogotypeProps>) => {
 	return (
 		<svg width="119" height="32" viewBox="0 0 119 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 			<path

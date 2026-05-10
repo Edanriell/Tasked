@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { motion, useAnimationFrame, useMotionValue, useTransform } from "motion/react";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
 
 type GradientTextProps = {
@@ -16,7 +16,7 @@ type GradientTextProps = {
 	yoyo?: boolean;
 };
 
-export const GradientText: FC<GradientTextProps> = ({
+export const GradientText = ({
 	children,
 	className = "",
 	colors = ["#6872FF", "#A268FF", "#DC68FF", "#190DC0", "#6CB3FF"],
@@ -25,7 +25,7 @@ export const GradientText: FC<GradientTextProps> = ({
 	direction = "horizontal",
 	pauseOnHover = false,
 	yoyo = true
-}) => {
+}: Readonly<GradientTextProps>) => {
 	const [isPaused, setIsPaused] = useState<boolean>(false);
 	const progress = useMotionValue<number>(0);
 	const elapsedRef = useRef<number>(0);

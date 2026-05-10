@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
-import { FC, ReactElement } from "react";
+import { ReactElement } from "react";
 import { useFormStatus } from "react-dom";
 
 import type { ButtonVariants } from "@shared/ui";
@@ -16,13 +16,13 @@ type SubmitButtonProps = {
 	childrenDisplayedWhenPending?: boolean;
 };
 
-export const SubmitButton: FC<SubmitButtonProps> = ({
+export const SubmitButton = ({
 	variant = "primary",
 	children,
 	classes,
 	spinnerClasses,
 	childrenDisplayedWhenPending = true
-}) => {
+}: Readonly<SubmitButtonProps>) => {
 	const { pending } = useFormStatus();
 
 	const displayChildren = !pending || childrenDisplayedWhenPending;

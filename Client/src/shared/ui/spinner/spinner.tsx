@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "motion/react";
-import type { FC } from "react";
 
 type SpinnerProps = {
 	size?: number;
@@ -14,7 +13,7 @@ type SpinnerProps = {
 	className?: string;
 };
 
-export const Spinner: FC<SpinnerProps> = ({
+export const Spinner = ({
 	size = 48,
 	spinDuration = 1.35,
 	spinStiffness = 78,
@@ -23,7 +22,7 @@ export const Spinner: FC<SpinnerProps> = ({
 	trackColor = "var(--geek-blue-primary-opacity-200)",
 	activeColor = "var(--geek-blue-5)",
 	className
-}) => {
+}: Readonly<SpinnerProps>) => {
 	return (
 		<motion.svg
 			xmlns="http://www.w3.org/2000/svg"

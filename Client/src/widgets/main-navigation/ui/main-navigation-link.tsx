@@ -1,5 +1,5 @@
 import Link from "next/link";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 
 import type { IconType } from "@shared/ui";
 import { Icon } from "@shared/ui";
@@ -10,7 +10,7 @@ type MainNavigationLinkProps = {
 	children: ReactNode;
 };
 
-export const MainNavigationLink: FC<MainNavigationLinkProps> = ({ href, icon, children }) => {
+export const MainNavigationLink = ({ href, icon, children }: Readonly<MainNavigationLinkProps>) => {
 	return (
 		<Link href={href}>
 			<Icon type={icon} />

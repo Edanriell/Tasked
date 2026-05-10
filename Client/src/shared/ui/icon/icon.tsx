@@ -1,4 +1,4 @@
-import type { FC, SVGProps } from "react";
+import type { SVGProps } from "react";
 
 export const ICON = {
 	User: "User",
@@ -21,7 +21,7 @@ type IconProps = SVGProps<SVGSVGElement> & {
 	size?: number;
 };
 
-export const Icon: FC<IconProps> = ({ type, size, ...props }) => {
+export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 	switch (type) {
 		case ICON.User:
 			return (

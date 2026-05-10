@@ -1,10 +1,10 @@
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 
 type SidebarHeaderProps = {
 	children: ReactNode;
 };
 
-export const SidebarHeader: FC<SidebarHeaderProps> = ({ children }) => {
+export const SidebarHeader = ({ children }: Readonly<SidebarHeaderProps>) => {
 	return <Fragment>{children}</Fragment>;
 };

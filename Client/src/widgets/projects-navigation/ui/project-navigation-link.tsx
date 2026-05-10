@@ -3,7 +3,6 @@
 import { getColor } from "colorthief";
 import Image from "next/image";
 import Link from "next/link";
-import type { FC } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { ROUTES } from "@shared/config";
@@ -16,7 +15,7 @@ type ProjectNavigationLinkProps = {
 	image: string;
 };
 
-export const ProjectNavigationLink: FC<ProjectNavigationLinkProps> = ({ id, image, name }) => {
+export const ProjectNavigationLink = ({ id, image, name }: Readonly<ProjectNavigationLinkProps>) => {
 	const [backgroundColor, setBackgroundColor] = useState<string>("transparent");
 
 	const projectImageRef = useRef<HTMLImageElement | null>(null);

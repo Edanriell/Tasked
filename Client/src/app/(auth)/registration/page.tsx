@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 import { Registration } from "@features/register";
 
 import { Divider, FeaturedClients, GradientBorder, GradientText } from "@shared/ui";
 
-const RegistrationPage: FC = () => {
+const RegistrationPage = () => {
 	return (
 		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1,0,9,0.6)] max-lg:relative max-lg:top-[unset] max-lg:left-[unset] max-lg:translate-x-[unset] max-lg:translate-y-[unset] max-lg:w-[min(100%_-_2rem,62rem)] max-lg:mx-auto max-lg:my-[1.5rem] max-lg:p-[clamp(1rem,2vw,1.25rem)] max-md:w-[min(100%_-_1.25rem,48rem)] max-sm:w-[calc(100%_-_1rem)] max-sm:my-[1rem] max-sm:rounded-[1rem] max-sm:p-[1rem]">
 			<h1 className="sr-only">Create new account</h1>

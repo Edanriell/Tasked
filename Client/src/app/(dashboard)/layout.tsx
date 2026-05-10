@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Suspense } from "react";
 
 import { ChangeLog } from "@widgets/change-log";
@@ -19,7 +19,7 @@ type DashboardLayoutProps = {
 	children: ReactNode;
 };
 
-const MainContentBackground: FC = () => {
+const MainContentBackground = () => {
 	return (
 		<svg
 			className="absolute top-0 left-0 -z-10 w-full h-full"
@@ -114,7 +114,7 @@ const MainContentBackground: FC = () => {
 	);
 };
 
-const DashboardLayout: FC<Readonly<DashboardLayoutProps>> = ({ children }) => {
+const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 	return (
 		<div className="grid grid-cols-[228px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 bg-(--geek-blue-11)">
 			<Sidebar>

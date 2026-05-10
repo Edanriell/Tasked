@@ -1,10 +1,8 @@
 "use client";
 
-import type { FC } from "react";
-
 import { MOTION_ICON, MotionIcon } from "@shared/ui";
 
-export const SidebarTrigger: FC = () => {
+export const SidebarTrigger = () => {
 	return (
 		<button
 			type="button"

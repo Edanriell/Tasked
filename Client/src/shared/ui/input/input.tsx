@@ -1,4 +1,4 @@
-import type { ComponentPropsWithoutRef, FC } from "react";
+import type { ComponentPropsWithoutRef } from "react";
 import { useId } from "react";
 
 type InputProps = ComponentPropsWithoutRef<"input"> & {
@@ -7,7 +7,7 @@ type InputProps = ComponentPropsWithoutRef<"input"> & {
 	placeholder?: string;
 };
 
-export const Input: FC<InputProps> = ({ label, name, placeholder = "Please write data", ...props }) => {
+export const Input = ({ label, name, placeholder = "Please write data", ...props }: Readonly<InputProps>) => {
 	const inputId = useId();
 
 	return (

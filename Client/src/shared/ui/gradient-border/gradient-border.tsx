@@ -1,6 +1,4 @@
-import type { FC } from "react";
-
-export const GradientBorder: FC = () => {
+export const GradientBorder = () => {
 	return (
 		<svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
 			<defs>

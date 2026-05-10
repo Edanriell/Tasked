@@ -1,8 +1,6 @@
-import type { FC } from "react";
-
 import { Skeleton } from "@shared/ui";
 
-export const UserInfoSkeleton: FC = () => {
+export const UserInfoSkeleton = () => {
 	return (
 		<div className="flex items-center gap-x-[0.5rem] pt-[1rem] pb-[1.063rem] mx-[0.75rem]">
 			<Skeleton width="2.5rem" height="2.5rem" radius="6.25rem" />

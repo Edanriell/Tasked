@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import type { ComponentPropsWithoutRef, CSSProperties, FC } from "react";
+import type { ComponentPropsWithoutRef, CSSProperties } from "react";
 
 type SkeletonVariant = "default" | "text" | "avatar" | "button" | "card";
 type SkeletonTheme = "dark" | "light";
@@ -21,7 +21,7 @@ const getSizeValue = (value?: number | string) => {
 	return value;
 };
 
-export const Skeleton: FC<SkeletonProps> = ({
+export const Skeleton = ({
 	width,
 	height,
 	radius,
@@ -32,7 +32,7 @@ export const Skeleton: FC<SkeletonProps> = ({
 	className,
 	style,
 	...props
-}) => {
+}: Readonly<SkeletonProps>) => {
 	const skeletonStyle = {
 		...style,
 		width: getSizeValue(width) ?? style?.width,

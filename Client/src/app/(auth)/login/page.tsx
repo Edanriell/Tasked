@@ -1,10 +1,8 @@
-import type { FC } from "react";
-
 import { Login } from "@features/login";
 
 import { Divider, FeaturedClients, GradientBorder, GradientText } from "@shared/ui";
 
-const LoginPage: FC = () => {
+const LoginPage = () => {
 	return (
 		<section className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] rounded-[1.5rem] p-[1.5rem] backdrop-blur-[2.5rem] bg-[rgba(1,0,9,0.6)]">
 			<h1 className="sr-only">Sign in to existing account</h1>

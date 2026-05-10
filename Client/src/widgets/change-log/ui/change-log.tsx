@@ -1,8 +1,6 @@
-import { FC } from "react";
-
 import { Icon, ICON } from "@shared/ui";
 
-export const ChangeLog: FC = () => {
+export const ChangeLog = () => {
 	return (
 		<section aria-labelledby="dashboard-improvements-title">
 			<h3 id="dashboard-improvements-title" className="sr-only">

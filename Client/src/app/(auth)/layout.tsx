@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import type { FC, ReactNode } from "react";
+import type { ReactNode } from "react";
 import { Fragment } from "react";
 
 import { Header } from "@widgets/header";
@@ -14,7 +14,7 @@ type AuthLayoutProps = {
 	children: ReactNode;
 };
 
-const AuthLayout: FC<Readonly<AuthLayoutProps>> = ({ children }) => {
+const AuthLayout = ({ children }: Readonly<AuthLayoutProps>) => {
 	return (
 		<Fragment>
 			<Header classes="relative z-50 mr-[2.5rem]">

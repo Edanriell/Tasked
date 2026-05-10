@@ -2,7 +2,6 @@
 
 import { motion } from "motion/react";
 import Link from "next/link";
-import type { FC } from "react";
 
 import { ROUTES } from "@shared/config";
 
@@ -28,7 +27,7 @@ const NAVIGATION_LABEL_VARIANTS = {
 	hovered: { y: -NAVIGATION_ITEM_HEIGHT }
 };
 
-export const MainNavigation: FC = () => {
+export const MainNavigation = () => {
 	return (
 		<nav className="max-md:hidden" aria-label="Main navigation">
 			<ul className="flex items-center gap-x-[3.236rem] font-(family-name:--font-barlow) text-(--white-pallete-100) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em]">

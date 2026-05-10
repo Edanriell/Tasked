@@ -1,5 +1,5 @@
 import { clsx } from "clsx";
-import type { CSSProperties, FC } from "react";
+import type { CSSProperties } from "react";
 
 type DividerProps = {
 	width?: number;
@@ -7,7 +7,7 @@ type DividerProps = {
 	classes?: string;
 };
 
-export const Divider: FC<DividerProps> = ({ width = 229, height = 5, classes }) => {
+export const Divider = ({ width = 229, height = 5, classes }: Readonly<DividerProps>) => {
 	return (
 		<div
 			className={clsx(

@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import type { FC } from "react";
 import { useActionState } from "react";
 
 import { ROUTES } from "@shared/config";
@@ -10,7 +9,7 @@ import { Button, ICON, Icon, Input, SubmitButton, ValidationErrorMessage } from 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
 
-export const Registration: FC = () => {
+export const Registration = () => {
 	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
 
 	return (
