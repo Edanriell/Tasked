@@ -123,6 +123,7 @@ const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 						<UserInfo />
 					</Suspense>
 				</Sidebar.Header>
+				<Sidebar.Divider className="w-full" />
 				<Sidebar.Content>
 					<MainNavigation />
 					<ProjectsNavigation>

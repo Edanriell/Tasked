@@ -2,6 +2,7 @@ import type { ReactElement } from "react";
 import { Children, isValidElement } from "react";
 
 import { SidebarContent } from "./sidebar-content";
+import { SidebarDivider } from "./sidebar-divider";
 import { SidebarFooter } from "./sidebar-footer";
 import { SidebarHeader } from "./sidebar-header";
 import { SidebarTrigger } from "./sidebar-trigger";
@@ -10,6 +11,7 @@ type SidebarComponents = {
 	Header: typeof SidebarHeader;
 	Content: typeof SidebarContent;
 	Footer: typeof SidebarFooter;
+	Divider: typeof SidebarDivider;
 };
 
 type SidebarProps = {
@@ -91,11 +93,14 @@ const validateSidebarChildren = (children: ReactElement | ReactElement[]) => {
 		if (
 			!(
 				isValidElement(child) &&
-				(child.type === SidebarHeader || child.type === SidebarContent || child.type === SidebarFooter)
+				(child.type === SidebarHeader ||
+					child.type === SidebarContent ||
+					child.type === SidebarFooter ||
+					child.type === SidebarDivider)
 			)
 		) {
 			throw new Error(`
-				Component <Sidebar> can only accept children of types <Sidebar.Header>, <Sidebar.Content>, and <Sidebar.Footer>.
+				Component <Sidebar> can only accept children of types <Sidebar.Header>, <Sidebar.Content>, <Sidebar.Footer> and <Sidebar.Divider>.
 				Received child of type ${child.type}.
 				Please ensure that all children of <Sidebar> are of the correct type. 
 			`);
@@ -123,3 +128,4 @@ export const Sidebar = (({ children }: Readonly<SidebarProps>) => {
 Sidebar.Header = SidebarHeader;
 Sidebar.Content = SidebarContent;
 Sidebar.Footer = SidebarFooter;
+Sidebar.Divider = SidebarDivider;

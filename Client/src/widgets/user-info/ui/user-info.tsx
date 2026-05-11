@@ -33,7 +33,7 @@ export const UserInfo = async () => {
 			<div className="relative w-[2.5rem] h-[2.5rem] bg-[#b6c3ec] rounded-[6.25rem] overflow-hidden">
 				<Image
 					src={image}
-					className="absolute top-[0.25rem] right-[0.125rem] object-cover w-[3.125rem] h-[3.125rem]"
+					className="absolute top-[-0.45rem] right-[0.1rem] object-cover"
 					alt={`User ${fullName} profile picture`}
 					width={50}
 					height={50}
