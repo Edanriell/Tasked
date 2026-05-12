@@ -3,19 +3,17 @@
 import { motion } from "motion/react";
 import type { ComponentProps } from "react";
 
-export const MOTION_ICON = {
-	Chevron: "Chevron",
-	ChevronHorizontal: "ChevronHorizontal"
-} as const;
+import { Home, Messages, Projects, Settings, Tasks } from "./icons";
 
-type MotionIconType = (typeof MOTION_ICON)[keyof typeof MOTION_ICON];
+import { MOTION_ICON, type MotionIconType } from "./motion-icon-config";
 
 type MotionIconProps = ComponentProps<typeof motion.svg> & {
 	type: MotionIconType;
+	isHovered?: boolean;
 	size?: number;
 };
 
-export const MotionIcon = ({ type, size, ...props }: Readonly<MotionIconProps>) => {
+export const MotionIcon = ({ type, isHovered, size, ...props }: Readonly<MotionIconProps>) => {
 	switch (type) {
 		case MOTION_ICON.Chevron:
 			return (
@@ -59,5 +57,15 @@ export const MotionIcon = ({ type, size, ...props }: Readonly<MotionIconProps>) 
 					/>
 				</motion.svg>
 			);
+		case MOTION_ICON.Home:
+			return <Home isHovered={isHovered} {...props} />;
+		case MOTION_ICON.Tasks:
+			return <Tasks isHovered={isHovered} {...props} />;
+		case MOTION_ICON.Projects:
+			return <Projects isHovered={isHovered} {...props} />;
+		case MOTION_ICON.Messages:
+			return <Messages isHovered={isHovered} {...props} />;
+		case MOTION_ICON.Settings:
+			return <Settings isHovered={isHovered} {...props} />;
 	}
 };

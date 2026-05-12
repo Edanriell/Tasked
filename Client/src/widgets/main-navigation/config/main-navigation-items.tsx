@@ -1,39 +1,39 @@
 import type { ReactNode } from "react";
 
 import { ROUTES } from "@shared/config";
-import type { IconType } from "@shared/ui";
-import { ICON } from "@shared/ui";
+import type { MotionIconType } from "@shared/ui";
+import { MOTION_ICON } from "@shared/ui";
 
 type MainNavigationItem = {
 	href: string;
-	icon: IconType;
+	icon: MotionIconType;
 	content: () => ReactNode;
 };
 
 export const mainNavigationItems: Array<MainNavigationItem> = [
 	{
 		href: ROUTES.Home,
-		icon: ICON.Home,
+		icon: MOTION_ICON.Home,
 		content: () => <span>Home</span>
 	},
 	{
 		href: ROUTES.Tasks,
-		icon: ICON.Tasks,
-		content: () => <span>Home</span>
+		icon: MOTION_ICON.Tasks,
+		content: () => <span>My Tasks</span>
 	},
 	{
 		href: ROUTES.Projects,
-		icon: ICON.Projects,
+		icon: MOTION_ICON.Projects,
 		content: () => <span>Projects</span>
 	},
 	{
 		href: ROUTES.Messages,
-		icon: ICON.Messages,
+		icon: MOTION_ICON.Messages,
 		content: () => <span>Messages</span>
 	},
 	{
 		href: ROUTES.Settings,
-		icon: ICON.MainSettings,
+		icon: MOTION_ICON.Settings,
 		content: () => <span>Settings</span>
 	}
 ];

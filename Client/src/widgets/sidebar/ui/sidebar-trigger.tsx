@@ -1,5 +1,3 @@
-"use client";
-
 import { MOTION_ICON, MotionIcon } from "@shared/ui";
 
 export const SidebarTrigger = () => {
