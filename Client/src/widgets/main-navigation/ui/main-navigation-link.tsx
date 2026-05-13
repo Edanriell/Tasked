@@ -1,31 +1,32 @@
 "use client";
 
+import { clsx } from "clsx";
 import Link from "next/link";
-import type { ReactNode } from "react";
-import { useState } from "react";
+import { ReactNode } from "react";
 
 import { MotionIcon, type MotionIconType } from "@shared/ui";
 
 type MainNavigationLinkProps = {
 	href: string;
 	icon: MotionIconType;
+	isActive: boolean;
 	children: ReactNode;
 };
 
-export const MainNavigationLink = ({ href, icon, children }: Readonly<MainNavigationLinkProps>) => {
-	const [isHovered, setIsHovered] = useState(false);
-
+export const MainNavigationLink = ({ href, icon, isActive, children }: Readonly<MainNavigationLinkProps>) => {
 	return (
 		<Link
-			className="flex items-center gap-x-[8px] font-(family-name:--font-barlow) font-medium text-[14px] leading-[129%] tracking-[0.01em] text-(--neutrals-3) rounded-[16px] p-[6px] hover:outline-[0.50px] hover:outline-solid hover:outline-(--white-pallete-50) hover:bg-(--geek-blue-primary-opacity-400) hover:text-(--white-pallete-100)"
+			className={clsx(
+				"flex items-center gap-x-[0.5rem] font-(family-name:--font-barlow) font-medium text-[0.875rem] leading-[129%] tracking-[0.01em] rounded-[0.75rem] p-[0.375rem]",
+				isActive && "text-(--white-pallete-100)",
+				!isActive && "text-(--neutrals-3)"
+			)}
 			href={href}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
 		>
-			<span className="w-[24px] h-[24px] flex items-center justify-center">
-				<MotionIcon isHovered={isHovered} className="w-[16px] h-[16px]" type={icon} />
+			<span className="w-[1.5rem] h-[1.5rem] flex items-center justify-center">
+				<MotionIcon isActive={isActive} className="w-[1rem] h-[1rem]" type={icon} />
 			</span>
-			{children}
+			<span>{children}</span>
 		</Link>
 	);
 };

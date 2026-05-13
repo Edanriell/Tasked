@@ -1,2 +1,2 @@
+export * from "./animations";
 export * from "./items";
-export * from "./variants";

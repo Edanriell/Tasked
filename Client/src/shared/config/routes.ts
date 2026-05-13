@@ -1,5 +1,7 @@
 export type Route = (typeof ROUTES)[keyof typeof ROUTES];
 
+export type StaticRoute = Exclude<(typeof ROUTES)[keyof typeof ROUTES], (id: string) => string>;
+
 export const ROUTES = {
 	Home: "/",
 	Registration: "/registration",
@@ -8,10 +10,10 @@ export const ROUTES = {
 	Features: "/features",
 	Pricing: "/pricing",
 	About: "/about",
-	Dashboard: "/",
 	Tasks: "/tasks",
-	Project: (id: string) => `/projects/${id}`,
 	Projects: "/projects",
 	Messages: "/messages",
-	Settings: "/settings"
+	Settings: "/settings",
+
+	Project: (id: string) => `/projects/${id}`
 } as const;

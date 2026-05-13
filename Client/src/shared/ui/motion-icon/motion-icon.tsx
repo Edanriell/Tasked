@@ -9,11 +9,11 @@ import { MOTION_ICON, type MotionIconType } from "./motion-icon-config";
 
 type MotionIconProps = ComponentProps<typeof motion.svg> & {
 	type: MotionIconType;
-	isHovered?: boolean;
+	isActive?: boolean;
 	size?: number;
 };
 
-export const MotionIcon = ({ type, isHovered, size, ...props }: Readonly<MotionIconProps>) => {
+export const MotionIcon = ({ type, isActive, size, ...props }: Readonly<MotionIconProps>) => {
 	switch (type) {
 		case MOTION_ICON.Chevron:
 			return (
@@ -58,14 +58,14 @@ export const MotionIcon = ({ type, isHovered, size, ...props }: Readonly<MotionI
 				</motion.svg>
 			);
 		case MOTION_ICON.Home:
-			return <Home isHovered={isHovered} {...props} />;
+			return <Home isActive={isActive} {...props} />;
 		case MOTION_ICON.Tasks:
-			return <Tasks isHovered={isHovered} {...props} />;
+			return <Tasks isActive={isActive} {...props} />;
 		case MOTION_ICON.Projects:
-			return <Projects isHovered={isHovered} {...props} />;
+			return <Projects isActive={isActive} {...props} />;
 		case MOTION_ICON.Messages:
-			return <Messages isHovered={isHovered} {...props} />;
+			return <Messages isActive={isActive} {...props} />;
 		case MOTION_ICON.Settings:
-			return <Settings isHovered={isHovered} {...props} />;
+			return <Settings isActive={isActive} {...props} />;
 	}
 };
