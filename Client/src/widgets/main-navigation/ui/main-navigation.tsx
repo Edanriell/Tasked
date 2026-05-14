@@ -1,29 +1,14 @@
 "use client";
 
-import { motion } from "motion/react";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { NavigationLinkHighlight, useNavigationLinkHighlight } from "@shared/ui";
 
-import { MAIN_NAVIGATION_ITEMS, TRANSITION_HIGHLIGHT } from "../config";
+import { MAIN_NAVIGATION_ITEMS } from "../config";
 
 import { MainNavigationLink } from "./main-navigation-link";
 
 export const MainNavigation = () => {
-	const pathname = usePathname();
-
-	const [hoveredLinkId, setHoveredLinkId] = useState<string | null>(null);
-
-	const routeActiveLinkId = MAIN_NAVIGATION_ITEMS.find((item) => item.match(pathname))?.id ?? null;
-
-	const activeLinkId = hoveredLinkId ?? routeActiveLinkId;
-
-	const handleLinkSelection = (linkId: string) => {
-		setHoveredLinkId(linkId);
-	};
-
-	const handleLinkUnselection = () => {
-		setHoveredLinkId(null);
-	};
+	const { activeLinkId, handleLinkSelection, handleLinkUnselection } =
+		useNavigationLinkHighlight(MAIN_NAVIGATION_ITEMS);
 
 	return (
 		<nav
@@ -52,13 +37,7 @@ export const MainNavigation = () => {
 							onPointerEnter={() => handleLinkSelection(id)}
 							onFocusCapture={() => handleLinkSelection(id)}
 						>
-							{isActive && (
-								<motion.div
-									layoutId="nav-highlight"
-									className="absolute -z-10 inset-0 rounded-[0.75rem] outline-[0.031rem] outline-solid outline-(--white-pallete-50) bg-(--geek-blue-primary-opacity-400) text-(--white-pallete-100)"
-									transition={TRANSITION_HIGHLIGHT}
-								/>
-							)}
+							{isActive && <NavigationLinkHighlight layoutId="main-navigation-link-highlight" />}
 							<MainNavigationLink href={href} icon={icon} isActive={isActive}>
 								{label}
 							</MainNavigationLink>

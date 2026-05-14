@@ -1,8 +1,10 @@
 "use client";
 
+import { clsx } from "clsx";
 import { getColor } from "colorthief";
 import Image from "next/image";
 import Link from "next/link";
+import type { ReactNode } from "react";
 import { useEffect, useRef, useState } from "react";
 
 import { ROUTES } from "@shared/config";
@@ -12,10 +14,18 @@ import { getOppositeColor } from "../lib";
 type ProjectNavigationLinkProps = {
 	id: string;
 	name: string;
+	isActive: boolean;
 	image: string;
+	children: ReactNode;
 };
 
-export const ProjectNavigationLink = ({ id, image, name }: Readonly<ProjectNavigationLinkProps>) => {
+export const ProjectsNavigationLink = ({
+	id,
+	name,
+	image,
+	isActive,
+	children
+}: Readonly<ProjectNavigationLinkProps>) => {
 	const [backgroundColor, setBackgroundColor] = useState<string>("transparent");
 
 	const projectImageRef = useRef<HTMLImageElement | null>(null);
@@ -56,11 +66,18 @@ export const ProjectNavigationLink = ({ id, image, name }: Readonly<ProjectNavig
 	}, [image]);
 
 	return (
-		<Link href={ROUTES.Project(id)}>
-			<div style={{ backgroundColor }} className="rounded-md w-[24px] h-[24px]">
+		<Link
+			href={ROUTES.Project(id)}
+			className={clsx(
+				"flex items-center gap-x-[0.5rem] font-(family-name:--font-barlow) font-medium text-[0.875rem] leading-[129%] tracking-[0.01em] rounded-[0.75rem] p-[0.375rem]",
+				isActive && "text-(--white-pallete-100)",
+				!isActive && "text-(--neutrals-3)"
+			)}
+		>
+			<div style={{ backgroundColor }} className="w-[24px] h-[24px] rounded-[8px] p-[4px]">
 				<Image ref={projectImageRef} src={image} alt={`Project ${name}`} width={24} height={24} />
 			</div>
-			<span>{name}</span>
+			<span>{children}</span>
 		</Link>
 	);
 };

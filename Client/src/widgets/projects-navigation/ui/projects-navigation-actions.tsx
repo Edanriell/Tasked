@@ -5,6 +5,6 @@ type ProjectNavigationActionsProps = {
 	children: ReactElement | ReactElement[];
 };
 
-export const ProjectNavigationActions = ({ children }: Readonly<ProjectNavigationActionsProps>) => {
+export const ProjectsNavigationActions = ({ children }: Readonly<ProjectNavigationActionsProps>) => {
 	return <Fragment>{children}</Fragment>;
 };

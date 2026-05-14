@@ -5,7 +5,8 @@ export const MOTION_ICON = {
 	Tasks: "Tasks",
 	Projects: "Projects",
 	Messages: "Messages",
-	Settings: "Settings"
+	Settings: "Settings",
+	Dashboard: "Dashboard"
 } as const;
 
 export type MotionIconType = (typeof MOTION_ICON)[keyof typeof MOTION_ICON];

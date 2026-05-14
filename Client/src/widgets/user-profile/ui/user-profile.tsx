@@ -1,27 +1,23 @@
 "use client";
 
-import {motion} from "motion/react";
-import {useEffect, useRef, useState} from "react";
+import { motion } from "motion/react";
+import { useEffect, useRef, useState } from "react";
 
-import {Icon, ICON, MOTION_ICON, MotionIcon} from "@shared/ui";
+import { Icon, ICON, MOTION_ICON, MotionIcon } from "@shared/ui";
 
 import {
-	TRANSITION_HIGHLIGHT,
 	TRANSITION_LAYOUT,
 	USER_PROFILE_CHEVRON_VARIANTS,
 	USER_PROFILE_CONTAINER_VARIANTS,
-	USER_PROFILE_ITEMS,
-	USER_PROFILE_NAVIGATION_VARIANTS,
 	USER_PROFILE_VARIANTS
 } from "../config";
 
-import {UserProfileLink} from "./user-profile-link";
+import { UserProfileNavigation } from "./user-profile-navigation";
 
 type UserProfileState = "opened" | "closed";
 
 export const UserProfile = () => {
 	const [userProfileState, setUserProfileState] = useState<UserProfileState>("closed");
-	const [hoveredLinkId, setHoveredLinkId] = useState<string | null>(null);
 
 	const userProfileRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +27,6 @@ export const UserProfile = () => {
 		const handleClickOutside = (event: MouseEvent) => {
 			if (userProfileRef.current && !userProfileRef.current.contains(event.target as Node)) {
 				setUserProfileState("closed");
-				setHoveredLinkId(null);
 			}
 		};
 
@@ -45,20 +40,11 @@ export const UserProfile = () => {
 	const handleUserProfileToggle = () => {
 		setUserProfileState((prev) => {
 			if (prev === "closed") {
-				setHoveredLinkId(null);
 				return "opened";
 			}
 
 			return "closed";
 		});
-	};
-
-	const handleLinkSelection = (linkId: string) => {
-		setHoveredLinkId(linkId);
-	};
-
-	const handleLinkUnselection = () => {
-		setHoveredLinkId(null);
 	};
 
 	return (
@@ -89,38 +75,7 @@ export const UserProfile = () => {
 						variants={USER_PROFILE_CHEVRON_VARIANTS}
 					/>
 				</div>
-				<motion.ul
-					className="relative z-50 flex flex-col gap-y-[0.125rem] px-[1rem] overflow-hidden"
-					animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
-					variants={USER_PROFILE_NAVIGATION_VARIANTS}
-					initial={false}
-					onPointerLeave={handleLinkUnselection}
-					onBlurCapture={handleLinkUnselection}
-				>
-					{USER_PROFILE_ITEMS.map(({ id, href, icon, label }) => {
-						const isActive = hoveredLinkId === id;
-
-						return (
-							<li
-								key={id}
-								onPointerEnter={() => handleLinkSelection(id)}
-								onFocusCapture={() => handleLinkSelection(id)}
-								className="relative z-10 rounded-[0.5rem]"
-							>
-								{isActive && (
-									<motion.div
-										layoutId="nav-highlight"
-										className="absolute z-10 inset-0 bg-(--white-pallete-10) rounded-[0.5rem]"
-										transition={TRANSITION_HIGHLIGHT}
-									/>
-								)}
-								<UserProfileLink href={href} icon={icon}>
-									{label}
-								</UserProfileLink>
-							</li>
-						);
-					})}
-				</motion.ul>
+				<UserProfileNavigation isUserProfileOpened={isUserProfileOpened} />
 			</motion.nav>
 		</motion.div>
 	);

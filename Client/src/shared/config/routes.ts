@@ -15,5 +15,5 @@ export const ROUTES = {
 	Messages: "/messages",
 	Settings: "/settings",
 
-	Project: (id: string) => `/projects/${id}`
+	Project: (id: string) => `/project/${id}`
 } as const;

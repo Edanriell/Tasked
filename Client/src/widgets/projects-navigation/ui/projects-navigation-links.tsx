@@ -3,7 +3,7 @@ import Paypal from "@public/images/projects/paypal.svg";
 import Sleekpay from "@public/images/projects/sleekpay.svg";
 import Youtube from "@public/images/projects/youtube.svg";
 
-import { ProjectNavigationLink } from "./project-navigation-link";
+import { ProjectsNavigationLinksList } from "@widgets/projects-navigation/ui/projects-navigation-links-list";
 
 type Project = {
 	id: string;
@@ -24,16 +24,8 @@ const getProjects = (): Promise<Array<Project>> => {
 	});
 };
 
-export const ProjectNavigationLinks = async () => {
+export const ProjectsNavigationLinks = async () => {
 	const projects = await getProjects();
 
-	return (
-		<ul>
-			{projects.map(({ id, name, image }) => (
-				<li key={id}>
-					<ProjectNavigationLink image={image} id={id} name={name} />
-				</li>
-			))}
-		</ul>
-	);
+	return <ProjectsNavigationLinksList projects={projects} />;
 };

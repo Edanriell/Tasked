@@ -1,11 +1,12 @@
 import type { ReactElement } from "react";
 import { Children, isValidElement, Suspense } from "react";
 
-import { ProjectNavigationActions } from "./project-navigation-actions";
-import { ProjectNavigationLinks } from "./project-navigation-links";
+import { ProjectsNavigationActions } from "./projects-navigation-actions";
+import { ProjectsNavigationLinks } from "./projects-navigation-links";
+import { ProjectsNavigationSkeleton } from "./projects-navigation-skeleton";
 
 type ProjectsNavigationComponents = {
-	Actions: typeof ProjectNavigationActions;
+	Actions: typeof ProjectsNavigationActions;
 };
 
 type ProjectsNavigationProps = {
@@ -16,7 +17,7 @@ type ProjectsNavigation = ((props: Readonly<ProjectsNavigationProps>) => ReactEl
 
 const validateProjectsNavigationChildren = (children: ReactElement | ReactElement[]) => {
 	Children.forEach(children, (child) => {
-		if (!(isValidElement(child) && child.type === ProjectNavigationActions)) {
+		if (!(isValidElement(child) && child.type === ProjectsNavigationActions)) {
 			throw new Error(`
 				Component <ProjectsNavigation> can only accept children of type <ProjectsNavigation.Actions>.
 				Received child of type ${child.type}.
@@ -32,16 +33,25 @@ export const ProjectsNavigation = (({ children }: Readonly<ProjectsNavigationPro
 	}
 
 	return (
-		<nav id="dashboard-projects-nav" aria-labelledby="dashboard-projects-nav-title">
-			<div>
-				<h3 id="dashboard-projects-nav-title">Projects</h3>
+		<nav
+			id="dashboard-projects-nav"
+			aria-labelledby="dashboard-projects-nav-title"
+			className="relative mx-[0.75rem] py-[1rem]"
+		>
+			<div className="flex items-center justify-between mb-[8px]">
+				<h3
+					id="dashboard-projects-nav-title"
+					className="font-(family-name:--font-barlow) font-bold text-[10px] leading-[140%] tracking-[0.01em] uppercase text-(--neutrals-2)"
+				>
+					Projects
+				</h3>
 				{children}
 			</div>
-			<Suspense fallback={<p>Loading Projects...</p>}>
-				<ProjectNavigationLinks />
+			<Suspense fallback={<ProjectsNavigationSkeleton />}>
+				<ProjectsNavigationLinks />
 			</Suspense>
 		</nav>
 	);
 }) as ProjectsNavigation;
 
-ProjectsNavigation.Actions = ProjectNavigationActions;
+ProjectsNavigation.Actions = ProjectsNavigationActions;

@@ -1,12 +1,12 @@
-import {v4 as uuidv4} from "uuid";
+import { v4 as uuidv4 } from "uuid";
 
-import {ROUTES} from "@shared/config";
-import type {IconType} from "@shared/ui";
-import {ICON} from "@shared/ui";
+import { ROUTES } from "@shared/config";
+import type { MotionIconType } from "@shared/ui";
+import { MOTION_ICON } from "@shared/ui";
 
 type UserProfileItem = {
 	id: string;
-	icon: IconType;
+	icon: MotionIconType;
 	label: string;
 	href: string;
 };
@@ -14,13 +14,13 @@ type UserProfileItem = {
 export const USER_PROFILE_ITEMS: Array<UserProfileItem> = [
 	{
 		id: uuidv4(),
-		icon: ICON.Dashboard,
+		icon: MOTION_ICON.Dashboard,
 		label: "Dashboard",
 		href: ROUTES.Home
 	},
 	{
 		id: uuidv4(),
-		icon: ICON.Settings,
+		icon: MOTION_ICON.Settings,
 		label: "Settings",
 		href: ROUTES.Settings
 	}
