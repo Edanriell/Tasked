@@ -38,10 +38,10 @@ export const ProjectsNavigation = (({ children }: Readonly<ProjectsNavigationPro
 			aria-labelledby="dashboard-projects-nav-title"
 			className="relative mx-[0.75rem] py-[1rem]"
 		>
-			<div className="flex items-center justify-between mb-[8px]">
+			<div className="flex items-center justify-between mb-[0.5rem]">
 				<h3
 					id="dashboard-projects-nav-title"
-					className="font-(family-name:--font-barlow) font-bold text-[10px] leading-[140%] tracking-[0.01em] uppercase text-(--neutrals-2)"
+					className="font-(family-name:--font-barlow) font-bold text-[0.625rem] leading-[140%] tracking-[0.01em] uppercase text-(--neutrals-2)"
 				>
 					Projects
 				</h3>

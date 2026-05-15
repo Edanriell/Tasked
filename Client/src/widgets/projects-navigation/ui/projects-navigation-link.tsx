@@ -74,7 +74,7 @@ export const ProjectsNavigationLink = ({
 				!isActive && "text-(--neutrals-3)"
 			)}
 		>
-			<div style={{ backgroundColor }} className="w-[24px] h-[24px] rounded-[8px] p-[4px]">
+			<div style={{ backgroundColor }} className="w-[1.5rem] h-[1.5rem] rounded-[0.5rem] p-[0.25rem]">
 				<Image ref={projectImageRef} src={image} alt={`Project ${name}`} width={24} height={24} />
 			</div>
 			<span>{children}</span>

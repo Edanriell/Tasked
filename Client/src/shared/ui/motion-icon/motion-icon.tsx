@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import type { ComponentProps } from "react";
 
-import { Dashboard, Home, Messages, Projects, Settings, Tasks } from "./icons";
+import { CreateProject, Dashboard, Home, Messages, Projects, Settings, Tasks } from "./icons";
 
 import { MOTION_ICON, type MotionIconType } from "./motion-icon-config";
 
@@ -69,5 +69,7 @@ export const MotionIcon = ({ type, isActive, size, ...props }: Readonly<MotionIc
 			return <Settings isActive={isActive} {...props} />;
 		case MOTION_ICON.Dashboard:
 			return <Dashboard isActive={isActive} {...props} />;
+		case MOTION_ICON.CreateProject:
+			return <CreateProject isActive={isActive} {...props} />;
 	}
 };

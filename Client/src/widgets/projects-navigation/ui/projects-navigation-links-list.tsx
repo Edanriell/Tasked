@@ -25,7 +25,7 @@ export const ProjectsNavigationLinksList = ({ projects }: ProjectsNavigationLink
 
 	return (
 		<ul
-			className="relative flex flex-col gap-y-[4px]"
+			className="relative flex flex-col gap-y-[0.25rem]"
 			onPointerLeave={handleLinkUnselection}
 			onBlurCapture={handleLinkUnselection}
 		>

@@ -1,13 +1,29 @@
-import { ICON, Icon } from "@shared/ui";
+"use client";
+
+import { useEffect, useState } from "react";
+
+import { MOTION_ICON, MotionIcon } from "@shared/ui";
 
 export const CreateProject = () => {
+	const [isHovered, setIsHovered] = useState(false);
+
+	const handleButtonHover = () => {
+		setIsHovered((previousState) => !previousState);
+	};
+
+	useEffect(() => {
+		console.log("Button hover state changed:", isHovered);
+	}, [isHovered]);
+
 	return (
 		<button
+			onPointerEnter={handleButtonHover}
+			onPointerLeave={handleButtonHover}
 			type="button"
 			aria-label="Create new project"
-			className="w-[16px] h-[16px] cursor-pointer text-(--neutrals-2)"
+			className="cursor-pointer text-(--neutrals-2)"
 		>
-			<Icon type={ICON.CreateProject} />
+			<MotionIcon className="w-[1rem] h-[1rem]" isActive={isHovered} type={MOTION_ICON.CreateProject} />
 			<span className="sr-only">Create New Project</span>
 		</button>
 	);
