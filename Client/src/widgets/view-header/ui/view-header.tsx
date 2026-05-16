@@ -61,10 +61,10 @@ export const ViewHeader = (({ title, imageUrl, icon, children }: Readonly<ViewHe
 	return (
 		<div className="flex justify-between items-center">
 			<div className="flex items-center">
-				<div className="flex items-center">
+				<div className="flex items-center gap-x-[0.75rem] pr-[1rem] border-r-[0.031rem] border-solid border-(--white-pallete-10)">
 					{icon && !imageUrl && (
-						<div>
-							<Icon type={icon} />
+						<div className="w-[2rem] h-[2rem] p-[0.375rem] rounded-[0.5rem] bg-(--geek-blue-7) text-[white] flex items-center justify-center">
+							<Icon type={icon} size={20} className="shrink-0" />
 						</div>
 					)}
 					{imageUrl && (
@@ -73,10 +73,12 @@ export const ViewHeader = (({ title, imageUrl, icon, children }: Readonly<ViewHe
 							imageUrl={imageUrl}
 							imageSize={32}
 							iconSize={20}
-							imageClasses="p-[6px]"
+							imageClasses="p-[0.375rem]"
 						/>
 					)}
-					<h1 className="font-(family-name:--font-barlow)">{title}</h1>
+					<h1 className="font-(family-name:--font-barlow) font-bold text-[1.25rem] leading-[130%] tracking-[0.01em] text-(--white-pallete-100)">
+						{title}
+					</h1>
 				</div>
 				{ViewHeaderInfo}
 				{ViewHeaderActions}

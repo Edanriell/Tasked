@@ -5,5 +5,5 @@ type ViewHeaderActionsProps = {
 };
 
 export const ViewHeaderActions = ({ children }: Readonly<ViewHeaderActionsProps>) => {
-	return <div>{children}</div>;
+	return <div className="px-[1rem]">{children}</div>;
 };

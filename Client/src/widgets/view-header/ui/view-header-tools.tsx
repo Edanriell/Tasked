@@ -5,5 +5,5 @@ type ViewHeaderToolsProps = {
 };
 
 export const ViewHeaderTools = ({ children }: Readonly<ViewHeaderToolsProps>) => {
-	return <div>{children}</div>;
+	return <div className="flex items-center gap-x-[0.5rem]">{children}</div>;
 };
