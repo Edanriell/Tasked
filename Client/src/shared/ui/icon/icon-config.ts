@@ -1,6 +1,6 @@
 export const ICON = {
+	User: "User",
 	Google: "Google",
-	CreateProject: "CreateProject",
 	Improvements: "Improvements"
 } as const;
 

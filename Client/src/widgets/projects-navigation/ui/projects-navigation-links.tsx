@@ -3,7 +3,7 @@ import Paypal from "@public/images/projects/paypal.svg";
 import Sleekpay from "@public/images/projects/sleekpay.svg";
 import Youtube from "@public/images/projects/youtube.svg";
 
-import { ProjectsNavigationLinksList } from "@widgets/projects-navigation/ui/projects-navigation-links-list";
+import { ProjectsNavigationLinksList } from "./projects-navigation-links-list";
 
 type Project = {
 	id: string;

@@ -9,6 +9,7 @@ export * from "./logotype";
 export * from "./main-navigation";
 export * from "./motion-icon";
 export * from "./navigation-link-highlight";
+export * from "./project-image";
 export * from "./skeleton";
 export * from "./spinner";
 export * from "./submit-button";

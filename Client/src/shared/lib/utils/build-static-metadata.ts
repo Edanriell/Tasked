@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 
-import { envServer } from "../../config";
-
 type BuildStaticMetadataParameters = {
 	title: string;
 	description: string;
@@ -15,24 +13,24 @@ export function buildStaticMetadata({
 	openGraph,
 	imagePath
 }: BuildStaticMetadataParameters): Metadata {
-	const metadataBase = new URL(envServer.WEBSITE_URL);
-	const imageUrl = imagePath ? new URL(imagePath, metadataBase).toString() : undefined;
+	// const metadataBase = new URL(envServer.WEBSITE_URL);
+	// const imageUrl = imagePath ? new URL(imagePath, metadataBase).toString() : undefined;
 
 	return {
-		metadataBase,
+		// metadataBase,
 		title,
 		description,
 		openGraph: {
 			...openGraph,
 			title: openGraph?.title ?? title,
-			description: openGraph?.description ?? description,
-			images: openGraph?.images ?? (imageUrl ? [{ url: imageUrl, alt: title }] : undefined)
+			description: openGraph?.description ?? description
+			// images: openGraph?.images ?? (imageUrl ? [{ url: imageUrl, alt: title }] : undefined)
 		},
 		twitter: {
 			card: "summary_large_image",
 			title,
-			description,
-			images: imageUrl ? [imageUrl] : undefined
+			description
+			// images: imageUrl ? [imageUrl] : undefined
 		}
 	};
 }

@@ -1,15 +1,11 @@
 "use client";
 
 import { clsx } from "clsx";
-import { getColor } from "colorthief";
-import Image from "next/image";
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { useEffect, useRef, useState } from "react";
 
 import { ROUTES } from "@shared/config";
-
-import { getOppositeColor } from "../lib";
+import { ProjectImage } from "@shared/ui";
 
 type ProjectNavigationLinkProps = {
 	id: string;
@@ -26,45 +22,6 @@ export const ProjectsNavigationLink = ({
 	isActive,
 	children
 }: Readonly<ProjectNavigationLinkProps>) => {
-	const [backgroundColor, setBackgroundColor] = useState<string>("transparent");
-
-	const projectImageRef = useRef<HTMLImageElement | null>(null);
-
-	useEffect(() => {
-		const projectImage = projectImageRef.current;
-
-		if (!projectImage) return;
-
-		let cancelled = false;
-
-		const setOppositeColor = async () => {
-			if (!projectImage.complete || projectImage.naturalWidth === 0) return;
-
-			try {
-				const dominantColor = await getColor(projectImage);
-
-				if (cancelled || !dominantColor) return;
-
-				setBackgroundColor(getOppositeColor(dominantColor));
-			} catch {
-				if (!cancelled) {
-					setBackgroundColor("transparent");
-				}
-			}
-		};
-
-		if (projectImage.complete) {
-			setOppositeColor();
-		} else {
-			projectImage.addEventListener("load", setOppositeColor);
-		}
-
-		return () => {
-			cancelled = true;
-			projectImage.removeEventListener("load", setOppositeColor);
-		};
-	}, [image]);
-
 	return (
 		<Link
 			href={ROUTES.Project(id)}
@@ -74,9 +31,7 @@ export const ProjectsNavigationLink = ({
 				!isActive && "text-(--neutrals-3)"
 			)}
 		>
-			<div style={{ backgroundColor }} className="w-[1.5rem] h-[1.5rem] rounded-[0.5rem] p-[0.25rem]">
-				<Image ref={projectImageRef} src={image} alt={`Project ${name}`} width={24} height={24} />
-			</div>
+			<ProjectImage name={name} imageUrl={image} />
 			<span>{children}</span>
 		</Link>
 	);

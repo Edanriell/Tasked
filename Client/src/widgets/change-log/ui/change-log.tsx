@@ -19,7 +19,7 @@ export const ChangeLog = () => {
 				classes="flex items-center gap-x-[0.25rem] font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[114%] tracking-[0.01em] text-(--white-pallete-100) z-10 py-[1rem]"
 				aria-label="Open improvements"
 			>
-				<Icon type={ICON.Improvements} />
+				<Icon type={ICON.Improvements} size={16} />
 				<span>Improvements</span>
 			</Button>
 		</section>
