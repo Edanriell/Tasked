@@ -1,17 +1,13 @@
 "use client";
 
-import {motion} from "motion/react";
+import { motion } from "motion/react";
 
-import {useNavigationLinkHighlight} from "@shared/ui";
+import { TRANSITION_HIGHLIGHT } from "@shared/config";
+import { useNavigationLinkHighlight } from "@shared/ui";
 
-import {
-	TRANSITION_HIGHLIGHT,
-	USER_PROFILE_ITEMS,
-	USER_PROFILE_NAVIGATION_VARIANTS,
-	USER_PROFILE_VARIANTS
-} from "../config";
+import { USER_PROFILE_ITEMS, USER_PROFILE_NAVIGATION_VARIANTS, USER_PROFILE_VARIANTS } from "../config";
 
-import {UserProfileNavigationLink} from "./user-profile-navigation-link";
+import { UserProfileNavigationLink } from "./user-profile-navigation-link";
 
 type UserProfileNavigationProps = {
 	isUserProfileOpened: boolean;

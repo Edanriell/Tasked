@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-import { TRANSITION_HIGHLIGHT } from "@widgets/main-navigation/config";
+import { TRANSITION_HIGHLIGHT } from "../../config";
 
 type NavigationHighlightProps = {
 	layoutId: string;

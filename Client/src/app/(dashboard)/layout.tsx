@@ -136,7 +136,7 @@ const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 					<ChangeLog />
 				</Sidebar.Footer>
 			</Sidebar>
-			<main className="relative my-[0.75rem] mr-[0.75rem] border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50)">
+			<main className="relative my-[0.75rem] mr-[0.75rem] border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) p-[1.25rem]">
 				<MainContentBackground />
 				<header>
 					<h2>Dashboard</h2>
