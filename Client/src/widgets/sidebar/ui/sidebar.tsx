@@ -114,7 +114,7 @@ export const Sidebar = (({ children }: Readonly<SidebarProps>) => {
 	return (
 		<aside className="relative my-[0.75rem] ml-[0.75rem]" aria-labelledby="dashboard-sidebar-title">
 			<SidebarTrigger />
-			<div className="relative border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) overflow-hidden h-full">
+			<div className="relative border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) flex flex-col overflow-hidden h-full">
 				<h2 id="dashboard-sidebar-title" className="sr-only">
 					Dashboard sidebar
 				</h2>

@@ -116,7 +116,7 @@ const MainContentBackground = () => {
 
 const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 	return (
-		<div className="grid grid-cols-[228px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 bg-(--geek-blue-11)">
+		<div className="grid grid-cols-[242px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 shrink-0 bg-(--geek-blue-11)">
 			<Sidebar>
 				<Sidebar.Header>
 					<Suspense fallback={<UserInfoSkeleton />}>

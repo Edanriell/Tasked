@@ -1,7 +1,4 @@
 export const ICON = {
-	User: "User",
-	Dashboard: "Dashboard",
-	Settings: "Settings",
 	Google: "Google",
 	CreateProject: "CreateProject",
 	Improvements: "Improvements"

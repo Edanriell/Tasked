@@ -146,3 +146,20 @@
     --accent-color-success-3: #1ec85f;
     --accent-color-success-4: #179142;
 }
+
+.radial-gradient-border::before {
+    content: "";
+    position: absolute;
+    box-sizing: border-box;
+    inset: 0;
+    border-radius: 1.75rem;
+    z-index: -1;
+    padding: 0.046rem;
+    background: radial-gradient(
+            circle,
+            rgba(133, 165, 255, 0.48) 0%,
+            rgba(16, 35, 158, 0.48) 100%
+    );
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+}
