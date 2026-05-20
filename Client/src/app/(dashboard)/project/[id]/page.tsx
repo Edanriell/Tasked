@@ -1,5 +1,6 @@
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 
+import { AssignedUsers, AssignedUsersSkeleton } from "@widgets/assigned-users";
 import { ViewHeader } from "@widgets/view-header";
 
 import Dribble from "@public/images/projects/dribble.svg";
@@ -66,13 +67,19 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 		<Fragment>
 			<ViewHeader title={name} imageUrl={imageUrl}>
 				<ViewHeader.Info>
-					<p className="text-red-600">INFO BLOCK</p>
+					<Suspense fallback={<AssignedUsersSkeleton />}>
+						<AssignedUsers projectId={id} />
+					</Suspense>
+					<p className="text-red-600">Assign User</p>
 				</ViewHeader.Info>
 				<ViewHeader.Actions>
-					<p className="text-red-600">ACTIONS BLOCK</p>
+					<p className="text-red-600">Pin Project</p>
+					<p className="text-red-600">Make Project Private</p>
+					<p className="text-red-600">Project Settings</p>
 				</ViewHeader.Actions>
 				<ViewHeader.Tools>
-					<p className="text-red-600">TOOLS BLOCK</p>
+					<p className="text-red-600">Global Search</p>
+					<p className="text-red-600">Create New Task</p>
 				</ViewHeader.Tools>
 			</ViewHeader>
 			<main>
