@@ -3,6 +3,8 @@ import { Fragment, Suspense } from "react";
 import { AssignedUsers, AssignedUsersSkeleton } from "@widgets/assigned-users";
 import { ViewHeader } from "@widgets/view-header";
 
+import { AssignUser } from "@features/assign-user";
+
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
 import Sleekpay from "@public/images/projects/sleekpay.svg";
@@ -70,7 +72,7 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 					<Suspense fallback={<AssignedUsersSkeleton />}>
 						<AssignedUsers projectId={id} />
 					</Suspense>
-					<p className="text-red-600">Assign User</p>
+					<AssignUser />
 				</ViewHeader.Info>
 				<ViewHeader.Actions>
 					<p className="text-red-600">Pin Project</p>
