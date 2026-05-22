@@ -1,8 +1,8 @@
 export const ICON = {
-	User: "User",
+	Account: "Account",
 	Google: "Google",
 	Improvements: "Improvements",
-	Plus: "Plus"
+	Add: "Add"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

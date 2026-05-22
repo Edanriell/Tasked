@@ -23,7 +23,7 @@ export const CreateProject = () => {
 			aria-label="Create new project"
 			className="cursor-pointer text-(--neutrals-2)"
 		>
-			<MotionIcon className="w-[1rem] h-[1rem]" isActive={isHovered} type={MOTION_ICON.CreateProject} />
+			<MotionIcon className="w-[1rem] h-[1rem]" isActive={isHovered} type={MOTION_ICON.AddCircle} />
 			<span className="sr-only">Create New Project</span>
 		</button>
 	);

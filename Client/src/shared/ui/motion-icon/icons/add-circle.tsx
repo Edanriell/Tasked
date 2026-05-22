@@ -7,7 +7,7 @@ type CreateProjectProps = ComponentProps<typeof motion.svg> & {
 	isActive?: boolean;
 };
 
-export const CreateProject = ({ isActive = false, ...props }: Readonly<CreateProjectProps>) => {
+export const AddCircle = ({ isActive = false, ...props }: Readonly<CreateProjectProps>) => {
 	return (
 		<motion.svg
 			initial={false}

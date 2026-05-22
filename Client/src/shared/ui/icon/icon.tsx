@@ -9,7 +9,7 @@ type IconProps = SVGProps<SVGSVGElement> & {
 
 export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 	switch (type) {
-		case ICON.User:
+		case ICON.Account:
 			return (
 				<svg
 					width={size ?? 24}
@@ -65,7 +65,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					/>
 				</svg>
 			);
-		case ICON.Plus:
+		case ICON.Add:
 			return (
 				<svg
 					width={size ?? 24}

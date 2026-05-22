@@ -65,7 +65,7 @@ export const UserProfile = () => {
 					onClick={handleUserProfileToggle}
 					className="flex items-center gap-x-[0.5rem] py-[0.75rem] px-[1rem] cursor-pointer"
 				>
-					<Icon type={ICON.User} />
+					<Icon type={ICON.Account} />
 					<span className="relative z-50 font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em] text-(--white-pallete-100)">
 						Account
 					</span>
