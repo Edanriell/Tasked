@@ -4,6 +4,7 @@ import { AssignedUsers, AssignedUsersSkeleton } from "@widgets/assigned-users";
 import { ViewHeader } from "@widgets/view-header";
 
 import { AssignUser } from "@features/assign-user";
+import { PinProject } from "@features/pin-project";
 
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
@@ -75,7 +76,7 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 					<AssignUser />
 				</ViewHeader.Info>
 				<ViewHeader.Actions>
-					<p className="text-red-600">Pin Project</p>
+					<PinProject projectId={id} />
 					<p className="text-red-600">Make Project Private</p>
 					<p className="text-red-600">Project Settings</p>
 				</ViewHeader.Actions>

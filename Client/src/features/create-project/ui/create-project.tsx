@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import { MOTION_ICON, MotionIcon } from "@shared/ui";
 
@@ -10,10 +10,6 @@ export const CreateProject = () => {
 	const handleButtonHover = () => {
 		setIsHovered((previousState) => !previousState);
 	};
-
-	useEffect(() => {
-		console.log("Button hover state changed:", isHovered);
-	}, [isHovered]);
 
 	return (
 		<button
