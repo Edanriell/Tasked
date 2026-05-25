@@ -32,6 +32,7 @@ export const Cog = ({ isActive = false, ...props }: Readonly<CogProps>) => {
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
+			shapeRendering="geometricPrecision"
 			aria-hidden="true"
 			focusable="false"
 			{...props}

@@ -16,6 +16,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					height={size ?? 24}
 					viewBox="0 0 24 24"
 					fill="none"
+					shapeRendering="geometricPrecision"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -36,6 +37,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					height={size ?? 24}
 					viewBox="0 0 24 24"
 					fill="none"
+					shapeRendering="geometricPrecision"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -52,6 +54,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					height={size ?? 24}
 					viewBox="0 0 24 24"
 					fill="none"
+					shapeRendering="geometricPrecision"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -72,6 +75,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					height={size ?? 24}
 					viewBox="0 0 24 24"
 					fill="none"
+					shapeRendering="geometricPrecision"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>

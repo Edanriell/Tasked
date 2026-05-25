@@ -5,5 +5,5 @@ type ViewHeaderActionsProps = {
 };
 
 export const ViewHeaderActions = ({ children }: Readonly<ViewHeaderActionsProps>) => {
-	return <div className="px-[1rem]">{children}</div>;
+	return <div className="px-[1rem] flex items-center justify-center gap-x-[1rem]">{children}</div>;
 };

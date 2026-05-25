@@ -6,6 +6,7 @@ import { ViewHeader } from "@widgets/view-header";
 import { AssignUser } from "@features/assign-user";
 import { MakeProjectPrivate } from "@features/make-project-private";
 import { PinProject } from "@features/pin-project";
+import { ProjectSettings } from "@features/project-settings";
 
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
@@ -79,7 +80,7 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 				<ViewHeader.Actions>
 					<PinProject projectId={id} />
 					<MakeProjectPrivate projectId={id} />
-					<p className="text-red-600">Project Settings</p>
+					<ProjectSettings projectId={id} />
 				</ViewHeader.Actions>
 				<ViewHeader.Tools>
 					<p className="text-red-600">Global Search</p>

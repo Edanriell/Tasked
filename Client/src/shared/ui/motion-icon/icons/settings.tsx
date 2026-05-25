@@ -31,6 +31,7 @@ export const Settings = ({ isActive = false, ...props }: Readonly<SettingsProps>
 			height={24}
 			viewBox="0 0 24 24"
 			fill="none"
+			shapeRendering="geometricPrecision"
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
 			focusable="false"

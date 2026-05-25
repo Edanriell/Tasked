@@ -34,6 +34,7 @@ export const Lock = ({ isActive = false, ...props }: Readonly<LockProps>) => {
 			height={24}
 			viewBox="0 0 24 24"
 			fill="none"
+			shapeRendering="geometricPrecision"
 			xmlns="http://www.w3.org/2000/svg"
 			aria-hidden="true"
 			focusable="false"
@@ -59,8 +60,8 @@ export const Lock = ({ isActive = false, ...props }: Readonly<LockProps>) => {
 				}}
 				transition={{ duration: 0.35, ease: "easeInOut" }}
 				d={path_1}
-				fill="white"
 				stroke="currentColor"
+				fill="white"
 				strokeWidth={1.5}
 				strokeLinecap="round"
 				strokeLinejoin="round"
