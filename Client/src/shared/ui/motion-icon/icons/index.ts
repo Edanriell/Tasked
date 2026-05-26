@@ -5,6 +5,7 @@ export * from "./home";
 export * from "./lock";
 export * from "./messages";
 export * from "./projects";
+export * from "./search";
 export * from "./settings";
 export * from "./star";
 export * from "./tasks";

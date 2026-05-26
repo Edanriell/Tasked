@@ -7,6 +7,7 @@ import { AssignUser } from "@features/assign-user";
 import { MakeProjectPrivate } from "@features/make-project-private";
 import { PinProject } from "@features/pin-project";
 import { ProjectSettings } from "@features/project-settings";
+import { Search } from "@features/search";
 
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
@@ -83,7 +84,7 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 					<ProjectSettings projectId={id} />
 				</ViewHeader.Actions>
 				<ViewHeader.Tools>
-					<p className="text-red-600">Global Search</p>
+					<Search />
 					<p className="text-red-600">Create New Task</p>
 				</ViewHeader.Tools>
 			</ViewHeader>
