@@ -4,6 +4,7 @@ import { AssignedUsers, AssignedUsersSkeleton } from "@widgets/assigned-users";
 import { ViewHeader } from "@widgets/view-header";
 
 import { AssignUser } from "@features/assign-user";
+import { CreateTask } from "@features/create-task";
 import { MakeProjectPrivate } from "@features/make-project-private";
 import { PinProject } from "@features/pin-project";
 import { ProjectSettings } from "@features/project-settings";
@@ -85,7 +86,7 @@ const ProjectPage = async ({ params }: Readonly<ProjectPageProps>) => {
 				</ViewHeader.Actions>
 				<ViewHeader.Tools>
 					<Search />
-					<p className="text-red-600">Create New Task</p>
+					<CreateTask projectId={id} />
 				</ViewHeader.Tools>
 			</ViewHeader>
 			<main>
