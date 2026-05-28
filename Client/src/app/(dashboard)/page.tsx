@@ -1,8 +1,21 @@
 import { Fragment } from "react";
 
+import { ViewHeader } from "@widgets/view-header";
+
+import { CreateTask } from "@features/create-task";
+import { Search } from "@features/search";
+
+import { ICON } from "@shared/ui";
+
 const HomePage = () => {
 	return (
 		<Fragment>
+			<ViewHeader title="Dashboard" icon={ICON.Home}>
+				<ViewHeader.Tools>
+					<Search />
+					<CreateTask />
+				</ViewHeader.Tools>
+			</ViewHeader>
 			<main className="grid grid-cols-24 grid-rows-24 gap-[8px] h-full w-full">
 				<section className="bg-slate-500 col-start-1 col-end-13 row-start-1 row-end-12">
 					<p className="font-(family-name:--font-barlow) font-bold leading-[1.125rem] tracking-[0.01em] text-(--white-pallete-100)">
