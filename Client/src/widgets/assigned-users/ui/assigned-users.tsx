@@ -22,7 +22,7 @@ const getAssignedUsers = async (projectId: string): Promise<Array<AssignedUser>>
 				{ id: "5", fullName: "Jane Smith", imageUrl: "/images/users/matteo_ricci.jpg" },
 				{ id: "6", fullName: "Jane Smith", imageUrl: "/images/users/sophie_laurent.jpg" }
 			]);
-		}, 60000);
+		}, 6000);
 	});
 };
 
@@ -32,12 +32,16 @@ export const AssignedUsers = async ({ projectId, maxCount = 6 }: Readonly<Assign
 	const users = assignedUsers.slice(0, maxCount);
 
 	return (
-		<ul className="flex items-center" role="list" aria-label={`Assigned users for project with id ${projectId}`}>
+		<ul
+			className="relative flex items-center ml-[0.625rem]! h-[2rem]!"
+			role="list"
+			aria-label={`Assigned users for project with id ${projectId}`}
+		>
 			{users.map(({ id, fullName, imageUrl }, index) => {
 				return (
 					<li
 						key={id}
-						className="relative shrink-0 border border-[0.031rem] border-solid border-(--white-pallete-10) rounded-full ml-[-0.625rem]"
+						className="relative grow-0 shrink-0 w-[1.5rem] h-[1.5rem] border border-[0.031rem] border-solid border-(--white-pallete-10) rounded-full ml-[-0.625rem]"
 						style={{ zIndex: index }}
 					>
 						<Image

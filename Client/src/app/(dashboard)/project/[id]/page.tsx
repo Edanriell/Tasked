@@ -58,7 +58,7 @@ const getProject = (id: string): Promise<Project> => {
 			} else {
 				reject(new Error(`Project with id "${id}" not found`));
 			}
-		}, 6000);
+		});
 	});
 };
 

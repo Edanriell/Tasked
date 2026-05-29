@@ -1,4 +1,5 @@
-import { Children, isValidElement, ReactElement } from "react";
+import { clsx } from "clsx";
+import { Children, cloneElement, isValidElement, ReactElement } from "react";
 
 import { Icon, IconType, ProjectImage } from "@shared/ui";
 
@@ -58,10 +59,21 @@ export const ViewHeader = (({ title, imageUrl, icon, children }: Readonly<ViewHe
 		}
 	});
 
+	if (ViewHeaderInfo) {
+		ViewHeaderInfo = cloneElement(ViewHeaderInfo, {
+			isActionsPresent: !!ViewHeaderActions
+		});
+	}
+
 	return (
-		<div className="flex justify-between items-center">
+		<div className="flex justify-between items-center mb-[1.25rem]">
 			<div className="flex items-center">
-				<div className="flex items-center gap-x-[0.75rem] pr-[1rem] border-r-[0.031rem] border-solid border-(--white-pallete-10)">
+				<div
+					className={clsx(
+						"flex items-center gap-x-[0.75rem] pr-[1rem]",
+						ViewHeaderInfo && "border-r-[0.031rem] border-solid border-(--white-pallete-10)"
+					)}
+				>
 					{icon && !imageUrl && (
 						<div className="w-[2rem] h-[2rem] p-[0.375rem] rounded-[0.5rem] bg-(--geek-blue-7) text-[white] flex items-center justify-center">
 							<Icon type={icon} size={20} className="shrink-0" />
