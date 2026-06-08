@@ -3,10 +3,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useGridContainer } from "./use-grid-container";
 
 import { clampWidgetPosition } from "@widgets/grid-layout-manager/lib/utils/clamp-widget-position";
+import { clamp } from "@widgets/grid-layout-manager/lib/utils/clamp";
 import { pxToColumns } from "@widgets/grid-layout-manager/lib/utils/px-to-columns";
 import { pxToRows } from "@widgets/grid-layout-manager/lib/utils/px-to-rows";
 import { useDashboardLayoutStore } from "../../model/store";
-import type { DashboardWidget } from "../../model/types";
+import { GRID_COLUMNS, GRID_ROWS, type DashboardWidget } from "../../model/types";
 
 interface Params {
 	widget: DashboardWidget;
@@ -79,13 +80,30 @@ export function useWidgetDrag({ widget, onPreviewChange }: Params) {
 				);
 
 				const preview = committed?.widget ?? next;
-				const committedPosition = committed?.widget ?? originPosition;
+				const committedPosition = committed?.widget ?? {
+					...widget,
+					...originPosition
+				};
+				const columnUnit = columnWidth + columnGap;
+				const rowUnit = rowHeight + rowGap;
+				const rawOffset = {
+					x: deltaX - (committedPosition.x - originPosition.x) * columnUnit,
+					y: deltaY - (committedPosition.y - originPosition.y) * rowUnit
+				};
 
 				previewRef.current = preview;
 				onPreviewChange(preview);
 				setDragOffset({
-					x: deltaX - (committedPosition.x - originPosition.x) * (columnWidth + columnGap),
-					y: deltaY - (committedPosition.y - originPosition.y) * (rowHeight + rowGap)
+					x: clamp(
+						rawOffset.x,
+						-committedPosition.x * columnUnit,
+						(GRID_COLUMNS - committedPosition.w - committedPosition.x) * columnUnit
+					),
+					y: clamp(
+						rawOffset.y,
+						-committedPosition.y * rowUnit,
+						(GRID_ROWS - committedPosition.h - committedPosition.y) * rowUnit
+					)
 				});
 			};
 

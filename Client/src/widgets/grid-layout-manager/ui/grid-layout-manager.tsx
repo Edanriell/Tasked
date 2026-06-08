@@ -62,6 +62,7 @@ const GridLayoutManagerRoot = () => {
 					"relative",
 					"isolate",
 					"grid",
+					"overflow-hidden",
 					"min-h-[32rem]",
 					"flex-1",
 					"w-full",
