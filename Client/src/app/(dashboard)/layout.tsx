@@ -116,7 +116,7 @@ const MainContentBackground = () => {
 
 const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 	return (
-		<div className="grid grid-cols-[242px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 shrink-0 bg-(--geek-blue-11)">
+		<div className="grid min-h-0 grid-cols-[242px_1fr] grid-rows-[1fr] gap-x-[1.25rem] z-50 flex-1 shrink-0 bg-(--geek-blue-11)">
 			<Sidebar>
 				<Sidebar.Header>
 					<Suspense fallback={<UserInfoSkeleton />}>
@@ -136,7 +136,7 @@ const DashboardLayout = ({ children }: Readonly<DashboardLayoutProps>) => {
 					<ChangeLog />
 				</Sidebar.Footer>
 			</Sidebar>
-			<main className="relative my-[0.75rem] mr-[0.75rem] border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) p-[1.25rem]">
+			<main className="relative my-[0.75rem] mr-[0.75rem] flex min-h-0 flex-col border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.5rem] bg-(--white-pallete-50) p-[1.25rem]">
 				<MainContentBackground />
 				{children}
 			</main>
