@@ -6,26 +6,8 @@ import { Fragment, useCallback, useDeferredValue, useEffect, useId, useMemo, use
 
 import { MOTION_ICON, MotionIcon, Spinner } from "@shared/ui";
 
-type Filter = "all" | "users" | "projects" | "tasks";
-
-type SearchResult = {
-	id: number;
-	title: string;
-	type: Exclude<Filter, "all">;
-	description: string;
-	shortcut?: string;
-	icon: keyof typeof MOTION_ICON;
-};
-
-type SearchGroup = Exclude<Filter, "all">;
-type SearchState = {
-	query: string;
-	filter: Filter;
-	results: Array<SearchResult>;
-};
-
-const FILTERS: Array<Filter> = ["all", "users", "projects", "tasks"];
-const GROUPS: Array<SearchGroup> = ["users", "projects", "tasks"];
+import { FILTERS, GROUPS } from "../config/search";
+import type { Filter, SearchResult, SearchState } from "../model/types";
 
 const MOCK_RESULTS: Array<SearchResult> = [
 	{
