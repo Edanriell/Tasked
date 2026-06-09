@@ -1,9 +1,9 @@
 import type { ResizeDirection } from "../model/types";
 
-interface Props {
+type GridLayoutManagerResizeGrip = {
 	direction: ResizeDirection;
 	onPointerDown: (event: React.PointerEvent, direction: ResizeDirection) => void;
-}
+};
 
 const directionClass = {
 	n: "top-0 left-0 h-2 w-full cursor-n-resize",
@@ -16,7 +16,7 @@ const directionClass = {
 	sw: "bottom-0 left-0 h-4 w-4 cursor-sw-resize"
 } as const;
 
-export function GridLayoutManagerResizeGrip({ direction, onPointerDown }: Props) {
+export const GridLayoutManagerResizeGrip = ({ direction, onPointerDown }: Readonly<GridLayoutManagerResizeGrip>) => {
 	return (
 		<div
 			className={`absolute z-50 ${directionClass[direction]}`}
@@ -27,4 +27,4 @@ export function GridLayoutManagerResizeGrip({ direction, onPointerDown }: Props)
 			}}
 		/>
 	);
-}
+};

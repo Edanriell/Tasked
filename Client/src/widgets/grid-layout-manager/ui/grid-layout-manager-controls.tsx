@@ -1,18 +1,47 @@
 "use client";
 
+import { Fragment, useEffect, useMemo, useState } from "react";
+
 import { Button } from "@shared/ui";
-import { useLayoutShortcuts } from "@widgets/grid-layout-manager/lib/hooks/use-layout-shortcuts";
-import { useDashboardLayoutStore } from "@widgets/grid-layout-manager/model/store";
-import { Fragment } from "react";
+
+import { useLayoutShortcuts } from "../lib/hooks/use-layout-shortcuts";
+import { useDashboardLayoutStore } from "../model/store";
 
 export const GridLayoutManagerControls = () => {
 	useLayoutShortcuts();
 
 	const editMode = useDashboardLayoutStore((state) => state.editMode);
+	const layout = useDashboardLayoutStore((state) => state.draftLayout ?? state.layout);
+	const availableWidgets = useDashboardLayoutStore((state) => state.availableWidgets);
 	const startEditSession = useDashboardLayoutStore((state) => state.startEditSession);
 	const saveEditSession = useDashboardLayoutStore((state) => state.saveEditSession);
 	const cancelEditSession = useDashboardLayoutStore((state) => state.cancelEditSession);
 	const resetLayout = useDashboardLayoutStore((state) => state.resetLayout);
+	const addWidget = useDashboardLayoutStore((state) => state.addWidget);
+	const [selectedWidgetType, setSelectedWidgetType] = useState("");
+
+	const addableWidgets = useMemo(() => {
+		const activeTypes = new Set(layout.map((widget) => widget.type));
+
+		return availableWidgets.filter((widget) => !activeTypes.has(widget.type));
+	}, [availableWidgets, layout]);
+
+	useEffect(() => {
+		if (addableWidgets.length === 0) {
+			setSelectedWidgetType("");
+			return;
+		}
+
+		if (!addableWidgets.some((widget) => widget.type === selectedWidgetType)) {
+			setSelectedWidgetType(addableWidgets[0].type);
+		}
+	}, [addableWidgets, selectedWidgetType]);
+
+	const handleAddWidget = () => {
+		if (!selectedWidgetType) return;
+
+		addWidget(selectedWidgetType);
+	};
 
 	return (
 		<Fragment>
@@ -22,6 +51,28 @@ export const GridLayoutManagerControls = () => {
 				<Fragment>
 					<Button variant="secondary" onClick={resetLayout}>
 						Reset
+					</Button>
+					<select
+						aria-label="Widget to add"
+						className="h-[2.625rem] min-w-[10rem] rounded-[0.75rem] border border-(--white-pallete-10) bg-(--geek-blue-primary-opacity-150) px-[0.75rem] font-(family-name:--font-barlow) text-[0.875rem] font-bold text-(--white-pallete-100) outline-none transition-colors hover:border-(--white-pallete-20) focus-visible:border-(--geek-blue-4)"
+						disabled={addableWidgets.length === 0}
+						value={selectedWidgetType}
+						onChange={(event) => {
+							setSelectedWidgetType(event.target.value);
+						}}
+					>
+						{addableWidgets.length === 0 ? (
+							<option value="">No widgets</option>
+						) : (
+							addableWidgets.map((widget) => (
+								<option key={widget.type} value={widget.type}>
+									{widget.label}
+								</option>
+							))
+						)}
+					</select>
+					<Button disabled={!selectedWidgetType} variant="secondary" onClick={handleAddWidget}>
+						Add
 					</Button>
 					<Button variant="secondary" onClick={cancelEditSession}>
 						Cancel

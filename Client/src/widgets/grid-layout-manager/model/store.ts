@@ -1,18 +1,23 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
-import { initialLayout } from "@widgets/grid-layout-manager/config/initial-layout";
-import { canPlaceWidget } from "@widgets/grid-layout-manager/lib/utils/can-place-widget";
-import { cloneLayout } from "@widgets/grid-layout-manager/lib/utils/clone-layout";
-import { createWidget } from "@widgets/grid-layout-manager/lib/utils/create-widget";
-import { findFreePosition } from "@widgets/grid-layout-manager/lib/utils/find-free-position";
-import { reflowLayout } from "@widgets/grid-layout-manager/lib/utils/reflow-layout";
-import { type DashboardWidget, MoveDraftWidgetResult, WidgetPosition } from "./types";
+import { canPlaceWidget } from "../lib/utils/can-place-widget";
+import { cloneLayout } from "../lib/utils/clone-layout";
+import { createDefaultLayout } from "../lib/utils/create-default-layout";
+import { createDefaultWidget } from "../lib/utils/create-default-widget";
+import { findFreePosition } from "../lib/utils/find-free-position";
+import { reflowLayout } from "../lib/utils/reflow-layout";
+import { sameWidgetDefinitions } from "../lib/utils/same-widget-definitions";
 
-interface DashboardLayoutStore {
+import { type DashboardWidget, type DashboardWidgetDefinition, MoveDraftWidgetResult, WidgetPosition } from "./types";
+
+type DashboardLayoutStore = {
 	layout: DashboardWidget[];
 	draftLayout: DashboardWidget[] | null;
+	availableWidgets: DashboardWidgetDefinition[];
+	hiddenWidgetTypes: string[];
 	editMode: boolean;
+	registerWidgets: (widgets: DashboardWidgetDefinition[]) => void;
 	setLayout: (layout: DashboardWidget[]) => void;
 	startEditSession: () => void;
 	saveEditSession: () => void;
@@ -27,17 +32,62 @@ interface DashboardLayoutStore {
 	) => MoveDraftWidgetResult | null;
 	getWidget: (id: string) => DashboardWidget | undefined;
 	addWidget: (type: string) => void;
-}
+	removeWidget: (id: string) => void;
+};
 
 export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 	persist(
 		(set, get) => ({
-			layout: initialLayout,
+			layout: [],
 			draftLayout: null,
+			availableWidgets: [],
+			hiddenWidgetTypes: [],
 			editMode: false,
-			// BASE LAYOUT
+			registerWidgets: (widgets) => {
+				const allowedTypes = new Set(widgets.map((widget) => widget.type));
+				const { availableWidgets, hiddenWidgetTypes, layout, draftLayout } = get();
+				const visibleDefaultTypes = new Set(
+					widgets
+						.filter((widget) => widget.defaultVisible !== false && !hiddenWidgetTypes.includes(widget.type))
+						.map((widget) => widget.type)
+				);
+
+				const normalizeLayout = (source: DashboardWidget[]) => {
+					const next = source.filter(
+						(widget) => allowedTypes.has(widget.type) && !hiddenWidgetTypes.includes(widget.type)
+					);
+					const existingTypes = new Set(next.map((widget) => widget.type));
+
+					for (const definition of widgets) {
+						if (!visibleDefaultTypes.has(definition.type) || existingTypes.has(definition.type)) {
+							continue;
+						}
+
+						next.push(createDefaultWidget(definition));
+						existingTypes.add(definition.type);
+					}
+
+					return next;
+				};
+
+				const nextLayout = normalizeLayout(layout);
+				const nextDraftLayout = draftLayout ? normalizeLayout(draftLayout) : null;
+
+				if (
+					sameWidgetDefinitions(availableWidgets, widgets) &&
+					nextLayout === layout &&
+					nextDraftLayout === draftLayout
+				) {
+					return;
+				}
+
+				set({
+					availableWidgets: widgets,
+					layout: nextLayout,
+					draftLayout: nextDraftLayout
+				});
+			},
 			setLayout: (layout) => set({ layout }),
-			// EDIT SESSION
 			startEditSession: () => {
 				const { editMode, layout } = get();
 
@@ -66,7 +116,7 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 				});
 			},
 			resetLayout: () => {
-				const nextLayout = cloneLayout(initialLayout);
+				const nextLayout = createDefaultLayout(get().availableWidgets, get().hiddenWidgetTypes);
 
 				if (get().editMode) {
 					set({
@@ -80,7 +130,6 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					layout: nextLayout
 				});
 			},
-			// UPDATE WIDGET IN DRAFT
 			updateDraftWidget: (id, changes) => {
 				const draft = get().draftLayout;
 
@@ -116,7 +165,6 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					draftLayout: nextDraft
 				});
 			},
-
 			moveDraftWidget: (id, position, originPosition, sourceLayout) => {
 				const draft = sourceLayout;
 
@@ -167,12 +215,13 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					widget: nextDraggedWidget
 				};
 			},
-
-			// ADD WIDGET
 			addWidget: (type) => {
 				const activeLayout = get().draftLayout ?? get().layout;
+				const definition = get().availableWidgets.find((widget) => widget.type === type);
 
-				const widget = createWidget(type, {});
+				if (!definition || activeLayout.some((widget) => widget.type === type)) return;
+
+				const widget = createDefaultWidget(definition);
 
 				const position = findFreePosition(activeLayout, widget.w, widget.h);
 
@@ -188,16 +237,39 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 
 				if (get().draftLayout) {
 					set({
-						draftLayout: next
+						draftLayout: next,
+						hiddenWidgetTypes: get().hiddenWidgetTypes.filter((hiddenType) => hiddenType !== type)
 					});
 				} else {
 					set({
-						layout: next
+						layout: next,
+						hiddenWidgetTypes: get().hiddenWidgetTypes.filter((hiddenType) => hiddenType !== type)
 					});
 				}
 			},
+			removeWidget: (id) => {
+				const activeLayout = get().draftLayout ?? get().layout;
+				const widget = activeLayout.find((item) => item.id === id);
 
-			// GET WIDGET
+				if (!widget) return;
+
+				const nextLayout = activeLayout.filter((item) => item.id !== id);
+				const hiddenWidgetTypes = Array.from(new Set([...get().hiddenWidgetTypes, widget.type]));
+
+				if (get().draftLayout) {
+					set({
+						draftLayout: nextLayout,
+						hiddenWidgetTypes
+					});
+
+					return;
+				}
+
+				set({
+					layout: nextLayout,
+					hiddenWidgetTypes
+				});
+			},
 			getWidget: (id) => {
 				const active = get().draftLayout ?? get().layout;
 
@@ -207,7 +279,8 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 		{
 			name: "dashboard-layout",
 			partialize: (state) => ({
-				layout: state.layout
+				layout: state.layout,
+				hiddenWidgetTypes: state.hiddenWidgetTypes
 			})
 		}
 	)

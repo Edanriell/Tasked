@@ -1,5 +1,7 @@
-import { clampWidgetSize } from "@widgets/grid-layout-manager/lib/utils/clamp-widget-size";
-import { DashboardWidget, GRID_COLUMNS, GRID_ROWS, ResizeParams } from "@widgets/grid-layout-manager/model/types";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import { DashboardWidget, ResizeParams } from "../../model/types";
+
+import { clampWidgetSize } from "../utils/clamp-widget-size";
 
 export const resolveResize = ({ widget, direction, deltaCols, deltaRows }: ResizeParams): DashboardWidget => {
 	const next = { ...widget };

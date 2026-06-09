@@ -1,8 +1,10 @@
-import { parsePixelValue } from "@widgets/grid-layout-manager/lib/utils/parse-pixel-value";
 import { useLayoutEffect, useState } from "react";
-import { GRID_COLUMNS, GRID_ROWS } from "../../model/types";
 
-export function useGridMeasurements(container: HTMLDivElement | null) {
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+
+import { parsePixelValue } from "../utils/parse-pixel-value";
+
+export const useGridMeasurements = (container: HTMLDivElement | null) => {
 	const [sizes, setSizes] = useState({
 		columnWidth: 0,
 		rowHeight: 0,
@@ -59,4 +61,4 @@ export function useGridMeasurements(container: HTMLDivElement | null) {
 	}, [container]);
 
 	return sizes;
-}
+};

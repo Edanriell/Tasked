@@ -1,6 +1,7 @@
-import { SWAP_OVERLAP_THRESHOLD } from "@widgets/grid-layout-manager/config/manager";
-import { getSwapScore } from "@widgets/grid-layout-manager/lib/utils/get-swap-score";
-import { DashboardWidget } from "@widgets/grid-layout-manager/model/types";
+import { SWAP_OVERLAP_THRESHOLD } from "../../config/manager";
+import { DashboardWidget } from "../../model/types";
+
+import { getSwapScore } from "../utils/get-swap-score";
 
 export const getSignificantOverlaps = (layout: DashboardWidget[], candidate: DashboardWidget) => {
 	return layout

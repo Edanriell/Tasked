@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 import { useDashboardLayoutStore } from "../../model/store";
 
-export function useLayoutShortcuts() {
+export const useLayoutShortcuts = () => {
 	const editMode = useDashboardLayoutStore((state) => state.editMode);
 
 	const cancelEditSession = useDashboardLayoutStore((state) => state.cancelEditSession);
@@ -22,4 +22,4 @@ export function useLayoutShortcuts() {
 
 		return () => window.removeEventListener("keydown", handleKeyDown);
 	}, [editMode, cancelEditSession]);
-}
+};

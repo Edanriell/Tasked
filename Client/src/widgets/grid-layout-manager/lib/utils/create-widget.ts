@@ -1,22 +1,20 @@
 import { v4 as uuidv4 } from "uuid";
 
-import type { DashboardWidget } from "../../model/types";
+import type { DashboardWidget, DashboardWidgetDefinition } from "../../model/types";
 
-import { getWidgetDefinition } from "./get-widget-definition";
-
-// We should be able to create any Component, And maybe there is simpler way ?
-export const createWidget = (type: string, config: Partial<DashboardWidget>): DashboardWidget => {
-	const definition = getWidgetDefinition(type);
-
+export const createWidget = (
+	definition: DashboardWidgetDefinition,
+	config: Partial<DashboardWidget> = {}
+): DashboardWidget => {
 	return {
 		id: uuidv4(),
-		type,
-		x: 0,
-		y: 0,
-		w: definition.minW ?? 4,
-		h: definition.minH ?? 4,
-		minW: definition.minW ?? 2,
-		minH: definition.minH ?? 2,
+		type: definition.type,
+		x: definition.x,
+		y: definition.y,
+		w: definition.w,
+		h: definition.h,
+		minW: definition.minW,
+		minH: definition.minH,
 		maxW: definition.maxW,
 		maxH: definition.maxH,
 		...config

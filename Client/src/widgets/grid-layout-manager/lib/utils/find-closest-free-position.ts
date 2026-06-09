@@ -1,6 +1,8 @@
-import { DashboardWidget, GRID_COLUMNS, GRID_ROWS, WidgetPosition } from "@widgets/grid-layout-manager/model/types";
-import { createOccupancyMatrix } from "@widgets/grid-layout-manager/lib/utils/create-occupancy-matrix";
-import { canOccupyArea } from "@widgets/grid-layout-manager/lib/utils/can-occupy-area";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import { DashboardWidget, WidgetPosition } from "../../model/types";
+
+import { canOccupyArea } from "../utils/can-occupy-area";
+import { createOccupancyMatrix } from "../utils/create-occupancy-matrix";
 
 export const findClosestFreePosition = (
 	placedWidgets: DashboardWidget[],

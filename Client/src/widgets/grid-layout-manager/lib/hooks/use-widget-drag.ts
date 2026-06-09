@@ -2,20 +2,21 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useGridContainer } from "./use-grid-container";
 
-import { clampWidgetPosition } from "@widgets/grid-layout-manager/lib/utils/clamp-widget-position";
-import { clamp } from "@widgets/grid-layout-manager/lib/utils/clamp";
-import { pxToColumns } from "@widgets/grid-layout-manager/lib/utils/px-to-columns";
-import { pxToRows } from "@widgets/grid-layout-manager/lib/utils/px-to-rows";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
 import { useDashboardLayoutStore } from "../../model/store";
-import { GRID_COLUMNS, GRID_ROWS, type DashboardWidget } from "../../model/types";
+import { type DashboardWidget } from "../../model/types";
 
-interface Params {
+import { clamp } from "../utils/clamp";
+import { clampWidgetPosition } from "../utils/clamp-widget-position";
+import { pxToColumns } from "../utils/px-to-columns";
+import { pxToRows } from "../utils/px-to-rows";
+
+type UseWidgetDragParameters = {
 	widget: DashboardWidget;
-
 	onPreviewChange: (widget: DashboardWidget | null) => void;
-}
+};
 
-export function useWidgetDrag({ widget, onPreviewChange }: Params) {
+export function useWidgetDrag({ widget, onPreviewChange }: UseWidgetDragParameters) {
 	const { columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
 
 	const moveDraftWidget = useDashboardLayoutStore((state) => state.moveDraftWidget);

@@ -1,6 +1,8 @@
-import { canOccupyArea } from "@widgets/grid-layout-manager/lib/utils/can-occupy-area";
-import { createOccupancyMatrix } from "@widgets/grid-layout-manager/lib/utils/create-occupancy-matrix";
-import { DashboardWidget, GRID_COLUMNS, GRID_ROWS } from "@widgets/grid-layout-manager/model/types";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import { DashboardWidget } from "../../model/types";
+
+import { canOccupyArea } from "../utils/can-occupy-area";
+import { createOccupancyMatrix } from "../utils/create-occupancy-matrix";
 
 export function findFreePosition(layout: DashboardWidget[], w: number, h: number) {
 	const matrix = createOccupancyMatrix(layout);

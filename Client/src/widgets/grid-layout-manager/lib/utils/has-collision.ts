@@ -1,5 +1,6 @@
-import { isColliding } from "@widgets/grid-layout-manager/lib/utils/is-colliding";
-import type { DashboardWidget } from "@widgets/grid-layout-manager/model/types";
+import type { DashboardWidget } from "../../model/types";
+
+import { isColliding } from "../utils/is-colliding";
 
 export const hasCollision = (widgets: DashboardWidget[], candidate: DashboardWidget) => {
 	for (const widget of widgets) {

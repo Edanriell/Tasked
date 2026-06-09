@@ -1,26 +1,28 @@
 import { motion } from "motion/react";
+import type { ReactNode } from "react";
 
-import { RenderGridLayoutManagerComponent } from "./render-grid-layout-manager-component";
-
+import { useWidgetDrag } from "../lib/hooks/use-widget-drag";
+import { useWidgetResize } from "../lib/hooks/use-widget-resize";
+import { gridToColumnStyle } from "../lib/utils/grid-to-column-style";
+import { gridToRowStyle } from "../lib/utils/grid-to-row-style";
 import { useEditMode } from "../model/selectors";
-
 import type { DashboardWidget as DashboardWidgetType } from "../model/types";
 
 import { GridLayoutManagerResizeGrip } from "./grid-layout-manager-resize-grip";
 
-import { useWidgetDrag } from "../lib/hooks/use-widget-drag";
-
-import { gridToColumnStyle } from "@widgets/grid-layout-manager/lib/utils/grid-to-column-style";
-import { gridToRowStyle } from "@widgets/grid-layout-manager/lib/utils/grid-to-row-style";
-import { useWidgetResize } from "../lib/hooks/use-widget-resize";
-
-interface Props {
+type GridLayoutManagerComponentProps = {
 	widget: DashboardWidgetType;
-
+	children: ReactNode;
 	onPreviewChange: (widget: DashboardWidgetType | null) => void;
-}
+	onRemove: (id: string) => void;
+};
 
-export function GridLayoutManagerComponent({ widget, onPreviewChange }: Props) {
+export const GridLayoutManagerComponent = ({
+	widget,
+	children,
+	onPreviewChange,
+	onRemove
+}: Readonly<GridLayoutManagerComponentProps>) => {
 	const editMode = useEditMode();
 
 	const drag = useWidgetDrag({
@@ -67,10 +69,24 @@ export function GridLayoutManagerComponent({ widget, onPreviewChange }: Props) {
 				gridRow: gridToRowStyle(widget.y, widget.h)
 			}}
 		>
-			<RenderGridLayoutManagerComponent type={widget.type} props={widget.props} />
+			{children}
 
 			{editMode && (
 				<>
+					<button
+						type="button"
+						aria-label="Remove widget"
+						className="absolute top-2 right-2 z-[65] flex h-7 w-7 items-center justify-center rounded-md border border-(--white-pallete-20) bg-black/55 font-(family-name:--font-barlow) text-[1rem] leading-none text-(--white-pallete-100) transition-colors hover:bg-black/75"
+						onPointerDown={(event) => {
+							event.stopPropagation();
+						}}
+						onClick={(event) => {
+							event.stopPropagation();
+							onRemove(widget.id);
+						}}
+					>
+						x
+					</button>
 					<GridLayoutManagerResizeGrip direction="n" onPointerDown={resize.onResizeStart} />
 					<GridLayoutManagerResizeGrip direction="s" onPointerDown={resize.onResizeStart} />
 					<GridLayoutManagerResizeGrip direction="e" onPointerDown={resize.onResizeStart} />
@@ -83,4 +99,4 @@ export function GridLayoutManagerComponent({ widget, onPreviewChange }: Props) {
 			)}
 		</motion.section>
 	);
-}
+};

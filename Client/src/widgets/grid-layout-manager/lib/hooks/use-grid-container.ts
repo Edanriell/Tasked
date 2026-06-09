@@ -1,11 +1,11 @@
 import { createContext, useContext } from "react";
 
-export interface GridMeasurements {
+export type GridMeasurements = {
 	columnWidth: number;
 	rowHeight: number;
 	columnGap: number;
 	rowGap: number;
-}
+};
 
 export const GridContainerContext = createContext<GridMeasurements>({
 	columnWidth: 0,

@@ -1,32 +1,54 @@
 "use client";
 
 import type { ReactElement } from "react";
-import { useCallback, useState } from "react";
+import { Children, isValidElement, useCallback, useEffect, useMemo, useState } from "react";
 
-import { useActiveLayout, useEditMode } from "../model/selectors";
-import { useDashboardLayoutStore } from "../model/store";
-import type { DashboardWidget as DashboardWidgetType } from "../model/types";
-import { GridLayoutManagerComponent } from "./grid-layout-manager-component";
-import { GridLayoutManagerComponentGhostLayer } from "./grid-layout-manager-component-ghost-layer";
-
-import { GRID_CELL_COUNT } from "@widgets/grid-layout-manager/config/manager";
-import { hasCollision } from "@widgets/grid-layout-manager/lib/utils/has-collision";
+import { GRID_CELL_COUNT } from "../config/manager";
 import { GridContainerContext } from "../lib/hooks/use-grid-container";
 import { useGridMeasurements } from "../lib/hooks/use-grid-measurements";
+import { hasCollision } from "../lib/utils/has-collision";
+import { useActiveLayout, useEditMode } from "../model/selectors";
+import { useDashboardLayoutStore } from "../model/store";
+import type { DashboardWidget as DashboardWidgetType, DashboardWidgetDefinition } from "../model/types";
+
+import { GridLayoutManagerComponent } from "./grid-layout-manager-component";
+import { GridLayoutManagerComponentGhostLayer } from "./grid-layout-manager-component-ghost-layer";
 import { GridLayoutManagerControls } from "./grid-layout-manager-controls";
 
 type GridLayoutManagerComponents = {
 	Controls: typeof GridLayoutManagerControls;
+	Component: typeof GridLayoutManagerItem;
 };
 
-type GridLayoutManagerProps = object;
+type GridLayoutManagerItemProps = {
+	type: string;
+	label: string;
+	x: number;
+	y: number;
+	w: number;
+	h: number;
+	minW?: number;
+	minH?: number;
+	maxW?: number;
+	maxH?: number;
+	defaultVisible?: boolean;
+	children: ReactElement;
+};
+
+type GridLayoutManagerProps = {
+	children?: ReactElement | ReactElement[];
+};
 
 type GridLayoutManager = ((props: Readonly<GridLayoutManagerProps>) => ReactElement) & GridLayoutManagerComponents;
 
-const GridLayoutManagerRoot = () => {
+const GridLayoutManagerItem = (_props: Readonly<GridLayoutManagerItemProps>) => null;
+
+export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps>) => {
 	const widgets = useActiveLayout();
 
 	const editMode = useEditMode();
+	const registerWidgets = useDashboardLayoutStore((state) => state.registerWidgets);
+	const removeWidget = useDashboardLayoutStore((state) => state.removeWidget);
 
 	const [container, setContainer] = useState<HTMLDivElement | null>(null);
 
@@ -39,6 +61,37 @@ const GridLayoutManagerRoot = () => {
 	});
 
 	const sizes = useGridMeasurements(container);
+
+	const declaredWidgets = useMemo(() => {
+		return Children.toArray(children).filter(
+			(child): child is ReactElement<GridLayoutManagerItemProps> =>
+				isValidElement<GridLayoutManagerItemProps>(child) && child.type === GridLayoutManagerItem
+		);
+	}, [children]);
+
+	const widgetDefinitions = useMemo<DashboardWidgetDefinition[]>(() => {
+		return declaredWidgets.map(({ props }) => ({
+			type: props.type,
+			label: props.label,
+			x: props.x,
+			y: props.y,
+			w: props.w,
+			h: props.h,
+			minW: props.minW ?? Math.min(props.w, 4),
+			minH: props.minH ?? Math.min(props.h, 4),
+			maxW: props.maxW,
+			maxH: props.maxH,
+			defaultVisible: props.defaultVisible
+		}));
+	}, [declaredWidgets]);
+
+	const widgetContentByType = useMemo(() => {
+		return new Map(declaredWidgets.map((widget) => [widget.props.type, widget.props.children]));
+	}, [declaredWidgets]);
+
+	useEffect(() => {
+		registerWidgets(widgetDefinitions);
+	}, [registerWidgets, widgetDefinitions]);
 
 	const setContainerRef = useCallback((node: HTMLDivElement | null) => {
 		setContainer(node);
@@ -90,15 +143,29 @@ const GridLayoutManagerRoot = () => {
 						))}
 					</div>
 				)}
-				{widgets.map((widget) => (
-					<GridLayoutManagerComponent key={widget.id} widget={widget} onPreviewChange={updateGhost} />
-				))}
+				{widgets.map((widget) => {
+					const content = widgetContentByType.get(widget.type);
+
+					if (!content) {
+						return null;
+					}
+
+					return (
+						<GridLayoutManagerComponent
+							key={widget.id}
+							widget={widget}
+							onPreviewChange={updateGhost}
+							onRemove={removeWidget}
+						>
+							{content}
+						</GridLayoutManagerComponent>
+					);
+				})}
 				<GridLayoutManagerComponentGhostLayer widget={ghost.widget} invalid={ghost.invalid} />
 			</main>
 		</GridContainerContext.Provider>
 	);
-};
+}) as GridLayoutManager;
 
-export const GridLayoutManager: GridLayoutManager = Object.assign(GridLayoutManagerRoot, {
-	Controls: GridLayoutManagerControls
-});
+GridLayoutManager.Controls = GridLayoutManagerControls;
+GridLayoutManager.Component = GridLayoutManagerItem;

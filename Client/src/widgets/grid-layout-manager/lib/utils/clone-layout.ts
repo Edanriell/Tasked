@@ -1,3 +1,3 @@
-import type { DashboardWidget } from "@widgets/grid-layout-manager/model/types";
+import type { DashboardWidget } from "../../model/types";
 
 export const cloneLayout = (layout: DashboardWidget[]) => layout.map((widget) => ({ ...widget }));

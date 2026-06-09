@@ -1,4 +1,4 @@
-import { DashboardWidget } from "@widgets/grid-layout-manager/model/types";
+import { DashboardWidget } from "../../model/types";
 
 export const getIntersectionArea = (a: DashboardWidget, b: DashboardWidget) => {
 	const xOverlap = Math.max(0, Math.min(a.x + a.w, b.x + b.w) - Math.max(a.x, b.x));

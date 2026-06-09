@@ -1,28 +1,26 @@
 import { useCallback, useState } from "react";
 
-import { useGridContainer } from "./use-grid-container";
-
 import { useDashboardLayoutStore } from "../../model/store";
-
-import { pxToColumns } from "@widgets/grid-layout-manager/lib/utils/px-to-columns";
-import { pxToRows } from "@widgets/grid-layout-manager/lib/utils/px-to-rows";
-import { resolveResize } from "@widgets/grid-layout-manager/lib/utils/resolve-resize";
 import type { DashboardWidget, ResizeDirection } from "../../model/types";
 
-interface Params {
+import { pxToColumns } from "../utils/px-to-columns";
+import { pxToRows } from "../utils/px-to-rows";
+import { resolveResize } from "../utils/resolve-resize";
+
+import { useGridContainer } from "./use-grid-container";
+
+type UseWidgetResizeParameters = {
 	widget: DashboardWidget;
-
 	onPreviewChange: (widget: DashboardWidget | null) => void;
-}
+};
 
-export function useWidgetResize({ widget, onPreviewChange }: Params) {
+export function useWidgetResize({ widget, onPreviewChange }: UseWidgetResizeParameters) {
 	const { columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
 
 	const updateDraftWidget = useDashboardLayoutStore((state) => state.updateDraftWidget);
 
 	const [resizing, setResizing] = useState(false);
 
-	// RESIZE START
 	const onResizeStart = useCallback(
 		(event: React.PointerEvent, direction: ResizeDirection) => {
 			if (!columnWidth || !rowHeight) return;

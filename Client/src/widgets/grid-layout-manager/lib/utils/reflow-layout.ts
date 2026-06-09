@@ -1,7 +1,8 @@
-import { canPlaceWidget } from "@widgets/grid-layout-manager/lib/utils/can-place-widget";
-import { findClosestFreePosition } from "@widgets/grid-layout-manager/lib/utils/find-closest-free-position";
-import { getSignificantOverlaps } from "@widgets/grid-layout-manager/lib/utils/get-significant-overlaps";
-import { DashboardWidget, WidgetPosition } from "@widgets/grid-layout-manager/model/types";
+import { DashboardWidget, WidgetPosition } from "../../model/types";
+
+import { canPlaceWidget } from "../utils/can-place-widget";
+import { findClosestFreePosition } from "../utils/find-closest-free-position";
+import { getSignificantOverlaps } from "../utils/get-significant-overlaps";
 
 export const reflowLayout = (
 	layout: DashboardWidget[],

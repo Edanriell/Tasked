@@ -1,13 +1,13 @@
-import { gridToColumnStyle } from "@widgets/grid-layout-manager/lib/utils/grid-to-column-style";
-import { gridToRowStyle } from "@widgets/grid-layout-manager/lib/utils/grid-to-row-style";
+import { gridToColumnStyle } from "../lib/utils/grid-to-column-style";
+import { gridToRowStyle } from "../lib/utils/grid-to-row-style";
 import type { DashboardWidget } from "../model/types";
 
-interface GhostLayerProps {
+type GhostLayerProps = {
 	widget: DashboardWidget | null;
 	invalid: boolean;
-}
+};
 
-export function GridLayoutManagerComponentGhostLayer({ widget, invalid }: GhostLayerProps) {
+export const GridLayoutManagerComponentGhostLayer = ({ widget, invalid }: Readonly<GhostLayerProps>) => {
 	if (!widget) {
 		return null;
 	}
@@ -39,4 +39,4 @@ export function GridLayoutManagerComponentGhostLayer({ widget, invalid }: GhostL
 			/>
 		</div>
 	);
-}
+};

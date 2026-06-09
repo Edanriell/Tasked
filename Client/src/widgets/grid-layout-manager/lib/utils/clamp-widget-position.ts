@@ -1,4 +1,5 @@
-import { GRID_COLUMNS, GRID_ROWS } from "@widgets/grid-layout-manager/model/types";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+
 import { clamp } from "./clamp";
 
 export const clampWidgetPosition = ({ x, y, w, h }: { x: number; y: number; w: number; h: number }) => {

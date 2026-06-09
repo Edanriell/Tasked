@@ -1,4 +1,5 @@
-import { GRID_COLUMNS, GRID_ROWS, OccupancyMatrix } from "@widgets/grid-layout-manager/model/types";
+import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import { OccupancyMatrix } from "../../model/types";
 
 export const canOccupyArea = (matrix: OccupancyMatrix, x: number, y: number, w: number, h: number) => {
 	for (let row = y; row < y + h; row++) {

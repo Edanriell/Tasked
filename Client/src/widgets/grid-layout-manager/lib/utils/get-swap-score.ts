@@ -1,5 +1,6 @@
-import { getIntersectionArea } from "@widgets/grid-layout-manager/lib/utils/get-intersection-area";
-import { DashboardWidget } from "@widgets/grid-layout-manager/model/types";
+import { DashboardWidget } from "../../model/types";
+
+import { getIntersectionArea } from "../utils/get-intersection-area";
 
 export const getSwapScore = (candidate: DashboardWidget, target: DashboardWidget) => {
 	const intersectionArea = getIntersectionArea(candidate, target);
