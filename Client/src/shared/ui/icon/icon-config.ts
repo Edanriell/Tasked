@@ -8,7 +8,16 @@ export const ICON = {
 	TaskSquare: "TaskSquare",
 	Projects: "Projects",
 	Message: "Message",
-	Settings: "Settings"
+	Settings: "Settings",
+	LockedLock: "LockedLock",
+	TextBold: "TextBold",
+	TextItalic: "TextItalic",
+	TextUnderline: "TextUnderline",
+	LinkSquare: "LinkSquare",
+	TextAlignLeft: "TextAlignLeft",
+	TextAlignCenter: "TextAlignCenter",
+	TextAlignRight: "TextAlignRight",
+	TextAlignJustifyCenter: "TextAlignJustifyCenter"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

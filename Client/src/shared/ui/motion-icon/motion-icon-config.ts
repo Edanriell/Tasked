@@ -7,7 +7,6 @@ export const MOTION_ICON = {
 	Messages: "Messages",
 	Settings: "Settings",
 	Dashboard: "Dashboard",
-	AddCircle: "AddCircle",
 	Star: "Star",
 	Lock: "Lock",
 	Cog: "Cog",

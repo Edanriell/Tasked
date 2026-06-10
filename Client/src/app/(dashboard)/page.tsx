@@ -1,9 +1,15 @@
-"use client";
-
-import { GridLayoutManager, NotesWidget, ProjectsWidget, TasksWidget, UsersWidget } from "@widgets/grid-layout-manager";
+import {
+	GridLayoutManager,
+	GridLayoutManagerControls,
+	NotesWidget,
+	ProjectsWidget,
+	TasksWidget,
+	UsersWidget
+} from "@widgets/grid-layout-manager";
 import { ViewHeader } from "@widgets/view-header";
 
 import { CreateTask } from "@features/create-task";
+import { PrivateNotepad } from "@features/private-notepad";
 import { Search } from "@features/search";
 
 import { ICON } from "@shared/ui";
@@ -15,11 +21,33 @@ const HomePage = () => {
 				<ViewHeader.Tools>
 					<Search />
 					<CreateTask />
-					<GridLayoutManager.Controls />
+					<GridLayoutManagerControls />
 				</ViewHeader.Tools>
 			</ViewHeader>
 			<GridLayoutManager>
-				<GridLayoutManager.Component type="notes" label="Notes" x={0} y={0} w={12} h={11} minW={4} minH={4}>
+				<GridLayoutManager.Component
+					type="private-notepad"
+					label="Private notepad"
+					x={0}
+					y={0}
+					w={12}
+					h={11}
+					minW={4}
+					minH={4}
+				>
+					<PrivateNotepad />
+				</GridLayoutManager.Component>
+				<GridLayoutManager.Component
+					defaultVisible={false}
+					type="notes"
+					label="Notes"
+					x={0}
+					y={0}
+					w={12}
+					h={11}
+					minW={4}
+					minH={4}
+				>
 					<NotesWidget />
 				</GridLayoutManager.Component>
 				<GridLayoutManager.Component

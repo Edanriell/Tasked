@@ -1,4 +1,3 @@
-export * from "./add-circle";
 export * from "./cog";
 export * from "./dashboard";
 export * from "./home";

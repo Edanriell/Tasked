@@ -17,6 +17,9 @@ type GridLayoutManagerComponentProps = {
 	onRemove: (id: string) => void;
 };
 
+// Todo
+// Refactor clsx
+
 export const GridLayoutManagerComponent = ({
 	widget,
 	children,
@@ -53,11 +56,11 @@ export const GridLayoutManagerComponent = ({
 			className={[
 				"relative",
 				"overflow-hidden",
-				"rounded-xl",
-				"bg-slate-900",
-				"border",
-				"border-(--white-pallete-10)",
-				"shadow-[0_0.75rem_2rem_0_rgba(0,0,0,0.2)]",
+				"rounded-[1.25rem]",
+				// "bg-slate-900",
+				// "border",
+				// "border-(--white-pallete-10)",
+				// "shadow-[0_0.75rem_2rem_0_rgba(0,0,0,0.2)]",
 				"z-20",
 				editMode ? "cursor-grab touch-none" : "",
 				drag.isDragging ? "z-50 cursor-grabbing border-(--daybreak-blue-400) opacity-70" : "",
@@ -65,7 +68,6 @@ export const GridLayoutManagerComponent = ({
 			].join(" ")}
 			style={{
 				gridColumn: gridToColumnStyle(widget.x, widget.w),
-
 				gridRow: gridToRowStyle(widget.y, widget.h)
 			}}
 		>

@@ -13,10 +13,8 @@ import type { DashboardWidget as DashboardWidgetType, DashboardWidgetDefinition 
 
 import { GridLayoutManagerComponent } from "./grid-layout-manager-component";
 import { GridLayoutManagerComponentGhostLayer } from "./grid-layout-manager-component-ghost-layer";
-import { GridLayoutManagerControls } from "./grid-layout-manager-controls";
 
 type GridLayoutManagerComponents = {
-	Controls: typeof GridLayoutManagerControls;
 	Component: typeof GridLayoutManagerItem;
 };
 
@@ -63,10 +61,11 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 	const sizes = useGridMeasurements(container);
 
 	const declaredWidgets = useMemo(() => {
-		return Children.toArray(children).filter(
-			(child): child is ReactElement<GridLayoutManagerItemProps> =>
-				isValidElement<GridLayoutManagerItemProps>(child) && child.type === GridLayoutManagerItem
+		return Children.toArray(children).filter((child): child is ReactElement<GridLayoutManagerItemProps> =>
+			isValidElement<GridLayoutManagerItemProps>(child)
 		);
+
+		// && child.type === GridLayoutManagerItem
 	}, [children]);
 
 	const widgetDefinitions = useMemo<DashboardWidgetDefinition[]>(() => {
@@ -106,6 +105,9 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 			invalid: widget ? hasCollision(activeLayout, widget) : false
 		});
 	}, []);
+
+	// console.log("declaredWidgets", declaredWidgets);
+	// console.log("children", children);
 
 	return (
 		<GridContainerContext.Provider value={sizes}>
@@ -167,5 +169,4 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 	);
 }) as GridLayoutManager;
 
-GridLayoutManager.Controls = GridLayoutManagerControls;
 GridLayoutManager.Component = GridLayoutManagerItem;

@@ -7,6 +7,9 @@ type GhostLayerProps = {
 	invalid: boolean;
 };
 
+// Todo
+// Refactor clsx
+
 export const GridLayoutManagerComponentGhostLayer = ({ widget, invalid }: Readonly<GhostLayerProps>) => {
 	if (!widget) {
 		return null;
@@ -27,7 +30,7 @@ export const GridLayoutManagerComponentGhostLayer = ({ widget, invalid }: Readon
 		>
 			<div
 				className={[
-					"rounded-xl",
+					"rounded-[1.25rem]",
 					"border-2",
 					"shadow-[0_0_0_1px_rgba(255,255,255,0.35),0_0_2rem_rgba(24,144,255,0.3)]",
 					invalid ? "border-red-500 bg-red-500/15" : "border-sky-400 bg-sky-400/15"

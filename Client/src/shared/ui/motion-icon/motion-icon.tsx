@@ -3,7 +3,7 @@
 import { motion } from "motion/react";
 import type { ComponentProps } from "react";
 
-import { AddCircle, Cog, Dashboard, Home, Lock, Messages, Projects, Search, Settings, Star, Tasks } from "./icons";
+import { Cog, Dashboard, Home, Lock, Messages, Projects, Search, Settings, Star, Tasks } from "./icons";
 
 import { MOTION_ICON, type MotionIconType } from "./motion-icon-config";
 
@@ -69,8 +69,6 @@ export const MotionIcon = ({ type, isActive, size, ...props }: Readonly<MotionIc
 			return <Settings isActive={isActive} {...props} />;
 		case MOTION_ICON.Dashboard:
 			return <Dashboard isActive={isActive} {...props} />;
-		case MOTION_ICON.AddCircle:
-			return <AddCircle isActive={isActive} {...props} />;
 		case MOTION_ICON.Star:
 			return <Star isActive={isActive} {...props} />;
 		case MOTION_ICON.Lock:

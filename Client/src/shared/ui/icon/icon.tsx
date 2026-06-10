@@ -17,6 +17,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -38,6 +40,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -55,6 +59,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -76,6 +82,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -97,6 +105,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -114,6 +124,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -131,6 +143,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -148,6 +162,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -169,6 +185,8 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
@@ -190,11 +208,244 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
 					xmlns="http://www.w3.org/2000/svg"
 					{...props}
 				>
 					<path
 						d="M18.94 5.42L13.77 2.43C12.78 1.86 11.23 1.86 10.24 2.43L5.01996 5.44C2.94996 6.84 2.82996 7.05 2.82996 9.28V14.71C2.82996 16.94 2.94996 17.16 5.05996 18.58L10.23 21.57C10.73 21.86 11.37 22 12 22C12.63 22 13.27 21.86 13.76 21.57L18.98 18.56C21.05 17.16 21.17 16.95 21.17 14.72V9.28C21.17 7.05 21.05 6.84 18.94 5.42ZM12 15.25C10.21 15.25 8.74996 13.79 8.74996 12C8.74996 10.21 10.21 8.75 12 8.75C13.79 8.75 15.25 10.21 15.25 12C15.25 13.79 13.79 15.25 12 15.25Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.LockedLock:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M12.0001 17.3501C12.9003 17.3501 13.6301 16.6203 13.6301 15.7201C13.6301 14.8199 12.9003 14.0901 12.0001 14.0901C11.0999 14.0901 10.3701 14.8199 10.3701 15.7201C10.3701 16.6203 11.0999 17.3501 12.0001 17.3501Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M18.28 9.53V8.28C18.28 5.58 17.63 2 12 2C6.37 2 5.72 5.58 5.72 8.28V9.53C2.92 9.88 2 11.3 2 14.79V16.65C2 20.75 3.25 22 7.35 22H16.65C20.75 22 22 20.75 22 16.65V14.79C22 11.3 21.08 9.88 18.28 9.53ZM12 18.74C10.33 18.74 8.98 17.38 8.98 15.72C8.98 14.05 10.34 12.7 12 12.7C13.66 12.7 15.02 14.06 15.02 15.72C15.02 17.39 13.67 18.74 12 18.74ZM7.35 9.44C7.27 9.44 7.2 9.44 7.12 9.44V8.28C7.12 5.35 7.95 3.4 12 3.4C16.05 3.4 16.88 5.35 16.88 8.28V9.45C16.8 9.45 16.73 9.45 16.65 9.45H7.35V9.44Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextBold:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M13.75 12.75H12.25H8.5V16.74C8.5 17.02 8.73 17.25 9.01 17.25H13.75C14.99 17.25 16 16.24 16 15C16 13.76 14.99 12.75 13.75 12.75Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M14.5 9C14.5 7.76 13.49 6.75 12.25 6.75H9.01C8.73 6.75 8.5 6.98 8.5 7.26V11.25H12.25C13.49 11.25 14.5 10.24 14.5 9Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M20.95 4.13C20.66 3.71 20.29 3.34 19.87 3.05C18.92 2.36 17.68 2 16.19 2H7.81C7.61 2 7.41 2.01 7.22 2.03C3.94 2.24 2 4.37 2 7.81V16.19C2 17.68 2.36 18.92 3.05 19.87C3.34 20.29 3.71 20.66 4.13 20.95C4.95 21.55 5.99 21.9 7.22 21.98C7.41 21.99 7.61 22 7.81 22H16.19C19.83 22 22 19.83 22 16.19V7.81C22 6.32 21.64 5.08 20.95 4.13ZM13.75 18.75H9.01C7.9 18.75 7 17.85 7 16.74V12V7.26C7 6.15 7.9 5.25 9.01 5.25H12.25C14.32 5.25 16 6.93 16 9C16 9.96 15.63 10.83 15.03 11.49C16.46 12.02 17.5 13.38 17.5 15C17.5 17.07 15.82 18.75 13.75 18.75Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextItalic:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M20.95 4.13C20.66 3.71 20.29 3.34 19.87 3.05C18.92 2.36 17.68 2 16.19 2H7.81C7.61 2 7.41 2.01 7.22 2.03C3.94 2.24 2 4.37 2 7.81V16.19C2 17.68 2.36 18.92 3.05 19.87C3.34 20.29 3.71 20.66 4.13 20.95C4.95 21.55 5.99 21.9 7.22 21.98C7.41 21.99 7.61 22 7.81 22H16.19C19.83 22 22 19.83 22 16.19V7.81C22 6.32 21.64 5.08 20.95 4.13ZM15.87 7.51H13.92L11.68 16.48H13.52C13.93 16.48 14.27 16.82 14.27 17.23C14.27 17.64 13.93 17.98 13.52 17.98H8.13C7.72 17.98 7.38 17.64 7.38 17.23C7.38 16.82 7.72 16.48 8.13 16.48H10.13L12.37 7.51H10.48C10.07 7.51 9.73 7.17 9.73 6.76C9.73 6.35 10.07 6.01 10.48 6.01H15.86C16.27 6.01 16.61 6.35 16.61 6.76C16.61 7.17 16.28 7.51 15.87 7.51Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextUnderline:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M20.95 4.13C20.66 3.71 20.29 3.34 19.87 3.05C18.92 2.36 17.68 2 16.19 2H7.81C7.61 2 7.41 2.01 7.22 2.03C3.94 2.24 2 4.37 2 7.81V16.19C2 17.68 2.36 18.92 3.05 19.87C3.34 20.29 3.71 20.66 4.13 20.95C4.95 21.55 5.99 21.9 7.22 21.98C7.41 21.99 7.61 22 7.81 22H16.19C19.83 22 22 19.83 22 16.19V7.81C22 6.32 21.64 5.08 20.95 4.13ZM16.83 18.96H7.17C6.76 18.96 6.42 18.62 6.42 18.21C6.42 17.8 6.76 17.46 7.17 17.46H16.84C17.25 17.46 17.59 17.8 17.59 18.21C17.59 18.62 17.25 18.96 16.83 18.96ZM17.58 10.62C17.58 13.7 15.08 16.2 12 16.2C8.92 16.2 6.42 13.7 6.42 10.62V5.79C6.42 5.38 6.76 5.04 7.17 5.04C7.58 5.04 7.92 5.38 7.92 5.79V10.62C7.92 12.87 9.75 14.7 12 14.7C14.25 14.7 16.08 12.87 16.08 10.62V5.79C16.08 5.38 16.42 5.04 16.83 5.04C17.24 5.04 17.58 5.38 17.58 5.79V10.62Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.LinkSquare:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.18C2 19.83 4.17 22 7.81 22H16.18C19.82 22 21.99 19.83 21.99 16.19V7.81C22 4.17 19.83 2 16.19 2ZM8.18 16.77C8.16 16.77 8.13 16.77 8.11 16.77C7.14 16.68 6.23 16.23 5.55 15.51C3.95 13.83 3.95 11.1 5.55 9.42L7.74 7.12C8.52 6.3 9.57 5.84 10.69 5.84C11.81 5.84 12.86 6.29 13.64 7.12C15.24 8.8 15.24 11.53 13.64 13.21L12.55 14.36C12.26 14.66 11.79 14.67 11.49 14.39C11.19 14.1 11.18 13.63 11.46 13.33L12.55 12.18C13.61 11.07 13.61 9.26 12.55 8.16C11.56 7.12 9.82 7.12 8.82 8.16L6.63 10.46C5.57 11.57 5.57 13.38 6.63 14.48C7.06 14.94 7.64 15.22 8.25 15.28C8.66 15.32 8.96 15.69 8.92 16.1C8.89 16.48 8.56 16.77 8.18 16.77ZM18.45 14.59L16.26 16.89C15.48 17.71 14.43 18.17 13.31 18.17C12.19 18.17 11.14 17.72 10.36 16.89C8.76 15.21 8.76 12.48 10.36 10.8L11.45 9.65C11.74 9.35 12.21 9.34 12.51 9.62C12.81 9.91 12.82 10.38 12.54 10.68L11.45 11.83C10.39 12.94 10.39 14.75 11.45 15.85C12.44 16.89 14.18 16.9 15.18 15.85L17.37 13.55C18.43 12.44 18.43 10.63 17.37 9.53C16.94 9.07 16.36 8.79 15.75 8.73C15.34 8.69 15.04 8.32 15.08 7.91C15.12 7.5 15.48 7.19 15.9 7.24C16.87 7.34 17.78 7.78 18.46 8.5C20.05 10.17 20.05 12.91 18.45 14.59Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextAlignLeft:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M21 5.25H3C2.59 5.25 2.25 4.91 2.25 4.5C2.25 4.09 2.59 3.75 3 3.75H21C21.41 3.75 21.75 4.09 21.75 4.5C21.75 4.91 21.41 5.25 21 5.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M12.47 10.25H3C2.59 10.25 2.25 9.91 2.25 9.5C2.25 9.09 2.59 8.75 3 8.75H12.47C12.88 8.75 13.22 9.09 13.22 9.5C13.22 9.91 12.89 10.25 12.47 10.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 15.25H3C2.59 15.25 2.25 14.91 2.25 14.5C2.25 14.09 2.59 13.75 3 13.75H21C21.41 13.75 21.75 14.09 21.75 14.5C21.75 14.91 21.41 15.25 21 15.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M12.47 20.25H3C2.59 20.25 2.25 19.91 2.25 19.5C2.25 19.09 2.59 18.75 3 18.75H12.47C12.88 18.75 13.22 19.09 13.22 19.5C13.22 19.91 12.89 20.25 12.47 20.25Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextAlignCenter:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M21 5.25H3C2.59 5.25 2.25 4.91 2.25 4.5C2.25 4.09 2.59 3.75 3 3.75H21C21.41 3.75 21.75 4.09 21.75 4.5C21.75 4.91 21.41 5.25 21 5.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M16.74 10.25H7.26001C6.85001 10.25 6.51001 9.91 6.51001 9.5C6.51001 9.09 6.85001 8.75 7.26001 8.75H16.73C17.14 8.75 17.48 9.09 17.48 9.5C17.48 9.91 17.15 10.25 16.74 10.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 15.25H3C2.59 15.25 2.25 14.91 2.25 14.5C2.25 14.09 2.59 13.75 3 13.75H21C21.41 13.75 21.75 14.09 21.75 14.5C21.75 14.91 21.41 15.25 21 15.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M16.74 20.25H7.26001C6.85001 20.25 6.51001 19.91 6.51001 19.5C6.51001 19.09 6.85001 18.75 7.26001 18.75H16.73C17.14 18.75 17.48 19.09 17.48 19.5C17.48 19.91 17.15 20.25 16.74 20.25Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextAlignRight:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M21 5.25H3C2.59 5.25 2.25 4.91 2.25 4.5C2.25 4.09 2.59 3.75 3 3.75H21C21.41 3.75 21.75 4.09 21.75 4.5C21.75 4.91 21.41 5.25 21 5.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 10.25H11.53C11.12 10.25 10.78 9.91 10.78 9.5C10.78 9.09 11.12 8.75 11.53 8.75H21C21.41 8.75 21.75 9.09 21.75 9.5C21.75 9.91 21.41 10.25 21 10.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 15.25H3C2.59 15.25 2.25 14.91 2.25 14.5C2.25 14.09 2.59 13.75 3 13.75H21C21.41 13.75 21.75 14.09 21.75 14.5C21.75 14.91 21.41 15.25 21 15.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 20.25H11.53C11.12 20.25 10.78 19.91 10.78 19.5C10.78 19.09 11.12 18.75 11.53 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.TextAlignJustifyCenter:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M21 5.25H3C2.59 5.25 2.25 4.91 2.25 4.5C2.25 4.09 2.59 3.75 3 3.75H21C21.41 3.75 21.75 4.09 21.75 4.5C21.75 4.91 21.41 5.25 21 5.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 10.25H3C2.59 10.25 2.25 9.91 2.25 9.5C2.25 9.09 2.59 8.75 3 8.75H21C21.41 8.75 21.75 9.09 21.75 9.5C21.75 9.91 21.41 10.25 21 10.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 15.25H3C2.59 15.25 2.25 14.91 2.25 14.5C2.25 14.09 2.59 13.75 3 13.75H21C21.41 13.75 21.75 14.09 21.75 14.5C21.75 14.91 21.41 15.25 21 15.25Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M21 20.25H3C2.59 20.25 2.25 19.91 2.25 19.5C2.25 19.09 2.59 18.75 3 18.75H21C21.41 18.75 21.75 19.09 21.75 19.5C21.75 19.91 21.41 20.25 21 20.25Z"
 						fill="currentColor"
 					/>
 				</svg>
