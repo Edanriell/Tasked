@@ -19,7 +19,7 @@
 		"colorthief": "^3.3.1",
 		"flubber": "^0.4.2",
 		"motion": "^12.40.0",
-		"next": "16.2.7",
+		"next": "16.2.9",
 		"next-auth": "^4.24.14",
 		"react": "19.2.7",
 		"react-dom": "19.2.7",
@@ -30,10 +30,10 @@
 	},
 	"devDependencies": {
 		"@feature-sliced/steiger-plugin": "^0.5.8",
-		"@tailwindcss/postcss": "^4.3.0",
+		"@tailwindcss/postcss": "^4.3.1",
 		"@tanstack/eslint-plugin-query": "^5.101.0",
 		"@types/flubber": "^0.4.0",
-		"@types/node": "^20.19.42",
+		"@types/node": "^20.19.43",
 		"@types/react": "^19.2.17",
 		"@types/react-dom": "^19.2.3",
 		"@types/tinycolor2": "^1.4.6",
@@ -51,7 +51,7 @@
 		"prettier-plugin-tailwindcss": "^0.7.4",
 		"react-scan": "^0.5.7",
 		"steiger": "^0.5.13",
-		"tailwindcss": "^4.3.0",
+		"tailwindcss": "^4.3.1",
 		"typescript": "^5.9.3"
 	}
 }

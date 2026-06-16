@@ -6,9 +6,9 @@ import { ICON, Icon } from "@shared/ui";
 
 export const PrivateNotepadFormattingToolbar = () => {
 	return (
-		<div className="flex items-center m-[12px]">
+		<div className="flex items-center m-[0.75rem]">
 			<div
-				className="relative flex items-center gap-x-[8px] pr-[8px] after:absolute after:content-[''] after:w-[1px] after:h-[16px] after:bg-(--neutrals-2) after:top-[50%] after:translate-y-[-50%] after:right-0"
+				className="relative flex items-center gap-x-[0.5rem] pr-[0.5rem] after:absolute after:content-[''] after:w-[0.063rem] after:h-[1rem] after:bg-(--neutrals-2) after:top-[50%] after:translate-y-[-50%] after:right-0"
 				aria-label="Text formatting"
 			>
 				<motion.button
@@ -72,7 +72,7 @@ export const PrivateNotepadFormattingToolbar = () => {
 					<span className="sr-only">Insert link</span>
 				</motion.button>
 			</div>
-			<div className="flex items-center gap-x-[8px] pl-[8px]" aria-label="Text alignment">
+			<div className="flex items-center gap-x-[0.5rem] pl-[0.5rem]" aria-label="Text alignment">
 				<motion.button
 					whileHover={{ scale: 1.2, color: "#fff" }}
 					whileTap={{ scale: 0.95 }}

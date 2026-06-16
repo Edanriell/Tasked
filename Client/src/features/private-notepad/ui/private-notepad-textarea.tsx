@@ -24,7 +24,7 @@ export const PrivateNotepadTextarea = async () => {
 			</label>
 			<textarea
 				defaultValue={note}
-				className="rounded-[10px] resize-none mt-[12px] ml-[12px] mr-[12px] mb-[8px] p-[4px] w-full font-(family-name:--font-barlow) font-medium text-[12px] leading-[133%] tracking-[0.01em] text-white placeholder:text-(--neutrals-3)"
+				className="rounded-[0.625rem] resize-none mt-[0.75rem] ml-[0.75rem] mr-[0.75rem] mb-[0.5rem] p-[0.25rem] w-full font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[133%] tracking-[0.01em] text-white placeholder:text-(--neutrals-3)"
 				id="private-note"
 				name="private-note"
 				placeholder="Write down anything here..."
