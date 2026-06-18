@@ -3,7 +3,7 @@ export const MOTION_ICON = {
 	ChevronHorizontal: "ChevronHorizontal",
 	Home: "Home",
 	Tasks: "Tasks",
-	Projects: "Projects",
+	Projects: "Users",
 	Messages: "Messages",
 	Settings: "Settings",
 	Dashboard: "Dashboard",

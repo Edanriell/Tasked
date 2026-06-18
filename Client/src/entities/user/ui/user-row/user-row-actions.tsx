@@ -9,7 +9,7 @@ type ProjectRowActionsProps = {
 	children?: ReactElement | ReactElement[];
 };
 
-export const ProjectRowActions = ({ children }: Readonly<ProjectRowActionsProps>) => {
+export const UserRowActions = ({ children }: Readonly<ProjectRowActionsProps>) => {
 	// return <Fragment>{children}</Fragment>;
 	return (
 		<motion.button

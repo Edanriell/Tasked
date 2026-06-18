@@ -31,7 +31,7 @@ export const MAIN_NAVIGATION_ITEMS: Array<MainNavigationItem> = [
 		id: uuidv4(),
 		href: ROUTES.Projects,
 		icon: MOTION_ICON.Projects,
-		label: "Projects",
+		label: "Users",
 		match: (pathname: string) => pathname.startsWith(ROUTES.Projects)
 	},
 	{

@@ -6,7 +6,7 @@ export const ICON = {
 	AddCircle: "AddCircle",
 	Home: "Home",
 	TaskSquare: "TaskSquare",
-	Projects: "Projects",
+	Projects: "Users",
 	Message: "Message",
 	Settings: "Settings",
 	LockedLock: "LockedLock",
