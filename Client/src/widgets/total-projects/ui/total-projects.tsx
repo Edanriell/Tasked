@@ -1,0 +1,60 @@
+import { clsx } from "clsx";
+
+import { ICON, Icon } from "@shared/ui";
+
+type TotalProjects = {
+	total: number;
+	delta: number;
+	period: string;
+};
+
+const getTotalProjects = async (): Promise<TotalProjects> => {
+	return new Promise((resolve) => {
+		setTimeout(() => {
+			resolve({
+				total: 4,
+				delta: 2,
+				period: "last 7 days"
+			});
+		}, 6000);
+	});
+};
+
+export const TotalProjects = async () => {
+	const { total, delta, period } = await getTotalProjects();
+
+	const isIncrease = delta > 0;
+	const formattedDelta = new Intl.NumberFormat("en", {
+		signDisplay: "always"
+	}).format(delta);
+
+	return (
+		<article className="border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.25rem] bg-(--geek-blue-primary-opacity-100) p-[0.75rem] h-full">
+			<header className="flex items-center gap-x-[0.5rem]">
+				<h2 className="font-(family-name:--font-barlow) font-bold text-[0.625rem] leading-[140%] tracking-[0.01em] text-(--neutrals-3) uppercase">
+					Total Projects
+				</h2>
+				<p
+					className={clsx(
+						"flex items-center gap-x-[0.125rem]",
+						isIncrease ? "text-(--green-50)" : "text-(--volcano-1000)"
+					)}
+				>
+					<Icon className={clsx(isIncrease ? "-rotate-90" : "rotate-90")} size={14} type={ICON.Chevron} />
+					<span
+						className={clsx(
+							"font-(family-name:--font-barlow) font-bold text-[0.625rem] leading-[140%] tracking-[0.01em] uppercase",
+							isIncrease ? "text-(--green-50)" : "text-(--volcano-1000)"
+						)}
+						aria-label={`${Math.abs(delta)} tasks ${delta > 0 ? "added" : "removed"} during ${period}`}
+					>
+						{formattedDelta}
+					</span>
+				</p>
+			</header>
+			<p className="font-(family-name:--font-barlow) font-bold text-[1.5rem] leading-[125%] tracking-[0.01em] text-(--white-pallete-100) mt-[0.5rem]">
+				{total}
+			</p>
+		</article>
+	);
+};
