@@ -7,7 +7,7 @@ import { UsersCount } from "./users-count";
 import { UsersCountSkeleton } from "./users-count-skeleton";
 import { UsersHeaderActions, UsersHeaderActionsProps } from "./users-header-actions";
 import { UsersList } from "./users-list";
-import { UsersSkeleton } from "./users-skeleton";
+import { UsersListSkeleton } from "./users-list-skeleton";
 
 type UsersComponents = {
 	HeaderActions: typeof UsersHeaderActions;
@@ -71,7 +71,7 @@ export const Users = (({ children }: Readonly<UsersProps>) => {
 				</div>
 				{UsersHeaderActions}
 			</header>
-			<Suspense fallback={<UsersSkeleton />}>
+			<Suspense fallback={<UsersListSkeleton />}>
 				<UsersList renderActions={UsersActions ?? undefined} />
 			</Suspense>
 		</section>

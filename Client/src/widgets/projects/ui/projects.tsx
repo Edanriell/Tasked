@@ -7,7 +7,7 @@ import { ProjectsCount } from "./projects-count";
 import { ProjectsCountSkeleton } from "./projects-count-skeleton";
 import { ProjectsHeaderActions, ProjectsHeaderActionsProps } from "./projects-header-actions";
 import { ProjectsList } from "./projects-list";
-import { ProjectsSkeleton } from "./projects-skeleton";
+import { ProjectsListSkeleton } from "./projects-list-skeleton";
 
 type ProjectsComponents = {
 	HeaderActions: typeof ProjectsHeaderActions;
@@ -71,7 +71,7 @@ export const Projects = (({ children }: Readonly<ProjectsProps>) => {
 				</div>
 				{ProjectsHeaderActions}
 			</header>
-			<Suspense fallback={<ProjectsSkeleton />}>
+			<Suspense fallback={<ProjectsListSkeleton />}>
 				<ProjectsList renderActions={ProjectsActions ?? undefined} />
 			</Suspense>
 		</section>

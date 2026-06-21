@@ -10,7 +10,6 @@ type ProjectRowActionsProps = {
 };
 
 export const ProjectRowActions = ({ children }: Readonly<ProjectRowActionsProps>) => {
-	// return <Fragment>{children}</Fragment>;
 	return (
 		<motion.button
 			whileHover={{ scale: 1.2, color: "#fff" }}

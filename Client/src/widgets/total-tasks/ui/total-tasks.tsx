@@ -29,7 +29,7 @@ export const TotalTasks = async () => {
 	}).format(delta);
 
 	return (
-		<article className="border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.25rem] bg-(--geek-blue-primary-opacity-100) p-[0.75rem] h-full">
+		<section className="border-[0.031rem] border-solid border-(--white-pallete-10) rounded-[1.25rem] bg-(--geek-blue-primary-opacity-100) p-[0.75rem] h-full">
 			<header className="flex items-center gap-x-[0.5rem]">
 				<h2 className="font-(family-name:--font-barlow) font-bold text-[0.625rem] leading-[140%] tracking-[0.01em] text-(--neutrals-3) uppercase">
 					Total Tasks
@@ -55,7 +55,7 @@ export const TotalTasks = async () => {
 			<p className="font-(family-name:--font-barlow) font-bold text-[1.5rem] leading-[125%] tracking-[0.01em] text-(--white-pallete-100) mt-[0.5rem]">
 				{total}
 			</p>
-		</article>
+		</section>
 	);
 };
 
@@ -68,3 +68,4 @@ export const TotalTasks = async () => {
 // Sidebar
 // Fix Grid
 // Add missing pages
+// All widgets must be responsive
