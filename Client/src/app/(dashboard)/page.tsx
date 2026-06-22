@@ -5,6 +5,7 @@ import { CompletedTasks, CompletedTasksSkeleton } from "@widgets/completed-tasks
 import { GridLayoutManager, GridLayoutManagerControls } from "@widgets/grid-layout-manager";
 import { OverdueTasks, OverdueTasksSkeleton } from "@widgets/overdue-tasks";
 import { Projects } from "@widgets/projects";
+import { Tasks } from "@widgets/tasks";
 import { TodayTasks, TodayTasksSkeleton } from "@widgets/today-tasks";
 import { TotalProjects, TotalProjectsSkeleton } from "@widgets/total-projects";
 import { TotalTasks, TotalTasksSkeleton } from "@widgets/total-tasks";
@@ -170,6 +171,9 @@ const HomePage = () => {
 					<Suspense fallback={<TodayTasksSkeleton />}>
 						<TodayTasks />
 					</Suspense>
+				</GridLayoutManager.Component>
+				<GridLayoutManager.Component type="tasks" label="Tasks" x={0} y={14} w={24} h={10} minW={4} minH={4}>
+					<Tasks />
 				</GridLayoutManager.Component>
 			</GridLayoutManager>
 		</div>
