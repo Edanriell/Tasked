@@ -1,15 +1,19 @@
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import type { GridLayoutBounds } from "../../config/manager";
 import { DashboardWidget, OccupancyMatrix } from "../../model/types";
 
-export const createOccupancyMatrix = (widgets: DashboardWidget[], ignoreId?: string): OccupancyMatrix => {
+export const createOccupancyMatrix = (
+	widgets: DashboardWidget[],
+	{ columns, rows }: GridLayoutBounds,
+	ignoreId?: string
+): OccupancyMatrix => {
 	const matrix = Array.from(
 		{
-			length: GRID_ROWS
+			length: rows
 		},
 		() =>
 			Array.from(
 				{
-					length: GRID_COLUMNS
+					length: columns
 				},
 				() => false
 			)
@@ -22,6 +26,10 @@ export const createOccupancyMatrix = (widgets: DashboardWidget[], ignoreId?: str
 
 		for (let row = widget.y; row < widget.y + widget.h; row++) {
 			for (let col = widget.x; col < widget.x + widget.w; col++) {
+				if (matrix[row]?.[col] === undefined) {
+					continue;
+				}
+
 				matrix[row][col] = true;
 			}
 		}

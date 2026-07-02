@@ -1,10 +1,24 @@
 import { useLayoutEffect, useState } from "react";
 
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import type { GridLayoutManagerSettings } from "../../config/manager";
 
 import { parsePixelValue } from "../utils/parse-pixel-value";
 
-export const useGridMeasurements = (container: HTMLDivElement | null) => {
+type UseGridMeasurementsOptions = Pick<
+	GridLayoutManagerSettings,
+	"columns" | "rows" | "columnGap" | "rowGap" | "minHeight"
+>;
+
+export const useGridMeasurements = (
+	container: HTMLDivElement | null,
+	{
+		columns,
+		rows,
+		columnGap: configuredColumnGap,
+		rowGap: configuredRowGap,
+		minHeight: configuredMinHeight
+	}: UseGridMeasurementsOptions
+) => {
 	const [sizes, setSizes] = useState({
 		columnWidth: 0,
 		rowHeight: 0,
@@ -32,8 +46,8 @@ export const useGridMeasurements = (container: HTMLDivElement | null) => {
 				}
 
 				const nextSizes = {
-					columnWidth: (rect.width - columnGap * (GRID_COLUMNS - 1)) / GRID_COLUMNS,
-					rowHeight: (gridHeight - rowGap * (GRID_ROWS - 1)) / GRID_ROWS,
+					columnWidth: (rect.width - columnGap * (columns - 1)) / columns,
+					rowHeight: (gridHeight - rowGap * (rows - 1)) / rows,
 					columnGap,
 					rowGap,
 					gridHeight
@@ -68,7 +82,7 @@ export const useGridMeasurements = (container: HTMLDivElement | null) => {
 			window.removeEventListener("resize", measure);
 			observer.disconnect();
 		};
-	}, [container]);
+	}, [columns, configuredColumnGap, configuredMinHeight, configuredRowGap, container, rows]);
 
 	return sizes;
 };

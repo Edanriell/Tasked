@@ -1,9 +1,12 @@
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import type { GridLayoutBounds } from "../../config/manager";
 import { DashboardWidget, ResizeParams } from "../../model/types";
 
 import { clampWidgetSize } from "../utils/clamp-widget-size";
 
-export const resolveResize = ({ widget, direction, deltaCols, deltaRows }: ResizeParams): DashboardWidget => {
+export const resolveResize = (
+	{ widget, direction, deltaCols, deltaRows }: ResizeParams,
+	{ columns, rows }: GridLayoutBounds
+): DashboardWidget => {
 	const next = { ...widget };
 	const right = widget.x + widget.w;
 	const bottom = widget.y + widget.h;
@@ -30,14 +33,19 @@ export const resolveResize = ({ widget, direction, deltaCols, deltaRows }: Resiz
 		next.h = widget.h - deltaRows;
 	}
 
+	const minW = Math.min(widget.minW, columns);
+	const minH = Math.min(widget.minH, rows);
+	const maxW = Math.max(minW, Math.min(widget.maxW ?? columns, columns));
+	const maxH = Math.max(minH, Math.min(widget.maxH ?? rows, rows));
+
 	// Clamp size to min/max constraints
 	const { w, h } = clampWidgetSize({
 		w: next.w,
 		h: next.h,
-		minW: widget.minW,
-		minH: widget.minH,
-		maxW: widget.maxW ?? GRID_COLUMNS,
-		maxH: widget.maxH ?? GRID_ROWS
+		minW,
+		minH,
+		maxW,
+		maxH
 	});
 
 	next.w = w;
@@ -62,19 +70,19 @@ export const resolveResize = ({ widget, direction, deltaCols, deltaRows }: Resiz
 	}
 
 	// HARD GRID BOUNDS SAFETY
-	if (next.x + next.w > GRID_COLUMNS) {
-		next.w = GRID_COLUMNS - next.x;
+	if (next.x + next.w > columns) {
+		next.w = columns - next.x;
 	}
 
-	if (next.y + next.h > GRID_ROWS) {
-		next.h = GRID_ROWS - next.y;
+	if (next.y + next.h > rows) {
+		next.h = rows - next.y;
 	}
 
 	// FINAL SAFETY: prevent invalid sizes
-	next.w = Math.max(widget.minW, next.w);
-	next.h = Math.max(widget.minH, next.h);
-	next.x = Math.min(Math.max(next.x, 0), GRID_COLUMNS - next.w);
-	next.y = Math.min(Math.max(next.y, 0), GRID_ROWS - next.h);
+	next.w = Math.max(minW, next.w);
+	next.h = Math.max(minH, next.h);
+	next.x = Math.min(Math.max(next.x, 0), columns - next.w);
+	next.y = Math.min(Math.max(next.y, 0), rows - next.h);
 
 	return next;
 };

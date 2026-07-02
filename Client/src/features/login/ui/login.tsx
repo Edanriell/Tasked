@@ -98,6 +98,8 @@ const BottomLeftCornerGlowEffect = () => {
 export const Login = () => {
 	const [state, action] = useActionState<LoginState, FormData>(loginAction, null);
 
+	// TODO When validation message is present if we didnt fix it animate shake
+
 	return (
 		<section className="relative z-[100] border-[0.031rem] border-solid border-(--white-pallete-20) rounded-[1rem] px-[2rem] py-[5.25rem] backdrop-blur-[3.625rem] bg-[rgba(1,0,9,0.15)] overflow-hidden">
 			<TopRightCornerGlowEffect />

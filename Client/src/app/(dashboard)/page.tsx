@@ -41,7 +41,7 @@ const HomePage = () => {
 					x={0}
 					y={0}
 					w={12}
-					h={11}
+					h={10}
 					minW={4}
 					minH={4}
 				>
@@ -53,7 +53,7 @@ const HomePage = () => {
 					x={12}
 					y={0}
 					w={6}
-					h={11}
+					h={10}
 					minW={4}
 					minH={4}
 				>
@@ -90,11 +90,11 @@ const HomePage = () => {
 					type="total-tasks"
 					label="Total Tasks"
 					x={0}
-					y={11}
+					y={10}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 				>
 					<Suspense fallback={<TotalTasksSkeleton />}>
 						<TotalTasks />
@@ -104,11 +104,11 @@ const HomePage = () => {
 					type="assignee-tasks"
 					label="Assignee Tasks"
 					x={6}
-					y={11}
+					y={10}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 				>
 					<Suspense fallback={<AssigneeTasksSkeleton />}>
 						<AssigneeTasks />
@@ -118,11 +118,11 @@ const HomePage = () => {
 					type="completed-tasks"
 					label="Completed Tasks"
 					x={12}
-					y={11}
+					y={10}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 				>
 					<Suspense fallback={<CompletedTasksSkeleton />}>
 						<CompletedTasks />
@@ -132,11 +132,11 @@ const HomePage = () => {
 					type="overdue-tasks"
 					label="Overdue Tasks"
 					x={18}
-					y={11}
+					y={10}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 				>
 					<Suspense fallback={<OverdueTasksSkeleton />}>
 						<OverdueTasks />
@@ -146,11 +146,11 @@ const HomePage = () => {
 					type="total-projects"
 					label="Total Projects"
 					x={0}
-					y={14}
+					y={13}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 					defaultVisible={false}
 				>
 					<Suspense fallback={<TotalProjectsSkeleton />}>
@@ -161,18 +161,18 @@ const HomePage = () => {
 					type="today-tasks"
 					label="Today Tasks"
 					x={6}
-					y={14}
+					y={13}
 					w={6}
 					h={3}
 					minW={4}
-					minH={4}
+					minH={3}
 					defaultVisible={false}
 				>
 					<Suspense fallback={<TodayTasksSkeleton />}>
 						<TodayTasks />
 					</Suspense>
 				</GridLayoutManager.Component>
-				<GridLayoutManager.Component type="tasks" label="Tasks" x={0} y={14} w={24} h={10} minW={4} minH={4}>
+				<GridLayoutManager.Component type="tasks" label="Tasks" x={0} y={13} w={24} h={10} minW={4} minH={4}>
 					<Tasks />
 				</GridLayoutManager.Component>
 			</GridLayoutManager>

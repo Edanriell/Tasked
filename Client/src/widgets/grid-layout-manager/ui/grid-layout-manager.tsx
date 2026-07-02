@@ -3,7 +3,7 @@
 import type { ReactElement } from "react";
 import { Children, isValidElement, useCallback, useEffect, useMemo, useState } from "react";
 
-import { GRID_CELL_COUNT, GRID_COLUMNS, GRID_ROWS } from "../config/manager";
+import { DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS, type GridLayoutManagerSettings } from "../config/manager";
 import { GridContainerContext } from "../lib/hooks/use-grid-container";
 import { useGridMeasurements } from "../lib/hooks/use-grid-measurements";
 import { hasCollision } from "../lib/utils/has-collision";
@@ -35,16 +35,35 @@ type GridLayoutManagerItemProps = {
 
 type GridLayoutManagerProps = {
 	children?: ReactElement | ReactElement[];
+	columns?: number;
+	rows?: number;
+	columnGap?: GridLayoutManagerSettings["columnGap"];
+	rowGap?: GridLayoutManagerSettings["rowGap"];
+	minHeight?: GridLayoutManagerSettings["minHeight"];
+	swapOverlapThreshold?: number;
 };
 
 type GridLayoutManager = ((props: Readonly<GridLayoutManagerProps>) => ReactElement) & GridLayoutManagerComponents;
 
-const GridLayoutManagerItem = (_props: Readonly<GridLayoutManagerItemProps>) => null;
+const GridLayoutManagerItem = (props: Readonly<GridLayoutManagerItemProps>) => {
+	void props;
 
-export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps>) => {
+	return null;
+};
+
+export const GridLayoutManager = (({
+	children,
+	columns = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.columns,
+	rows = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rows,
+	columnGap = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.columnGap,
+	rowGap = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rowGap,
+	minHeight = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.minHeight,
+	swapOverlapThreshold = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.swapOverlapThreshold
+}: Readonly<GridLayoutManagerProps>) => {
 	const widgets = useActiveLayout();
 
 	const editMode = useEditMode();
+	const setGridSettings = useDashboardLayoutStore((state) => state.setGridSettings);
 	const registerWidgets = useDashboardLayoutStore((state) => state.registerWidgets);
 	const removeWidget = useDashboardLayoutStore((state) => state.removeWidget);
 
@@ -58,7 +77,30 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 		invalid: false
 	});
 
-	const sizes = useGridMeasurements(container);
+	const gridSettings = useMemo<GridLayoutManagerSettings>(
+		() => ({
+			columns: Math.max(1, Math.floor(columns)),
+			rows: Math.max(1, Math.floor(rows)),
+			columnGap,
+			rowGap,
+			minHeight,
+			swapOverlapThreshold
+		}),
+		[columnGap, columns, minHeight, rowGap, rows, swapOverlapThreshold]
+	);
+	const gridCellCount = gridSettings.columns * gridSettings.rows;
+	const gridTemplateColumns = `repeat(${gridSettings.columns}, minmax(0, 1fr))`;
+	const gridTemplateRows = `repeat(${gridSettings.rows}, minmax(0, 1fr))`;
+	const sizes = useGridMeasurements(container, gridSettings);
+	const contextValue = useMemo(
+		() => ({
+			...sizes,
+			columns: gridSettings.columns,
+			rows: gridSettings.rows,
+			swapOverlapThreshold: gridSettings.swapOverlapThreshold
+		}),
+		[sizes, gridSettings.columns, gridSettings.rows, gridSettings.swapOverlapThreshold]
+	);
 
 	const declaredWidgets = useMemo(() => {
 		return Children.toArray(children).filter((child): child is ReactElement<GridLayoutManagerItemProps> =>
@@ -89,6 +131,10 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 	}, [declaredWidgets]);
 
 	useEffect(() => {
+		setGridSettings(gridSettings);
+	}, [gridSettings, setGridSettings]);
+
+	useEffect(() => {
 		registerWidgets(widgetDefinitions);
 	}, [registerWidgets, widgetDefinitions]);
 
@@ -110,35 +156,33 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 	// console.log("children", children);
 
 	return (
-		<GridContainerContext.Provider value={sizes}>
+		<GridContainerContext.Provider value={contextValue}>
 			<main
 				ref={setContainerRef}
-				className={[
-					"relative",
-					"isolate",
-					"grid",
-					"overflow-hidden",
-					"min-h-0",
-					"shrink-0",
-					"w-full",
-					"gap-2"
-				].join(" ")}
+				className={["relative", "isolate", "grid", "overflow-hidden", "min-h-0", "shrink-0", "w-full"].join(
+					" "
+				)}
 				style={{
 					height: sizes.gridHeight ? `${sizes.gridHeight}px` : undefined,
-					gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
-					gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+					minHeight: gridSettings.minHeight,
+					columnGap: gridSettings.columnGap,
+					rowGap: gridSettings.rowGap,
+					gridTemplateColumns,
+					gridTemplateRows
 				}}
 			>
 				{editMode && (
 					<div
 						aria-hidden="true"
-						className={["pointer-events-none", "absolute", "inset-0", "z-0", "grid", "gap-2"].join(" ")}
+						className={["pointer-events-none", "absolute", "inset-0", "z-0", "grid"].join(" ")}
 						style={{
-							gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
-							gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+							columnGap: gridSettings.columnGap,
+							rowGap: gridSettings.rowGap,
+							gridTemplateColumns,
+							gridTemplateRows
 						}}
 					>
-						{Array.from({ length: GRID_CELL_COUNT }).map((_, index) => (
+						{Array.from({ length: gridCellCount }).map((_, index) => (
 							<div key={index} className="rounded-[2px] border border-sky-300/25 bg-sky-300/5" />
 						))}
 					</div>

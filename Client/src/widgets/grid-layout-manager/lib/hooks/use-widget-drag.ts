@@ -2,7 +2,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { useGridContainer } from "./use-grid-container";
 
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
 import { useDashboardLayoutStore } from "../../model/store";
 import { type DashboardWidget } from "../../model/types";
 
@@ -17,7 +16,7 @@ type UseWidgetDragParameters = {
 };
 
 export function useWidgetDrag({ widget, onPreviewChange }: UseWidgetDragParameters) {
-	const { columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
+	const { columns, rows, columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
 
 	const moveDraftWidget = useDashboardLayoutStore((state) => state.moveDraftWidget);
 
@@ -62,12 +61,15 @@ export function useWidgetDrag({ widget, onPreviewChange }: UseWidgetDragParamete
 
 				const next = {
 					...widget,
-					...clampWidgetPosition({
-						x: widget.x + deltaCols,
-						y: widget.y + deltaRows,
-						w: widget.w,
-						h: widget.h
-					})
+					...clampWidgetPosition(
+						{
+							x: widget.x + deltaCols,
+							y: widget.y + deltaRows,
+							w: widget.w,
+							h: widget.h
+						},
+						{ columns, rows }
+					)
 				};
 
 				const committed = moveDraftWidget(
@@ -98,12 +100,12 @@ export function useWidgetDrag({ widget, onPreviewChange }: UseWidgetDragParamete
 					x: clamp(
 						rawOffset.x,
 						-committedPosition.x * columnUnit,
-						(GRID_COLUMNS - committedPosition.w - committedPosition.x) * columnUnit
+						(columns - committedPosition.w - committedPosition.x) * columnUnit
 					),
 					y: clamp(
 						rawOffset.y,
 						-committedPosition.y * rowUnit,
-						(GRID_ROWS - committedPosition.h - committedPosition.y) * rowUnit
+						(rows - committedPosition.h - committedPosition.y) * rowUnit
 					)
 				});
 			};
@@ -124,7 +126,7 @@ export function useWidgetDrag({ widget, onPreviewChange }: UseWidgetDragParamete
 			window.addEventListener("pointermove", move);
 			window.addEventListener("pointerup", up);
 		},
-		[columnGap, columnWidth, moveDraftWidget, onPreviewChange, rowGap, rowHeight, widget]
+		[columnGap, columnWidth, columns, moveDraftWidget, onPreviewChange, rowGap, rowHeight, rows, widget]
 	);
 
 	return useMemo(

@@ -1,4 +1,24 @@
-export const SWAP_OVERLAP_THRESHOLD = 0.4;
-export const GRID_COLUMNS = 24;
-export const GRID_ROWS = 24;
-export const GRID_CELL_COUNT = GRID_COLUMNS * GRID_ROWS;
+import type { CSSProperties } from "react";
+
+export type GridLayoutBounds = {
+	columns: number;
+	rows: number;
+};
+
+export type GridLayoutManagerSettings = {
+	columns: number;
+	rows: number;
+	columnGap: CSSProperties["columnGap"];
+	rowGap: CSSProperties["rowGap"];
+	minHeight: CSSProperties["minHeight"];
+	swapOverlapThreshold: number;
+};
+
+export const DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS = {
+	columns: 24,
+	rows: 24,
+	columnGap: "0.5rem",
+	rowGap: "0.5rem",
+	minHeight: 0,
+	swapOverlapThreshold: 0.4
+} satisfies GridLayoutManagerSettings;

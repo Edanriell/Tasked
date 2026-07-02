@@ -1,4 +1,4 @@
-import { GRID_COLUMNS, GRID_ROWS } from "../config/manager";
+import { useGridContainer } from "../lib/hooks/use-grid-container";
 import { gridToColumnStyle } from "../lib/utils/grid-to-column-style";
 import { gridToRowStyle } from "../lib/utils/grid-to-row-style";
 import type { DashboardWidget } from "../model/types";
@@ -12,16 +12,20 @@ type GhostLayerProps = {
 // Refactor clsx
 
 export const GridLayoutManagerComponentGhostLayer = ({ widget, invalid }: Readonly<GhostLayerProps>) => {
+	const { columns, rows, columnGap, rowGap } = useGridContainer();
+
 	if (!widget) {
 		return null;
 	}
 
 	return (
 		<div
-			className={["pointer-events-none", "absolute", "inset-0", "z-[70]", "grid", "gap-2"].join(" ")}
+			className={["pointer-events-none", "absolute", "inset-0", "z-[70]", "grid"].join(" ")}
 			style={{
-				gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
-				gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+				columnGap,
+				rowGap,
+				gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
+				gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`
 			}}
 		>
 			<div

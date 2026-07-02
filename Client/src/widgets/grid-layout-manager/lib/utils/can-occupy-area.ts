@@ -1,18 +1,25 @@
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
+import type { GridLayoutBounds } from "../../config/manager";
 import { OccupancyMatrix } from "../../model/types";
 
-export const canOccupyArea = (matrix: OccupancyMatrix, x: number, y: number, w: number, h: number) => {
+export const canOccupyArea = (
+	matrix: OccupancyMatrix,
+	x: number,
+	y: number,
+	w: number,
+	h: number,
+	{ columns, rows }: GridLayoutBounds
+) => {
 	for (let row = y; row < y + h; row++) {
 		for (let col = x; col < x + w; col++) {
 			if (row < 0 || col < 0) {
 				return false;
 			}
 
-			if (row >= GRID_ROWS) {
+			if (row >= rows) {
 				return false;
 			}
 
-			if (col >= GRID_COLUMNS) {
+			if (col >= columns) {
 				return false;
 			}
 

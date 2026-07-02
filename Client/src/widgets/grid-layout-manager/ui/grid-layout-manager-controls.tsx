@@ -1,6 +1,6 @@
 "use client";
 
-import { Fragment, useEffect, useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 
 import { Button } from "@shared/ui";
 
@@ -26,21 +26,14 @@ export const GridLayoutManagerControls = () => {
 		return availableWidgets.filter((widget) => !activeTypes.has(widget.type));
 	}, [availableWidgets, layout]);
 
-	useEffect(() => {
-		if (addableWidgets.length === 0) {
-			setSelectedWidgetType("");
-			return;
-		}
-
-		if (!addableWidgets.some((widget) => widget.type === selectedWidgetType)) {
-			setSelectedWidgetType(addableWidgets[0].type);
-		}
-	}, [addableWidgets, selectedWidgetType]);
+	const activeSelectedWidgetType = addableWidgets.some((widget) => widget.type === selectedWidgetType)
+		? selectedWidgetType
+		: (addableWidgets[0]?.type ?? "");
 
 	const handleAddWidget = () => {
-		if (!selectedWidgetType) return;
+		if (!activeSelectedWidgetType) return;
 
-		addWidget(selectedWidgetType);
+		addWidget(activeSelectedWidgetType);
 	};
 
 	return (
@@ -56,7 +49,7 @@ export const GridLayoutManagerControls = () => {
 						aria-label="Widget to add"
 						className="h-[2.625rem] min-w-[10rem] rounded-[0.75rem] border border-(--white-pallete-10) bg-(--geek-blue-primary-opacity-150) px-[0.75rem] font-(family-name:--font-barlow) text-[0.875rem] font-bold text-(--white-pallete-100) outline-none transition-colors hover:border-(--white-pallete-20) focus-visible:border-(--geek-blue-4)"
 						disabled={addableWidgets.length === 0}
-						value={selectedWidgetType}
+						value={activeSelectedWidgetType}
 						onChange={(event) => {
 							setSelectedWidgetType(event.target.value);
 						}}
@@ -71,7 +64,7 @@ export const GridLayoutManagerControls = () => {
 							))
 						)}
 					</select>
-					<Button disabled={!selectedWidgetType} variant="secondary" onClick={handleAddWidget}>
+					<Button disabled={!activeSelectedWidgetType} variant="secondary" onClick={handleAddWidget}>
 						Add
 					</Button>
 					<Button variant="secondary" onClick={cancelEditSession}>

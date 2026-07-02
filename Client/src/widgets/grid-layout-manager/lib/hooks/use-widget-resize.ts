@@ -15,7 +15,7 @@ type UseWidgetResizeParameters = {
 };
 
 export function useWidgetResize({ widget, onPreviewChange }: UseWidgetResizeParameters) {
-	const { columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
+	const { columns, rows, columnWidth, rowHeight, columnGap, rowGap } = useGridContainer();
 
 	const updateDraftWidget = useDashboardLayoutStore((state) => state.updateDraftWidget);
 
@@ -38,12 +38,15 @@ export function useWidgetResize({ widget, onPreviewChange }: UseWidgetResizePara
 
 				const deltaRows = pxToRows(moveEvent.clientY - startY, rowHeight, rowGap);
 
-				const next = resolveResize({
-					widget,
-					direction,
-					deltaCols,
-					deltaRows
-				});
+				const next = resolveResize(
+					{
+						widget,
+						direction,
+						deltaCols,
+						deltaRows
+					},
+					{ columns, rows }
+				);
 
 				onPreviewChange(next);
 				updateDraftWidget(widget.id, next);
@@ -62,7 +65,7 @@ export function useWidgetResize({ widget, onPreviewChange }: UseWidgetResizePara
 
 			window.addEventListener("pointerup", up);
 		},
-		[columnGap, columnWidth, onPreviewChange, rowGap, rowHeight, widget, updateDraftWidget]
+		[columnGap, columnWidth, columns, onPreviewChange, rowGap, rowHeight, rows, widget, updateDraftWidget]
 	);
 
 	return {

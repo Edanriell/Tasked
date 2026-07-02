@@ -1,5 +1,3 @@
-import { GRID_COLUMNS, GRID_ROWS } from "../../config/manager";
-
 import { clamp } from "./clamp";
 
 export const clampWidgetSize = ({
@@ -7,15 +5,15 @@ export const clampWidgetSize = ({
 	h,
 	minW,
 	minH,
-	maxW = GRID_COLUMNS,
-	maxH = GRID_ROWS
+	maxW,
+	maxH
 }: {
 	w: number;
 	h: number;
 	minW: number;
 	minH: number;
-	maxW?: number;
-	maxH?: number;
+	maxW: number;
+	maxH: number;
 }) => {
 	return {
 		w: clamp(w, minW, maxW),

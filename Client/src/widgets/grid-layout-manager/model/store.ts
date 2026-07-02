@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 
+import { DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS, type GridLayoutManagerSettings } from "../config/manager";
 import { canPlaceWidget } from "../lib/utils/can-place-widget";
 import { cloneLayout } from "../lib/utils/clone-layout";
 import { createDefaultLayout } from "../lib/utils/create-default-layout";
@@ -12,11 +13,13 @@ import { sameWidgetDefinitions } from "../lib/utils/same-widget-definitions";
 import { type DashboardWidget, type DashboardWidgetDefinition, MoveDraftWidgetResult, WidgetPosition } from "./types";
 
 type DashboardLayoutStore = {
+	gridSettings: GridLayoutManagerSettings;
 	layout: DashboardWidget[];
 	draftLayout: DashboardWidget[] | null;
 	availableWidgets: DashboardWidgetDefinition[];
 	hiddenWidgetTypes: string[];
 	editMode: boolean;
+	setGridSettings: (settings: GridLayoutManagerSettings) => void;
 	registerWidgets: (widgets: DashboardWidgetDefinition[]) => void;
 	setLayout: (layout: DashboardWidget[]) => void;
 	startEditSession: () => void;
@@ -35,14 +38,78 @@ type DashboardLayoutStore = {
 	removeWidget: (id: string) => void;
 };
 
+const clampValue = (value: number, min: number, max: number) => {
+	return Math.min(Math.max(value, min), Math.max(min, max));
+};
+
+const fitWidgetToGrid = (widget: DashboardWidget, { columns, rows }: GridLayoutManagerSettings): DashboardWidget => {
+	const minW = Math.min(widget.minW, columns);
+	const minH = Math.min(widget.minH, rows);
+	const maxW = Math.max(minW, Math.min(widget.maxW ?? columns, columns));
+	const maxH = Math.max(minH, Math.min(widget.maxH ?? rows, rows));
+	const w = clampValue(widget.w, minW, maxW);
+	const h = clampValue(widget.h, minH, maxH);
+
+	return {
+		...widget,
+		w,
+		h,
+		x: clampValue(widget.x, 0, columns - w),
+		y: clampValue(widget.y, 0, rows - h)
+	};
+};
+
+const fitLayoutToGrid = (layout: DashboardWidget[], settings: GridLayoutManagerSettings) => {
+	let changed = false;
+	const nextLayout = layout.map((widget) => {
+		const nextWidget = fitWidgetToGrid(widget, settings);
+
+		if (
+			nextWidget.x !== widget.x ||
+			nextWidget.y !== widget.y ||
+			nextWidget.w !== widget.w ||
+			nextWidget.h !== widget.h
+		) {
+			changed = true;
+		}
+
+		return nextWidget;
+	});
+
+	return changed ? nextLayout : layout;
+};
+
 export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 	persist(
 		(set, get) => ({
+			gridSettings: DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS,
 			layout: [],
 			draftLayout: null,
 			availableWidgets: [],
 			hiddenWidgetTypes: [],
 			editMode: false,
+			setGridSettings: (settings) => {
+				const current = get().gridSettings;
+
+				if (
+					current.columns === settings.columns &&
+					current.rows === settings.rows &&
+					current.columnGap === settings.columnGap &&
+					current.rowGap === settings.rowGap &&
+					current.minHeight === settings.minHeight &&
+					current.swapOverlapThreshold === settings.swapOverlapThreshold
+				) {
+					return;
+				}
+
+				const draftLayout = get().draftLayout;
+
+				set({
+					gridSettings: settings,
+					layout: fitLayoutToGrid(get().layout, settings),
+					draftLayout: draftLayout ? fitLayoutToGrid(draftLayout, settings) : null
+				});
+			},
 			registerWidgets: (widgets) => {
 				const allowedTypes = new Set(widgets.map((widget) => widget.type));
 				const { availableWidgets, hiddenWidgetTypes, layout, draftLayout } = get();
@@ -63,15 +130,17 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 							continue;
 						}
 
-						next.push(createDefaultWidget(definition));
+						next.push(fitWidgetToGrid(createDefaultWidget(definition), get().gridSettings));
 						existingTypes.add(definition.type);
 					}
 
 					return next;
 				};
 
-				const nextLayout = normalizeLayout(layout);
-				const nextDraftLayout = draftLayout ? normalizeLayout(draftLayout) : null;
+				const nextLayout = fitLayoutToGrid(normalizeLayout(layout), get().gridSettings);
+				const nextDraftLayout = draftLayout
+					? fitLayoutToGrid(normalizeLayout(draftLayout), get().gridSettings)
+					: null;
 
 				if (
 					sameWidgetDefinitions(availableWidgets, widgets) &&
@@ -87,7 +156,7 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					draftLayout: nextDraftLayout
 				});
 			},
-			setLayout: (layout) => set({ layout }),
+			setLayout: (layout) => set({ layout: fitLayoutToGrid(layout, get().gridSettings) }),
 			startEditSession: () => {
 				const { editMode, layout } = get();
 
@@ -116,7 +185,10 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 				});
 			},
 			resetLayout: () => {
-				const nextLayout = createDefaultLayout(get().availableWidgets, get().hiddenWidgetTypes);
+				const nextLayout = fitLayoutToGrid(
+					createDefaultLayout(get().availableWidgets, get().hiddenWidgetTypes),
+					get().gridSettings
+				);
 
 				if (get().editMode) {
 					set({
@@ -145,7 +217,7 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 						...changes
 					};
 
-					if (!canPlaceWidget(draft, nextWidget)) {
+					if (!canPlaceWidget(draft, nextWidget, get().gridSettings)) {
 						return widget;
 					}
 
@@ -185,7 +257,7 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					};
 				}
 
-				if (canPlaceWidget(draft, candidate)) {
+				if (canPlaceWidget(draft, candidate, get().gridSettings)) {
 					set({
 						draftLayout: draft.map((widget) => {
 							if (widget.id === draggedWidget.id) {
@@ -201,7 +273,13 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 					};
 				}
 
-				const nextLayout = reflowLayout(draft, candidate, originPosition);
+				const nextLayout = reflowLayout(
+					draft,
+					candidate,
+					originPosition,
+					get().gridSettings,
+					get().gridSettings.swapOverlapThreshold
+				);
 
 				if (!nextLayout) return null;
 
@@ -221,9 +299,9 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 
 				if (!definition || activeLayout.some((widget) => widget.type === type)) return;
 
-				const widget = createDefaultWidget(definition);
+				const widget = fitWidgetToGrid(createDefaultWidget(definition), get().gridSettings);
 
-				const position = findFreePosition(activeLayout, widget.w, widget.h);
+				const position = findFreePosition(activeLayout, widget.w, widget.h, get().gridSettings);
 
 				if (!position) return;
 
