@@ -1,8 +1,27 @@
-export const GradientBorder = () => {
+import { useId } from "react";
+
+type GradientBorderProps = {
+	thickness?: number;
+	radius?: number;
+	animationDuration?: number;
+};
+
+export const GradientBorder = ({
+	thickness = 2,
+	radius = 24,
+	animationDuration = 8
+}: Readonly<GradientBorderProps>) => {
+	const gradientBorderId = `gradient-border-${useId().replaceAll(":", "")}`;
+
 	return (
-		<svg className="absolute inset-0 w-full h-full pointer-events-none" aria-hidden="true">
+		<svg
+			className="pointer-events-none absolute inset-0 h-full w-full"
+			shapeRendering="geometricPrecision"
+			aria-hidden="true"
+			preserveAspectRatio="none"
+		>
 			<defs>
-				<linearGradient id="reg-grad" gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
+				<linearGradient id={gradientBorderId} gradientUnits="objectBoundingBox" x1="0" y1="0" x2="1" y2="1">
 					<stop offset="9%" stopColor="#6872FF" />
 					<stop offset="28%" stopColor="#A268FF" />
 					<stop offset="47%" stopColor="#DC68FF" />
@@ -13,16 +32,21 @@ export const GradientBorder = () => {
 						type="rotate"
 						from="0 0.5 0.5"
 						to="360 0.5 0.5"
-						dur="8s"
+						dur={`${animationDuration}s`}
 						repeatCount="indefinite"
 					/>
 				</linearGradient>
-				<mask id="reg-mask">
-					<rect width="100%" height="100%" rx="24" fill="white" />
-					<rect x="1.5" y="1.5" width="calc(100% - 3px)" height="calc(100% - 3px)" rx="22.5" fill="black" />
-				</mask>
 			</defs>
-			<rect width="100%" height="100%" rx="24" fill="url(#reg-grad)" mask="url(#reg-mask)" />
+			<rect
+				x={thickness / 2}
+				y={thickness / 2}
+				width={`calc(100% - ${thickness}px)`}
+				height={`calc(100% - ${thickness}px)`}
+				rx={Math.max(radius - thickness / 2, 0)}
+				fill="none"
+				stroke={`url(#${gradientBorderId})`}
+				strokeWidth={thickness}
+			/>
 		</svg>
 	);
 };
