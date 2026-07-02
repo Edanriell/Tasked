@@ -3,13 +3,13 @@
 import type { ReactElement } from "react";
 import { Children, isValidElement, useCallback, useEffect, useMemo, useState } from "react";
 
-import { GRID_CELL_COUNT } from "../config/manager";
+import { GRID_CELL_COUNT, GRID_COLUMNS, GRID_ROWS } from "../config/manager";
 import { GridContainerContext } from "../lib/hooks/use-grid-container";
 import { useGridMeasurements } from "../lib/hooks/use-grid-measurements";
 import { hasCollision } from "../lib/utils/has-collision";
 import { useActiveLayout, useEditMode } from "../model/selectors";
 import { useDashboardLayoutStore } from "../model/store";
-import type { DashboardWidget as DashboardWidgetType, DashboardWidgetDefinition } from "../model/types";
+import type { DashboardWidgetDefinition, DashboardWidget as DashboardWidgetType } from "../model/types";
 
 import { GridLayoutManagerComponent } from "./grid-layout-manager-component";
 import { GridLayoutManagerComponentGhostLayer } from "./grid-layout-manager-component-ghost-layer";
@@ -118,27 +118,25 @@ export const GridLayoutManager = (({ children }: Readonly<GridLayoutManagerProps
 					"isolate",
 					"grid",
 					"overflow-hidden",
-					"min-h-[32rem]",
-					"flex-1",
+					"min-h-0",
+					"shrink-0",
 					"w-full",
-					"grid-cols-[repeat(24,minmax(0,1fr))]",
-					"grid-rows-[repeat(24,minmax(0,1fr))]",
 					"gap-2"
 				].join(" ")}
+				style={{
+					height: sizes.gridHeight ? `${sizes.gridHeight}px` : undefined,
+					gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
+					gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+				}}
 			>
 				{editMode && (
 					<div
 						aria-hidden="true"
-						className={[
-							"pointer-events-none",
-							"absolute",
-							"inset-0",
-							"z-0",
-							"grid",
-							"grid-cols-[repeat(24,minmax(0,1fr))]",
-							"grid-rows-[repeat(24,minmax(0,1fr))]",
-							"gap-2"
-						].join(" ")}
+						className={["pointer-events-none", "absolute", "inset-0", "z-0", "grid", "gap-2"].join(" ")}
+						style={{
+							gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
+							gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+						}}
 					>
 						{Array.from({ length: GRID_CELL_COUNT }).map((_, index) => (
 							<div key={index} className="rounded-[2px] border border-sky-300/25 bg-sky-300/5" />

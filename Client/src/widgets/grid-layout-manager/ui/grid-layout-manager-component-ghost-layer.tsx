@@ -1,3 +1,4 @@
+import { GRID_COLUMNS, GRID_ROWS } from "../config/manager";
 import { gridToColumnStyle } from "../lib/utils/grid-to-column-style";
 import { gridToRowStyle } from "../lib/utils/grid-to-row-style";
 import type { DashboardWidget } from "../model/types";
@@ -17,16 +18,11 @@ export const GridLayoutManagerComponentGhostLayer = ({ widget, invalid }: Readon
 
 	return (
 		<div
-			className={[
-				"pointer-events-none",
-				"absolute",
-				"inset-0",
-				"z-[70]",
-				"grid",
-				"grid-cols-[repeat(24,minmax(0,1fr))]",
-				"grid-rows-[repeat(24,minmax(0,1fr))]",
-				"gap-2"
-			].join(" ")}
+			className={["pointer-events-none", "absolute", "inset-0", "z-[70]", "grid", "gap-2"].join(" ")}
+			style={{
+				gridTemplateColumns: `repeat(${GRID_COLUMNS}, minmax(0, 1fr))`,
+				gridTemplateRows: `repeat(${GRID_ROWS}, minmax(0, 1fr))`
+			}}
 		>
 			<div
 				className={[

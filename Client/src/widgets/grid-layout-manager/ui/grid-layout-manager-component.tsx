@@ -56,15 +56,13 @@ export const GridLayoutManagerComponent = ({
 			className={[
 				"relative",
 				"overflow-hidden",
+				"min-h-0",
+				"min-w-0",
 				"rounded-[1.25rem]",
-				// "bg-slate-900",
-				// "border",
-				// "border-(--white-pallete-10)",
-				// "shadow-[0_0.75rem_2rem_0_rgba(0,0,0,0.2)]",
 				"z-20",
 				editMode ? "cursor-grab touch-none" : "",
-				drag.isDragging ? "z-50 cursor-grabbing border-(--daybreak-blue-400) opacity-70" : "",
-				resize.resizing ? "z-50 border-(--daybreak-blue-400)" : ""
+				drag.isDragging ? "z-50 cursor-grabbing opacity-70" : "",
+				resize.resizing ? "z-50" : ""
 			].join(" ")}
 			style={{
 				gridColumn: gridToColumnStyle(widget.x, widget.w),

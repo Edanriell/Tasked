@@ -9,32 +9,34 @@ export const useGridMeasurements = (container: HTMLDivElement | null) => {
 		columnWidth: 0,
 		rowHeight: 0,
 		columnGap: 0,
-		rowGap: 0
+		rowGap: 0,
+		gridHeight: 0
 	});
 
 	useLayoutEffect(() => {
 		if (!container) return;
 
-		let raf = 0;
-
-		const observer = new ResizeObserver((entries) => {
+		const measure = () => {
 			cancelAnimationFrame(raf);
 
 			raf = requestAnimationFrame(() => {
-				const rect = entries[0].contentRect;
+				const rect = container.getBoundingClientRect();
 				const styles = getComputedStyle(container);
 				const columnGap = parsePixelValue(styles.columnGap);
 				const rowGap = parsePixelValue(styles.rowGap);
+				const minHeight = parsePixelValue(styles.minHeight);
+				const gridHeight = Math.max(window.innerHeight - rect.top, minHeight);
 
-				if (rect.width === 0 || rect.height === 0) {
+				if (rect.width === 0 || gridHeight === 0) {
 					return;
 				}
 
 				const nextSizes = {
 					columnWidth: (rect.width - columnGap * (GRID_COLUMNS - 1)) / GRID_COLUMNS,
-					rowHeight: (rect.height - rowGap * (GRID_ROWS - 1)) / GRID_ROWS,
+					rowHeight: (gridHeight - rowGap * (GRID_ROWS - 1)) / GRID_ROWS,
 					columnGap,
-					rowGap
+					rowGap,
+					gridHeight
 				};
 
 				setSizes((current) => {
@@ -42,7 +44,8 @@ export const useGridMeasurements = (container: HTMLDivElement | null) => {
 						current.columnWidth === nextSizes.columnWidth &&
 						current.rowHeight === nextSizes.rowHeight &&
 						current.columnGap === nextSizes.columnGap &&
-						current.rowGap === nextSizes.rowGap
+						current.rowGap === nextSizes.rowGap &&
+						current.gridHeight === nextSizes.gridHeight
 					) {
 						return current;
 					}
@@ -50,12 +53,19 @@ export const useGridMeasurements = (container: HTMLDivElement | null) => {
 					return nextSizes;
 				});
 			});
-		});
+		};
 
+		let raf = 0;
+
+		const observer = new ResizeObserver(measure);
 		observer.observe(container);
+
+		measure();
+		window.addEventListener("resize", measure);
 
 		return () => {
 			cancelAnimationFrame(raf);
+			window.removeEventListener("resize", measure);
 			observer.disconnect();
 		};
 	}, [container]);
