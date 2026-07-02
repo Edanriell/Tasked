@@ -1,5 +1,6 @@
 export const CREATE_PROJECT_TRIGGER_VARIANT = {
 	Icon: "Icon",
+	IconButton: "IconButton",
 	Button: "Button"
 } as const;
 

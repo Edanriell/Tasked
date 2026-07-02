@@ -34,7 +34,7 @@ export const CreateProject = ({
 					<span className="sr-only">Create New Project</span>
 				</motion.button>
 			);
-		case CREATE_PROJECT_TRIGGER_VARIANT.Button:
+		case CREATE_PROJECT_TRIGGER_VARIANT.IconButton:
 			return (
 				<Button
 					variant="secondary"
@@ -42,6 +42,15 @@ export const CreateProject = ({
 					leadingIcon={<Icon className="w-[1rem] h-[1rem]" type={ICON.Add} />}
 				>
 					<span className="sr-only">Create New Project</span>
+				</Button>
+			);
+		case CREATE_PROJECT_TRIGGER_VARIANT.Button:
+			return (
+				<Button classes="flex items-center gap-x-[4px] rounded-[12px]">
+					<Icon type={ICON.AddCircle} size={16} />
+					<span className="font-(family-name:--font-barlow) font-bold!s text-(--white-pallete-100)">
+						New Project
+					</span>
 				</Button>
 			);
 	}

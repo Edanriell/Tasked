@@ -2,7 +2,7 @@ import { Fragment } from "react";
 
 import { ViewHeader } from "@widgets/view-header";
 
-import { CreateTask } from "@features/create-task";
+import { CREATE_PROJECT_TRIGGER_VARIANT, CreateProject } from "@features/create-project";
 import { Search } from "@features/search";
 
 import { ICON } from "@shared/ui";
@@ -10,10 +10,10 @@ import { ICON } from "@shared/ui";
 const ProjectsPage = () => {
 	return (
 		<Fragment>
-			<ViewHeader title="My Tasks" icon={ICON.Projects}>
+			<ViewHeader title="Projects" icon={ICON.Projects}>
 				<ViewHeader.Tools>
 					<Search />
-					<CreateTask />
+					<CreateProject triggerVariant={CREATE_PROJECT_TRIGGER_VARIANT.Button} />
 				</ViewHeader.Tools>
 			</ViewHeader>
 			<main>

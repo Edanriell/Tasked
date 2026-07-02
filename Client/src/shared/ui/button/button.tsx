@@ -23,9 +23,9 @@ export const Button = ({
 	return (
 		<button
 			className={clsx(
-				"cursor-pointer rounded-[0.75rem] py-[0.75rem] px-[1.5rem] font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em] text-(--white-pallete-100) capitalize transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out focus-visible:outline-none focus-visible:shadow-[0_0_0_0.125rem_var(--daybreak-blue-200)] active:translate-y-[0.031rem] disabled:cursor-not-allowed disabled:opacity-60 disabled:active:translate-y-0",
+				"cursor-pointer rounded-[0.75rem] py-[0.75rem] px-[1.5rem] font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[114%] tracking-[0.01em] text-(--white-pallete-100) capitalize transition-[background-color,border-color,box-shadow,transform,color] duration-200 ease-out focus-visible:outline-none focus-visible:shadow-focus-blue active:translate-y-[0.031rem] disabled:cursor-not-allowed disabled:opacity-60 disabled:active:translate-y-0",
 				{
-					"shadow-[0_0_1.5rem_0_var(--geek-blue-primary-opacity-200)] bg-(--geek-blue-7) hover:bg-(--geek-blue-6) active:bg-(--geek-blue-8) focus-visible:bg-(--geek-blue-6)":
+					"shadow-geek-blue bg-(--geek-blue-7) hover:bg-(--geek-blue-6) active:bg-(--geek-blue-8) focus-visible:bg-(--geek-blue-6)":
 						variant === "primary"
 				},
 				{
@@ -33,11 +33,11 @@ export const Button = ({
 						variant === "secondary"
 				},
 				{
-					"shadow-[0_0_1.5rem_0_var(--geek-blue-primary-opacity-200)] bg-(--accent-color-dengerous-1) hover:bg-(--accent-color-dengerous-3) active:bg-(--accent-color-dengerous-2) focus-visible:bg-(--accent-color-dengerous-4)":
+					"shadow-geek-blue bg-(--accent-color-dengerous-1) hover:bg-(--accent-color-dengerous-3) active:bg-(--accent-color-dengerous-2) focus-visible:bg-(--accent-color-dengerous-4)":
 						variant === "danger"
 				},
 				{
-					"shadow-[0_0_1.5rem_0_var(--geek-blue-primary-opacity-200)] bg-(--accent-color-success-1) hover:bg-(--accent-color-success-3) active:bg-(--accent-color-success-2) focus-visible:bg-(--accent-color-success-4)":
+					"shadow-geek-blue bg-(--accent-color-success-1) hover:bg-(--accent-color-success-3) active:bg-(--accent-color-success-2) focus-visible:bg-(--accent-color-success-4)":
 						variant === "success"
 				},
 				{

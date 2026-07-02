@@ -9,7 +9,6 @@
             #0e073e 75%,
             #0e0656 100%
     );
-
     --background-image-brand-violet-reversed: linear-gradient(
             -316deg,
             #6f3bf4 0%,
@@ -17,7 +16,6 @@
             #0e073e 75%,
             #020412 100%
     );
-
     --background-image-brand-dark: linear-gradient(
             -200deg,
             #020412 0%,
@@ -25,7 +23,6 @@
             #02030F 20%,
             #010009 30%
     );
-
     --background-image-vignette: radial-gradient(
             59.06% 64.38% at 52.47% 43.67%,
             rgba(1, 0, 9, 0) 65.71%,
@@ -39,4 +36,7 @@
     --breakpoint-lg: 1024px;
     --breakpoint-xl: 1280px;
     --breakpoint-2xl: 1440px;
+
+    --shadow-geek-blue: 0 0 24px 0 var(--geek-blue-primary-opacity-200);
+    --shadow-focus-blue: 0 0 0 2px var(--daybreak-blue-200);
 }

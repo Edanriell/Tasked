@@ -59,7 +59,7 @@ const HomePage = () => {
 				>
 					<Projects>
 						<Projects.HeaderActions>
-							<CreateProject triggerVariant={CREATE_PROJECT_TRIGGER_VARIANT.Button} />
+							<CreateProject triggerVariant={CREATE_PROJECT_TRIGGER_VARIANT.IconButton} />
 						</Projects.HeaderActions>
 						<Projects.Actions>
 							{(projectId: string) => (
