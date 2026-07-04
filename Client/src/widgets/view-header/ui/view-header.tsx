@@ -24,13 +24,11 @@ type ViewHeader = ((props: Readonly<ViewHeaderProps>) => ReactElement) & ViewHea
 
 const validateViewHeaderChildren = (children: ReactElement | ReactElement[]) => {
 	Children.forEach(children, (child) => {
-		if (
-			!(
-				(isValidElement(child) && child.type === ViewHeader.Info) ||
-				child.type === ViewHeader.Actions ||
-				child.type === ViewHeader.Tools
-			)
-		) {
+		if (!(
+			(isValidElement(child) && child.type === ViewHeader.Info) ||
+			child.type === ViewHeader.Actions ||
+			child.type === ViewHeader.Tools
+		)) {
 			throw new Error(`
 				Component <ViewHeader> can only accept children of type <ViewHeader.Info>, <ViewHeader.Actions> and <ViewHeader.Tools>.
 				Received child of type ${child.type}.
@@ -66,7 +64,7 @@ export const ViewHeader = (({ title, imageUrl, icon, children }: Readonly<ViewHe
 	}
 
 	return (
-		<div className="flex justify-between items-center mb-[1.25rem]">
+		<div className="flex justify-between items-center pb-[1rem] mb-[1.25rem] border-b-[0.031rem] border-solid border-(--white-pallete-10)">
 			<div className="flex items-center">
 				<div
 					className={clsx(
