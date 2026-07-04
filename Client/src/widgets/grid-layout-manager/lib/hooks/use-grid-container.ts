@@ -7,6 +7,7 @@ export type GridMeasurements = {
 	rowHeight: number;
 	columnGap: number;
 	rowGap: number;
+	gridWidth: number;
 	gridHeight: number;
 	swapOverlapThreshold: number;
 };
@@ -18,6 +19,7 @@ export const GridContainerContext = createContext<GridMeasurements>({
 	rowHeight: 0,
 	columnGap: 0,
 	rowGap: 0,
+	gridWidth: 0,
 	gridHeight: 0,
 	swapOverlapThreshold: 0
 });

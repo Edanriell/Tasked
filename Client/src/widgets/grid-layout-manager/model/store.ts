@@ -94,6 +94,8 @@ export const useDashboardLayoutStore = create<DashboardLayoutStore>()(
 				if (
 					current.columns === settings.columns &&
 					current.rows === settings.rows &&
+					current.rowWidth === settings.rowWidth &&
+					current.rowHeight === settings.rowHeight &&
 					current.columnGap === settings.columnGap &&
 					current.rowGap === settings.rowGap &&
 					current.minHeight === settings.minHeight &&

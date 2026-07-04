@@ -37,6 +37,8 @@ type GridLayoutManagerProps = {
 	children?: ReactElement | ReactElement[];
 	columns?: number;
 	rows?: number;
+	rowWidth?: GridLayoutManagerSettings["rowWidth"];
+	rowHeight?: GridLayoutManagerSettings["rowHeight"];
 	columnGap?: GridLayoutManagerSettings["columnGap"];
 	rowGap?: GridLayoutManagerSettings["rowGap"];
 	minHeight?: GridLayoutManagerSettings["minHeight"];
@@ -44,6 +46,10 @@ type GridLayoutManagerProps = {
 };
 
 type GridLayoutManager = ((props: Readonly<GridLayoutManagerProps>) => ReactElement) & GridLayoutManagerComponents;
+
+const normalizeTrackSize = (value: number | undefined) => {
+	return typeof value === "number" && Number.isFinite(value) && value > 0 ? value : undefined;
+};
 
 const GridLayoutManagerItem = (props: Readonly<GridLayoutManagerItemProps>) => {
 	void props;
@@ -55,6 +61,8 @@ export const GridLayoutManager = (({
 	children,
 	columns = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.columns,
 	rows = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rows,
+	rowWidth = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rowWidth,
+	rowHeight = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rowHeight,
 	columnGap = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.columnGap,
 	rowGap = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.rowGap,
 	minHeight = DEFAULT_GRID_LAYOUT_MANAGER_SETTINGS.minHeight,
@@ -81,16 +89,22 @@ export const GridLayoutManager = (({
 		() => ({
 			columns: Math.max(1, Math.floor(columns)),
 			rows: Math.max(1, Math.floor(rows)),
+			rowWidth: normalizeTrackSize(rowWidth),
+			rowHeight: normalizeTrackSize(rowHeight),
 			columnGap,
 			rowGap,
 			minHeight,
 			swapOverlapThreshold
 		}),
-		[columnGap, columns, minHeight, rowGap, rows, swapOverlapThreshold]
+		[columnGap, columns, minHeight, rowGap, rowHeight, rows, rowWidth, swapOverlapThreshold]
 	);
 	const gridCellCount = gridSettings.columns * gridSettings.rows;
-	const gridTemplateColumns = `repeat(${gridSettings.columns}, minmax(0, 1fr))`;
-	const gridTemplateRows = `repeat(${gridSettings.rows}, minmax(0, 1fr))`;
+	const gridTemplateColumns = `repeat(${gridSettings.columns}, ${
+		gridSettings.rowWidth ? `${gridSettings.rowWidth}px` : "minmax(0, 1fr)"
+	})`;
+	const gridTemplateRows = `repeat(${gridSettings.rows}, ${
+		gridSettings.rowHeight ? `${gridSettings.rowHeight}px` : "minmax(0, 1fr)"
+	})`;
 	const sizes = useGridMeasurements(container, gridSettings);
 	const contextValue = useMemo(
 		() => ({
@@ -163,6 +177,7 @@ export const GridLayoutManager = (({
 					" "
 				)}
 				style={{
+					width: gridSettings.rowWidth && sizes.gridWidth ? `${sizes.gridWidth}px` : undefined,
 					height: sizes.gridHeight ? `${sizes.gridHeight}px` : undefined,
 					minHeight: gridSettings.minHeight,
 					columnGap: gridSettings.columnGap,

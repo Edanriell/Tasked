@@ -26,7 +26,7 @@ import { ICON } from "@shared/ui";
 
 const HomePage = () => {
 	return (
-		<div className="flex h-full min-h-[calc(100dvh-4rem)] flex-col">
+		<div className="flex h-full flex-col">
 			<ViewHeader title="Dashboard" icon={ICON.Home}>
 				<ViewHeader.Tools>
 					<Search />
@@ -34,7 +34,7 @@ const HomePage = () => {
 					<GridLayoutManagerControls />
 				</ViewHeader.Tools>
 			</ViewHeader>
-			<GridLayoutManager>
+			<GridLayoutManager rows={20}>
 				<GridLayoutManager.Component
 					type="private-notepad"
 					label="Private notepad"
@@ -92,9 +92,9 @@ const HomePage = () => {
 					x={0}
 					y={10}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 				>
 					<Suspense fallback={<TotalTasksSkeleton />}>
 						<TotalTasks />
@@ -106,9 +106,9 @@ const HomePage = () => {
 					x={6}
 					y={10}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 				>
 					<Suspense fallback={<AssigneeTasksSkeleton />}>
 						<AssigneeTasks />
@@ -120,9 +120,9 @@ const HomePage = () => {
 					x={12}
 					y={10}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 				>
 					<Suspense fallback={<CompletedTasksSkeleton />}>
 						<CompletedTasks />
@@ -134,9 +134,9 @@ const HomePage = () => {
 					x={18}
 					y={10}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 				>
 					<Suspense fallback={<OverdueTasksSkeleton />}>
 						<OverdueTasks />
@@ -148,9 +148,9 @@ const HomePage = () => {
 					x={0}
 					y={13}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 					defaultVisible={false}
 				>
 					<Suspense fallback={<TotalProjectsSkeleton />}>
@@ -163,16 +163,16 @@ const HomePage = () => {
 					x={6}
 					y={13}
 					w={6}
-					h={3}
+					h={2}
 					minW={4}
-					minH={3}
+					minH={2}
 					defaultVisible={false}
 				>
 					<Suspense fallback={<TodayTasksSkeleton />}>
 						<TodayTasks />
 					</Suspense>
 				</GridLayoutManager.Component>
-				<GridLayoutManager.Component type="tasks" label="Tasks" x={0} y={13} w={24} h={10} minW={4} minH={4}>
+				<GridLayoutManager.Component type="tasks" label="Tasks" x={0} y={13} w={24} h={8} minW={4} minH={4}>
 					<Tasks />
 				</GridLayoutManager.Component>
 			</GridLayoutManager>
