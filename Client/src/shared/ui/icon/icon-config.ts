@@ -20,7 +20,8 @@ export const ICON = {
 	TextAlignJustifyCenter: "TextAlignJustifyCenter",
 	More: "More",
 	Chevron: "Chevron",
-	Clock: "Clock"
+	Clock: "Clock",
+	Grid: "Grid"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

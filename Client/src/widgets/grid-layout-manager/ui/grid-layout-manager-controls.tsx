@@ -2,7 +2,7 @@
 
 import { Fragment, useMemo, useState } from "react";
 
-import { Button } from "@shared/ui";
+import { Button, ICON, Icon } from "@shared/ui";
 
 import { useLayoutShortcuts } from "../lib/hooks/use-layout-shortcuts";
 import { useDashboardLayoutStore } from "../model/store";
@@ -39,7 +39,12 @@ export const GridLayoutManagerControls = () => {
 	return (
 		<Fragment>
 			{!editMode ? (
-				<Button onClick={startEditSession}>Customize</Button>
+				<Button onClick={startEditSession} classes="flex items-center gap-x-[4px] rounded-[12px]">
+					<Icon type={ICON.Grid} size={16} />
+					<span className="font-(family-name:--font-barlow) font-bold!s text-(--white-pallete-100)">
+						Customize
+					</span>
+				</Button>
 			) : (
 				<Fragment>
 					<Button variant="secondary" onClick={resetLayout}>

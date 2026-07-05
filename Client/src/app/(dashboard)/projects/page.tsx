@@ -1,20 +1,23 @@
-import { Fragment, Suspense } from "react";
+import {Fragment, Suspense} from "react";
 
-import { ViewHeader } from "@widgets/view-header";
+import {AssigneeTasks, AssigneeTasksSkeleton} from "@widgets/assignee-tasks";
+import {CompletedProjects, CompletedProjectsSkeleton} from "@widgets/completed-projects";
+import {CompletedTasks, CompletedTasksSkeleton} from "@widgets/completed-tasks";
+import {GridLayoutManager, GridLayoutManagerControls} from "@widgets/grid-layout-manager";
+import {OverdueTasks, OverdueTasksSkeleton} from "@widgets/overdue-tasks";
+import {ProjectsList, ProjectsListSkeleton} from "@widgets/projects-list";
+import {TodayTasks, TodayTasksSkeleton} from "@widgets/today-tasks";
+import {TotalProjects, TotalProjectsSkeleton} from "@widgets/total-projects";
+import {TotalTasks, TotalTasksSkeleton} from "@widgets/total-tasks";
+import {TotalUsers, TotalUsersSkeleton} from "@widgets/total-users";
+import {ViewHeader} from "@widgets/view-header";
 
-import { CREATE_PROJECT_TRIGGER_VARIANT, CreateProject } from "@features/create-project";
-import { Search } from "@features/search";
+import {CREATE_PROJECT_TRIGGER_VARIANT, CreateProject} from "@features/create-project";
+import {DeleteProject} from "@features/delete-project";
+import {EditProject} from "@features/edit-project";
+import {Search} from "@features/search";
 
-import { ICON } from "@shared/ui";
-import { AssigneeTasks, AssigneeTasksSkeleton } from "@widgets/assignee-tasks";
-import { CompletedProjects, CompletedProjectsSkeleton } from "@widgets/completed-projects";
-import { CompletedTasks, CompletedTasksSkeleton } from "@widgets/completed-tasks";
-import { GridLayoutManager, GridLayoutManagerControls } from "@widgets/grid-layout-manager";
-import { OverdueTasks, OverdueTasksSkeleton } from "@widgets/overdue-tasks";
-import { TodayTasks, TodayTasksSkeleton } from "@widgets/today-tasks";
-import { TotalProjects, TotalProjectsSkeleton } from "@widgets/total-projects";
-import { TotalTasks, TotalTasksSkeleton } from "@widgets/total-tasks";
-import { TotalUsers, TotalUsersSkeleton } from "@widgets/total-users";
+import {ICON} from "@shared/ui";
 
 const ProjectsPage = () => {
 	return (
@@ -146,6 +149,20 @@ const ProjectsPage = () => {
 							</Suspense>
 						</GridLayoutManager.Component>
 					</GridLayoutManager>
+				</div>
+				<div className="mt-[20px]">
+					<Suspense fallback={<ProjectsListSkeleton />}>
+						<ProjectsList>
+							<ProjectsList.Actions>
+								{(projectId: string) => (
+									<Fragment>
+										<EditProject id={projectId} />
+										<DeleteProject id={projectId} />
+									</Fragment>
+								)}
+							</ProjectsList.Actions>
+						</ProjectsList>
+					</Suspense>
 				</div>
 			</main>
 		</Fragment>
