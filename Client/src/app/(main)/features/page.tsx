@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@shared/config";
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "Features | Tasked",
@@ -34,6 +34,33 @@ const MATRIX = [
 	["People", "User rows, ownership, assignment visibility"],
 	["Notes", "Private context stored beside the dashboard"]
 ] as const;
+
+// TODO
+// Make oage more visually rich
+// Redesign
+// 01
+// Project control
+// Keep project state, settings, privacy, and ownership visible without opening multiple tools.
+//
+// Pinned projects
+// Private settings
+// Assigned users
+// 02
+// Task execution
+// Turn project scope into prioritized work that can be scanned and acted on quickly.
+//
+// Priority labels
+// Today view
+// Overdue view
+// 03
+// Dashboard awareness
+// Use flexible widgets to keep the signals your team checks most often close at hand.
+//
+// Resizable widgets
+// Progress totals
+// Private notepad
+
+// Make beatiful animations using motion
 
 const FeaturesPage = () => {
 	return (

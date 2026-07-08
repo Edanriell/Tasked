@@ -1,7 +1,7 @@
+export * from "./avatar-stack";
 export * from "./badge";
 export * from "./button";
 export * from "./divider";
-export * from "./featured-clients";
 export * from "./gradient-border";
 export * from "./gradient-text";
 export * from "./icon";
@@ -10,6 +10,7 @@ export * from "./logotype";
 export * from "./main-navigation";
 export * from "./motion-icon";
 export * from "./navigation-link-highlight";
+export * from "./progress-bar";
 export * from "./project-image";
 export * from "./skeleton";
 export * from "./spinner";

@@ -6,7 +6,7 @@ export type ButtonVariants = "primary" | "secondary" | "danger" | "success";
 type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "className"> & {
 	children?: ReactNode;
 	variant?: ButtonVariants;
-	classes?: string;
+	className?: string;
 	leadingIcon?: ReactNode;
 	trailingIcon?: ReactNode;
 };
@@ -14,7 +14,7 @@ type ButtonProps = Omit<ComponentPropsWithoutRef<"button">, "className"> & {
 export const Button = ({
 	variant = "primary",
 	children,
-	classes,
+	className,
 	leadingIcon,
 	trailingIcon,
 	disabled,
@@ -46,7 +46,7 @@ export const Button = ({
 				{
 					"opacity-20 cursor-not-allowed!": disabled
 				},
-				classes
+				className
 			)}
 			disabled={disabled}
 			{...props}

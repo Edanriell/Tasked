@@ -12,11 +12,9 @@ export const LoginSchema = z.object({
 export type LoginFormData = z.infer<typeof LoginSchema>;
 
 export type LoginState = {
-	errors?: {
-		fullName?: string[];
+	fieldErrors?: {
 		email?: string[];
 		password?: string[];
 	};
-	message?: string;
-	success?: boolean;
-} | null;
+	error?: string;
+};

@@ -38,7 +38,7 @@ export const CreateProject = ({
 			return (
 				<Button
 					variant="secondary"
-					classes="w-[2rem]! h-[2rem]! p-[0.5rem]! rounded-[0.625rem]"
+					className="w-[2rem]! h-[2rem]! p-[0.5rem]! rounded-[0.625rem]"
 					leadingIcon={<Icon className="w-[1rem] h-[1rem]" type={ICON.Add} />}
 				>
 					<span className="sr-only">Create New Project</span>
@@ -46,7 +46,7 @@ export const CreateProject = ({
 			);
 		case CREATE_PROJECT_TRIGGER_VARIANT.Button:
 			return (
-				<Button classes="flex items-center gap-x-[4px] rounded-[12px]">
+				<Button className="flex items-center gap-x-[4px] rounded-[12px]">
 					<Icon type={ICON.AddCircle} size={16} />
 					<span className="font-(family-name:--font-barlow) font-bold!s text-(--white-pallete-100)">
 						New Project

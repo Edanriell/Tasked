@@ -1,1 +1,2 @@
-export * from "./ui/project-row";
+export * from "./config";
+export * from "./ui";

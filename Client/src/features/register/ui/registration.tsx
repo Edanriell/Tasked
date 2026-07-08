@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useActionState } from "react";
 
 import { ROUTES } from "@shared/config";
+import { getActionError } from "@shared/lib/utils";
 import { Button, ICON, Icon, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
 import { registrationAction } from "../api";
 import type { RegistrationState } from "../model";
+import { initialState } from "../model";
 
 const TopRightCornerGlowEffect = () => {
 	return (
@@ -17,6 +19,9 @@ const TopRightCornerGlowEffect = () => {
 			height="301"
 			viewBox="0 0 277 301"
 			fill="none"
+			shapeRendering="geometricPrecision"
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<g filter="url(#filter0_f_488_129570)">
@@ -60,6 +65,9 @@ const BottomLeftCornerGlowEffect = () => {
 			height="489"
 			viewBox="0 0 340 489"
 			fill="none"
+			shapeRendering="geometricPrecision"
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<g filter="url(#filter0_f_488_129571)">
@@ -96,7 +104,7 @@ const BottomLeftCornerGlowEffect = () => {
 };
 
 export const Registration = () => {
-	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, null);
+	const [state, action] = useActionState<RegistrationState, FormData>(registrationAction, initialState);
 
 	return (
 		<section className="relative z-[100] border-[0.031rem] border-solid border-(--white-pallete-20) rounded-[1rem] px-[2rem] py-[3rem] backdrop-blur-[3.625rem] bg-[rgba(1,0,9,0.15)] overflow-hidden">
@@ -104,38 +112,50 @@ export const Registration = () => {
 			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[1.75rem] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
 				Register your account
 			</h2>
-			<ValidationErrorMessage classes="mb-[1rem]" message={state?.message} />
+			<ValidationErrorMessage className="mb-[1rem]" message={state?.error} />
 			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
 				<div className="relative">
 					<Input
 						label="Full name"
 						name="fullName"
 						type="text"
-						aria-describedby={state?.errors?.fullName ? "fullName-error" : undefined}
+						aria-describedby={state?.fieldErrors?.fullName ? "fullName-error" : undefined}
 					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.fullName![0]} />
+					<ValidationErrorMessage
+						id="fullName-error"
+						className="mt-[0.5rem]"
+						message={getActionError(state?.fieldErrors, "fullName")}
+					/>
 				</div>
 				<div className="relative">
 					<Input
 						label="Email"
 						name="email"
 						type="email"
-						aria-describedby={state?.errors?.email ? "email-error" : undefined}
+						aria-describedby={state?.fieldErrors?.email ? "email-error" : undefined}
 					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.email![0]} />
+					<ValidationErrorMessage
+						id="email-error"
+						className="mt-[0.5rem]"
+						message={getActionError(state?.fieldErrors, "email")}
+					/>
 				</div>
 				<div className="relative">
 					<Input
 						label="Password"
 						name="password"
 						type="password"
-						aria-describedby={state?.errors?.password ? "password-error" : undefined}
+						aria-describedby={state?.fieldErrors?.password ? "password-error" : undefined}
 					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.password![0]} />
+					<ValidationErrorMessage
+						id="password-error"
+						className="mt-[0.5rem]"
+						message={getActionError(state?.fieldErrors, "password")}
+					/>
 				</div>
 				<SubmitButton
 					childrenDisplayedWhenPending={false}
-					classes="w-full mt-[1rem] max-h-[40px]!"
+					className="w-full mt-[1rem] max-h-[40px]!"
 					spinnerClasses="mt-[-4px]"
 				>
 					Register Account
@@ -149,7 +169,7 @@ export const Registration = () => {
 			</p>
 			<Button
 				leadingIcon={<Icon type={ICON.Google} size={16} />}
-				classes="relative z-20 w-full"
+				className="relative z-20 w-full"
 				variant="secondary"
 				type="button"
 			>

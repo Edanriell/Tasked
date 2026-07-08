@@ -14,6 +14,9 @@ type MarketingLayoutProps = {
 	children: ReactNode;
 };
 
+// TODO
+// Redesign user profile so it perfectly fits our current design !
+
 const MarketingLayout = ({ children }: Readonly<MarketingLayoutProps>) => {
 	return (
 		<Fragment>

@@ -4,7 +4,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@shared/config";
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "Overview | Tasked",
@@ -37,6 +37,43 @@ const DASHBOARD_ROWS = [
 	{ label: "Project notes review", status: "Medium", color: "bg-(--sunrise-yellow-101)" },
 	{ label: "Assign design updates", status: "Low", color: "bg-(--cyan-1000)" }
 ] as const;
+
+// TODO
+// Redesign this part
+// Today workload
+// Live view
+//
+// Elena PetrovaJohn BlockSophie Laurent
+// Launch checklist
+// High
+// Project notes review
+// Medium
+// Assign design updates
+// Low
+
+// Redesign this part
+// Active projects
+// 12
+// Open tasks
+// 32
+// Team members
+// 18
+
+// In this part
+// 01
+// Plan the work
+// Create projects with tasks, owners, and the delivery context your team needs.
+//
+// 02
+// Read the dashboard
+// Scan totals, overdue work, today tasks, completion, and assignments in one place.
+//
+// 03
+// Move with focus
+// Open the right project view when priorities, people, or settings need attention.
+// Where 01 border top is redundant !
+
+// Add beatiful animations using motion !
 
 const OverviewPage = () => {
 	return (

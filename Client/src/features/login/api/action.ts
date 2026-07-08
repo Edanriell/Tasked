@@ -15,7 +15,9 @@ export const loginAction = async (_prevState: LoginState, formData: FormData): P
 
 	if (!validationResult.success) {
 		return {
-			errors: z.flattenError(validationResult.error).fieldErrors
+			fieldErrors: {
+				...z.flattenError(validationResult.error).fieldErrors
+			}
 		};
 	}
 
@@ -32,14 +34,14 @@ export const loginAction = async (_prevState: LoginState, formData: FormData): P
 			}
 
 			return {
-				message: resolved.message
+				error: resolved.message
 			};
 		}
 
 		return {
-			message: "Network error. Please check your connection and try again."
+			error: "Network error. Please check your connection and try again."
 		};
 	}
 
-	redirect(ROUTES.Dashboard);
+	redirect(ROUTES.Home);
 };

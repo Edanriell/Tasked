@@ -4,10 +4,12 @@ import Link from "next/link";
 import { useActionState } from "react";
 
 import { ROUTES } from "@shared/config";
+import { getActionError } from "@shared/lib/utils";
 import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
 import { loginAction } from "../api";
 import type { LoginState } from "../model";
+import { initialState } from "../model";
 
 const TopRightCornerGlowEffect = () => {
 	return (
@@ -17,6 +19,9 @@ const TopRightCornerGlowEffect = () => {
 			height="301"
 			viewBox="0 0 277 301"
 			fill="none"
+			shapeRendering="geometricPrecision"
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<g filter="url(#filter0_f_488_129570)">
@@ -60,6 +65,9 @@ const BottomLeftCornerGlowEffect = () => {
 			height="489"
 			viewBox="0 0 340 489"
 			fill="none"
+			shapeRendering="geometricPrecision"
+			aria-hidden="true"
+			focusable="false"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<g filter="url(#filter0_f_488_129571)">
@@ -96,7 +104,7 @@ const BottomLeftCornerGlowEffect = () => {
 };
 
 export const Login = () => {
-	const [state, action] = useActionState<LoginState, FormData>(loginAction, null);
+	const [state, action] = useActionState<LoginState, FormData>(loginAction, initialState);
 
 	// TODO When validation message is present if we didnt fix it animate shake
 
@@ -106,30 +114,38 @@ export const Login = () => {
 			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[1.75rem] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
 				Sign In To Your Account
 			</h2>
-			<ValidationErrorMessage classes="mb-[1rem]" message={state?.message} />
+			<ValidationErrorMessage className="mb-[1rem]" message={state?.error} />
 			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
 				<div className="relative">
 					<Input
 						label="Email"
 						name="email"
 						type="email"
-						aria-describedby={state?.errors?.email ? "email-error" : undefined}
+						aria-describedby={state?.fieldErrors?.email ? "email-error" : undefined}
 					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.email![0]} />
+					<ValidationErrorMessage
+						id="email-error"
+						className="mt-[0.5rem]"
+						message={getActionError(state?.fieldErrors, "email")}
+					/>
 				</div>
 				<div className="relative">
 					<Input
 						label="Password"
 						name="password"
 						type="password"
-						aria-describedby={state?.errors?.password ? "password-error" : undefined}
+						aria-describedby={state?.fieldErrors?.password ? "password-error" : undefined}
 					/>
-					<ValidationErrorMessage classes="mt-[0.5rem]" message={state?.errors?.password![0]} />
+					<ValidationErrorMessage
+						id="password-error"
+						className="mt-[0.5rem]"
+						message={getActionError(state?.fieldErrors, "password")}
+					/>
 				</div>
 				<SubmitButton
 					childrenDisplayedWhenPending={false}
-					classes="w-full mt-[1rem] max-h-[40px]!"
-					spinnerClasses="mt-[-4px]"
+					className="w-full mt-[1rem] max-h-[2.5rem]!"
+					spinnerClasses="mt-[-0.25rem]"
 				>
 					Login
 				</SubmitButton>
@@ -142,7 +158,7 @@ export const Login = () => {
 			</p>
 			<Button
 				leadingIcon={<Icon type={ICON.Google} size={16} />}
-				classes="relative z-20 w-full"
+				className="relative z-20 w-full"
 				variant="secondary"
 				type="button"
 			>

@@ -18,7 +18,9 @@ export const registrationAction = async (
 
 	if (!validationResult.success) {
 		return {
-			errors: z.flattenError(validationResult.error).fieldErrors
+			fieldErrors: {
+				...z.flattenError(validationResult.error).fieldErrors
+			}
 		};
 	}
 
@@ -35,14 +37,14 @@ export const registrationAction = async (
 			}
 
 			return {
-				message: resolved.message
+				error: resolved.message
 			};
 		}
 
 		return {
-			message: "Network error. Please check your connection and try again."
+			error: "Network error. Please check your connection and try again."
 		};
 	}
 
-	redirect(ROUTES.Dashboard);
+	redirect(ROUTES.Home);
 };

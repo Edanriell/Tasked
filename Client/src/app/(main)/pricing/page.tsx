@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@shared/config";
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "Pricing | Tasked",
@@ -25,6 +25,50 @@ const ROWS = [
 ] as const;
 
 const INCLUDED = ["Private notepad", "Task priority labels", "Today task view", "Overdue task view"] as const;
+
+// TODO Make cards more visaully rich
+// Redesign !
+// Active projects
+//
+// 3
+//
+// Unlimited
+//
+// Unlimited
+//
+// Dashboard widgets
+//
+// Core
+//
+// Resizable
+//
+// Resizable plus reporting
+//
+// Team assignments
+//
+// Basic
+//
+// Included
+//
+// Advanced
+//
+// Project settings
+//
+// Standard
+//
+// Private projects
+//
+// Private workspaces
+//
+// Support
+//
+// Community
+//
+// Priority
+//
+// Priority plus onboarding
+
+// Create pretty animations using motion !
 
 const PricingPage = () => {
 	return (

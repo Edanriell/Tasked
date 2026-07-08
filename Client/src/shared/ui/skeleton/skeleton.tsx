@@ -42,7 +42,6 @@ export const Skeleton = ({
 
 	return (
 		<div
-			aria-hidden="true"
 			className={clsx(
 				"relative block shrink-0 overflow-hidden border-[0.031rem] border-solid bg-clip-padding",
 				"transition-[background-color,border-color,box-shadow,opacity] duration-300 ease-out",
@@ -64,10 +63,8 @@ export const Skeleton = ({
 					"before:pointer-events-none before:absolute before:inset-0 before:animate-[skeleton-shimmer_1.8s_cubic-bezier(0.4,0,0.2,1)_infinite] before:bg-linear-to-r before:from-transparent before:via-(--white-pallete-90) before:to-transparent":
 						animated && theme === "light"
 				},
-				classes,
 				className
 			)}
-			role="presentation"
 			style={skeletonStyle}
 			{...props}
 		/>

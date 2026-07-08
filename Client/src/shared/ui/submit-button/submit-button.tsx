@@ -1,17 +1,17 @@
 "use client";
 
+import { clsx } from "clsx";
 import { motion } from "motion/react";
 import { ReactElement } from "react";
 import { useFormStatus } from "react-dom";
 
 import type { ButtonVariants } from "@shared/ui";
 import { Button, Spinner } from "@shared/ui";
-import { clsx } from "clsx";
 
 type SubmitButtonProps = {
 	children: ReactElement | string;
 	variant?: ButtonVariants;
-	classes?: string;
+	className?: string;
 	spinnerClasses?: string;
 	childrenDisplayedWhenPending?: boolean;
 };
@@ -19,7 +19,7 @@ type SubmitButtonProps = {
 export const SubmitButton = ({
 	variant = "primary",
 	children,
-	classes,
+	className,
 	spinnerClasses,
 	childrenDisplayedWhenPending = true
 }: Readonly<SubmitButtonProps>) => {
@@ -41,7 +41,7 @@ export const SubmitButton = ({
 				};
 
 	return (
-		<Button disabled={pending} aria-disabled={pending} variant={variant} classes={classes} type="submit">
+		<Button disabled={pending} aria-disabled={pending} variant={variant} className={className} type="submit">
 			<motion.span className="relative">
 				{displayChildren && children}
 				{pending && (

@@ -39,7 +39,7 @@ export const GridLayoutManagerControls = () => {
 	return (
 		<Fragment>
 			{!editMode ? (
-				<Button onClick={startEditSession} classes="flex items-center gap-x-[4px] rounded-[12px]">
+				<Button onClick={startEditSession} className="flex items-center gap-x-[4px] rounded-[12px]">
 					<Icon type={ICON.Grid} size={16} />
 					<span className="font-(family-name:--font-barlow) font-bold!s text-(--white-pallete-100)">
 						Customize

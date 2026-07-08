@@ -7,7 +7,7 @@ type GradientBorderProps = {
 };
 
 export const GradientBorder = ({
-	thickness = 2,
+	thickness = 1,
 	radius = 24,
 	animationDuration = 8
 }: Readonly<GradientBorderProps>) => {

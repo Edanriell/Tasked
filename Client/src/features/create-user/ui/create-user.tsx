@@ -36,7 +36,7 @@ export const CreateUser = ({ triggerVariant = CREATE_USER_TRIGGER_VARIANT.Icon }
 			return (
 				<Button
 					variant="secondary"
-					classes="w-[2rem]! h-[2rem]! p-[0.5rem]! rounded-[0.625rem]"
+					className="w-[2rem]! h-[2rem]! p-[0.5rem]! rounded-[0.625rem]"
 					leadingIcon={<Icon className="w-[1rem] h-[1rem]" type={ICON.Add} />}
 				>
 					<span className="sr-only">Create New User</span>

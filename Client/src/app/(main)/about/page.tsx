@@ -3,7 +3,7 @@ import Link from "next/link";
 
 import { ROUTES } from "@shared/config";
 
-export const dynamic = "force-static";
+// export const dynamic = "force-static";
 
 export const metadata: Metadata = {
 	title: "About | Tasked",
@@ -22,6 +22,30 @@ const RHYTHM = [
 	{ label: "Review", description: "Read dashboard signals before priorities drift." },
 	{ label: "Move", description: "Act from focused project and task views." }
 ] as const;
+
+// Redesign
+// Tasked is built for teams that want less scattered tracking and more practical momentum: projects, tasks, people, notes, and signals in one calm operating view.
+//
+// Start planning
+// View features
+// Should be used instead of border top border left
+// Redesign 01
+// Plan
+// Capture the project, scope, and working context.
+//
+// 02
+// Assign
+// Make ownership visible at the same level as the work.
+//
+// 03
+// Review
+// Read dashboard signals before priorities drift.
+//
+// 04
+// Move
+// Act from focused project and task views.
+// Make page more visaully rich
+// Add animations using motion
 
 const AboutPage = () => {
 	return (

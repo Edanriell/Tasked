@@ -16,11 +16,10 @@ export const RegistrationSchema = z.object({
 export type RegistrationFormData = z.infer<typeof RegistrationSchema>;
 
 export type RegistrationState = {
-	errors?: {
+	fieldErrors?: {
 		fullName?: string[];
 		email?: string[];
 		password?: string[];
 	};
-	message?: string;
-	success?: boolean;
-} | null;
+	error?: string;
+};

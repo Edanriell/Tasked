@@ -16,7 +16,7 @@ export const ChangeLog = () => {
 				Creating or adding new tasks couldn&#39;t be easier
 			</p>
 			<Button
-				classes="flex items-center gap-x-[0.25rem] font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[114%] tracking-[0.01em] text-(--white-pallete-100) z-10 py-[1rem]"
+				className="flex items-center gap-x-[0.25rem] font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[114%] tracking-[0.01em] text-(--white-pallete-100) z-10 py-[1rem]"
 				aria-label="Open improvements"
 			>
 				<Icon type={ICON.Improvements} size={16} />
