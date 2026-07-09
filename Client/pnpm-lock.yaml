@@ -110,7 +110,7 @@ importers:
         version: 0.7.4(prettier-plugin-css-order@2.2.0(postcss@8.5.16)(prettier@3.9.4))(prettier-plugin-organize-attributes@1.0.0(prettier@3.9.4))(prettier-plugin-organize-imports@4.3.0(prettier@3.9.4)(typescript@5.9.3))(prettier@3.9.4)
       react-scan:
         specifier: ^0.5.7
-        version: 0.5.7(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(esbuild@0.25.12)(eslint@9.39.4(jiti@2.7.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+        version: 0.5.7(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(esbuild@0.25.12)(eslint@9.39.4(jiti@2.7.0))(preact-render-to-string@5.2.6)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       steiger:
         specifier: ^0.5.13
         version: 0.5.13(typescript@5.9.3)
@@ -3155,8 +3155,13 @@ packages:
     peerDependencies:
       preact: '>=10'
 
-  preact@10.29.6:
-    resolution: {integrity: sha512-/UzLXnc1jrAS2uHi89XsSECqXVHYzV1VUL1L3esxrmPRmDvKFWtmbabE2a4QQ5a3bLgBivubRCEOt4GGmncPBQ==}
+  preact@10.29.7:
+    resolution: {integrity: sha512-DCHYrK/B10yUD3ZjLfhZ3WIE/9Vf9VFUODcRE2dRomTYDpJk6z6L9wecSfhfE6M9ZTHUdyQkoC46arIDhEV84Q==}
+    peerDependencies:
+      preact-render-to-string: '>=5'
+    peerDependenciesMeta:
+      preact-render-to-string:
+        optional: true
 
   precinct@12.3.2:
     resolution: {integrity: sha512-JbJevI1K80z8e/WIyDt/4vUN/4qcfBSKKqOjJA4mosPPPb7zODKRJQV7YN7apVWN3k58nZYm/vEsLgEGYmnxwg==}
@@ -3508,8 +3513,8 @@ packages:
     resolution: {integrity: sha512-wKyQRQpjJ0sIp62ErSZdGsjMJWsap5oRNihHhu6G7JVO/9jIB6UyevL+tXuOqrng8j/cxKTWyWUwvSTriiZz/g==}
     engines: {node: '>=8'}
 
-  string-width@8.2.1:
-    resolution: {integrity: sha512-IIaP0g3iy9Cyy18w3M9YcaDudujEAVHKt3a3QJg1+sr/oX96TbaGUubG0hJyCjCBThFH+tFpcIyoUHUn1ogaLA==}
+  string-width@8.2.2:
+    resolution: {integrity: sha512-GaPUh5gfdrYzqeVNZvUfT23vYYxXzKYidUcnMtJg/3rxRV63EFZy3k6xfKlmfeJD0176lnUV/Usr3XcwSvFzpg==}
     engines: {node: '>=20'}
 
   string.prototype.includes@2.0.1:
@@ -4702,10 +4707,10 @@ snapshots:
 
   '@preact/signals-core@1.14.4': {}
 
-  '@preact/signals@2.9.3(preact@10.29.6)':
+  '@preact/signals@2.9.3(preact@10.29.7)':
     dependencies:
       '@preact/signals-core': 1.14.4
-      preact: 10.29.6
+      preact: 10.29.7(preact-render-to-string@5.2.6)
 
   '@react-grab/cli@0.1.48':
     dependencies:
@@ -6505,8 +6510,8 @@ snapshots:
       next: 16.2.10(@babel/core@7.29.7)(@opentelemetry/api@1.9.1)(babel-plugin-react-compiler@1.0.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       oauth: 0.9.15
       openid-client: 5.7.1
-      preact: 10.29.6
-      preact-render-to-string: 5.2.6(preact@10.29.6)
+      preact: 10.29.7(preact-render-to-string@5.2.6)
+      preact-render-to-string: 5.2.6(preact@10.29.7)
       react: 19.2.7
       react-dom: 19.2.7(react@19.2.7)
       uuid: 8.3.2
@@ -6627,7 +6632,7 @@ snapshots:
       is-unicode-supported: 2.1.0
       log-symbols: 7.0.1
       stdin-discarder: 0.3.2
-      string-width: 8.2.1
+      string-width: 8.2.2
 
   own-keys@1.0.1:
     dependencies:
@@ -6818,12 +6823,14 @@ snapshots:
       picocolors: 1.1.1
       source-map-js: 1.2.1
 
-  preact-render-to-string@5.2.6(preact@10.29.6):
+  preact-render-to-string@5.2.6(preact@10.29.7):
     dependencies:
-      preact: 10.29.6
+      preact: 10.29.7(preact-render-to-string@5.2.6)
       pretty-format: 3.8.0
 
-  preact@10.29.6: {}
+  preact@10.29.7(preact-render-to-string@5.2.6):
+    optionalDependencies:
+      preact-render-to-string: 5.2.6(preact@10.29.7)
 
   precinct@12.3.2:
     dependencies:
@@ -6954,16 +6961,16 @@ snapshots:
 
   react-is@16.13.1: {}
 
-  react-scan@0.5.7(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(esbuild@0.25.12)(eslint@9.39.4(jiti@2.7.0))(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
+  react-scan@0.5.7(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(esbuild@0.25.12)(eslint@9.39.4(jiti@2.7.0))(preact-render-to-string@5.2.6)(react-dom@19.2.7(react@19.2.7))(react@19.2.7):
     dependencies:
       '@babel/core': 7.29.7
       '@babel/types': 7.29.7
-      '@preact/signals': 2.9.3(preact@10.29.6)
+      '@preact/signals': 2.9.3(preact@10.29.7)
       '@rollup/pluginutils': 5.4.0
       bippy: 0.5.43(react@19.2.7)
       commander: 14.0.3
       picocolors: 1.1.1
-      preact: 10.29.6
+      preact: 10.29.7(preact-render-to-string@5.2.6)
       prompts: 2.4.2
       react: 19.2.7
       react-doctor: 0.7.2(@opentelemetry/core@2.9.0(@opentelemetry/api@1.9.1))(eslint@9.39.4(jiti@2.7.0))
@@ -6980,6 +6987,7 @@ snapshots:
       - bun-types-no-globals
       - eslint
       - oxlint-tsgolint
+      - preact-render-to-string
       - rolldown
       - rollup
       - supports-color
@@ -7236,7 +7244,7 @@ snapshots:
       is-fullwidth-code-point: 3.0.0
       strip-ansi: 6.0.1
 
-  string-width@8.2.1:
+  string-width@8.2.2:
     dependencies:
       get-east-asian-width: 1.6.0
       strip-ansi: 7.2.0

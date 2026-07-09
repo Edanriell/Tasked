@@ -17,4 +17,5 @@ export type LoginState = {
 		password?: string[];
 	};
 	error?: string;
+	validationId?: string;
 };

@@ -22,4 +22,5 @@ export type RegistrationState = {
 		password?: string[];
 	};
 	error?: string;
+	validationId?: string;
 };

@@ -18,7 +18,6 @@ type UserProfileState = "opened" | "closed";
 
 export const UserProfile = () => {
 	const [userProfileState, setUserProfileState] = useState<UserProfileState>("closed");
-
 	const userProfileRef = useRef<HTMLDivElement>(null);
 
 	const isUserProfileOpened = userProfileState === "opened";

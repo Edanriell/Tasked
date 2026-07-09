@@ -20,7 +20,8 @@ export const registrationAction = async (
 		return {
 			fieldErrors: {
 				...z.flattenError(validationResult.error).fieldErrors
-			}
+			},
+			validationId: "registration_" + Date.now()
 		};
 	}
 
@@ -37,12 +38,14 @@ export const registrationAction = async (
 			}
 
 			return {
-				error: resolved.message
+				error: resolved.message,
+				validationId: "api_registration_" + Date.now()
 			};
 		}
 
 		return {
-			error: "Network error. Please check your connection and try again."
+			error: "Network error. Please check your connection and try again.",
+			validationId: "network_registration_" + Date.now()
 		};
 	}
 

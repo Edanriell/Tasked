@@ -3,34 +3,53 @@ import type { Metadata } from "next";
 type BuildStaticMetadataParameters = {
 	title: string;
 	description: string;
-	openGraph?: Partial<NonNullable<Metadata["openGraph"]>>;
+	metadataBase?: URL;
 	imagePath?: string;
+	openGraph?: Metadata["openGraph"];
+	twitter?: Metadata["twitter"];
+	metadata?: Omit<Metadata, "title" | "description" | "openGraph" | "twitter">;
 };
 
-export function buildStaticMetadata({
+export const buildStaticMetadata = ({
 	title,
 	description,
+	metadataBase,
+	imagePath,
 	openGraph,
-	imagePath
-}: BuildStaticMetadataParameters): Metadata {
-	// const metadataBase = new URL(envServer.WEBSITE_URL);
-	// const imageUrl = imagePath ? new URL(imagePath, metadataBase).toString() : undefined;
+	twitter,
+	metadata
+}: BuildStaticMetadataParameters): Metadata => {
+	const imageUrl = imagePath && metadataBase ? new URL(imagePath, metadataBase) : imagePath;
 
 	return {
-		// metadataBase,
+		metadataBase,
 		title,
 		description,
+		...metadata,
 		openGraph: {
+			title,
+			description,
+			type: "website",
 			...openGraph,
-			title: openGraph?.title ?? title,
-			description: openGraph?.description ?? description
-			// images: openGraph?.images ?? (imageUrl ? [{ url: imageUrl, alt: title }] : undefined)
+			images:
+				openGraph?.images ??
+				(imageUrl
+					? [
+							{
+								url: imageUrl,
+								width: 1200,
+								height: 630,
+								alt: title
+							}
+						]
+					: undefined)
 		},
 		twitter: {
 			card: "summary_large_image",
 			title,
-			description
-			// images: imageUrl ? [imageUrl] : undefined
+			description,
+			...twitter,
+			images: twitter?.images ?? (imageUrl ? [imageUrl] : undefined)
 		}
 	};
-}
+};

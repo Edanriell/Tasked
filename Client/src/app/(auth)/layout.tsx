@@ -17,7 +17,7 @@ type AuthLayoutProps = {
 const AuthLayout = ({ children }: Readonly<AuthLayoutProps>) => {
 	return (
 		<Fragment>
-			<Header classes="relative z-50 mr-[2.5rem]">
+			<Header className="relative z-50 mr-[2.5rem]">
 				<UserProfile />
 			</Header>
 			{children}

@@ -17,7 +17,8 @@ export const loginAction = async (_prevState: LoginState, formData: FormData): P
 		return {
 			fieldErrors: {
 				...z.flattenError(validationResult.error).fieldErrors
-			}
+			},
+			validationId: "login_" + Date.now()
 		};
 	}
 
@@ -34,12 +35,14 @@ export const loginAction = async (_prevState: LoginState, formData: FormData): P
 			}
 
 			return {
-				error: resolved.message
+				error: resolved.message,
+				validationId: "api_login_" + Date.now()
 			};
 		}
 
 		return {
-			error: "Network error. Please check your connection and try again."
+			error: "Network error. Please check your connection and try again.",
+			validationId: "network_login_" + Date.now()
 		};
 	}
 

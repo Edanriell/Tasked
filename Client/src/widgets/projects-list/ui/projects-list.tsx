@@ -1,13 +1,12 @@
-import { Children, isValidElement, ReactElement } from "react";
+import type { ReactElement } from "react";
+import { Children, isValidElement } from "react";
 
 import Dribble from "@public/images/projects/dribble.svg";
 import Paypal from "@public/images/projects/paypal.svg";
 import Sleekpay from "@public/images/projects/sleekpay.svg";
 import Youtube from "@public/images/projects/youtube.svg";
 
-import { ProjectRow, ProjectRowActions } from "@entities/project";
-
-import { ProjectRowVariants } from "@entities/project/config";
+import { ProjectRow, ProjectRowActions, ProjectRowVariants } from "@entities/project";
 
 import type { ProjectsListActionsProps } from "./projects-list-actions";
 import { ProjectsListActions } from "./projects-list-actions";

@@ -21,7 +21,8 @@ export const ICON = {
 	More: "More",
 	Chevron: "Chevron",
 	Clock: "Clock",
-	Grid: "Grid"
+	Grid: "Grid",
+	Filter: "Filter"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

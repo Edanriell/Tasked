@@ -112,7 +112,12 @@ export const Registration = () => {
 			<h2 className="font-(family-name:--font-barlow) font-bold text-[1.375rem] leading-[1.75rem] tracking-[0.01em] text-center text-(--white-pallete-100) capitalize mb-[2rem] relative z-20">
 				Register your account
 			</h2>
-			<ValidationErrorMessage className="mb-[1rem]" message={state?.error} />
+			<ValidationErrorMessage
+				id="network-error"
+				className="mb-[1rem]"
+				validationId={state?.validationId}
+				message={state?.error}
+			/>
 			<form className="relative z-20 flex flex-col gap-y-[1rem]" action={action} noValidate>
 				<div className="relative">
 					<Input
@@ -124,6 +129,7 @@ export const Registration = () => {
 					<ValidationErrorMessage
 						id="fullName-error"
 						className="mt-[0.5rem]"
+						validationId={state?.validationId}
 						message={getActionError(state?.fieldErrors, "fullName")}
 					/>
 				</div>
@@ -137,6 +143,7 @@ export const Registration = () => {
 					<ValidationErrorMessage
 						id="email-error"
 						className="mt-[0.5rem]"
+						validationId={state?.validationId}
 						message={getActionError(state?.fieldErrors, "email")}
 					/>
 				</div>
@@ -150,13 +157,14 @@ export const Registration = () => {
 					<ValidationErrorMessage
 						id="password-error"
 						className="mt-[0.5rem]"
+						validationId={state?.validationId}
 						message={getActionError(state?.fieldErrors, "password")}
 					/>
 				</div>
 				<SubmitButton
 					childrenDisplayedWhenPending={false}
-					className="w-full mt-[1rem] max-h-[40px]!"
-					spinnerClasses="mt-[-4px]"
+					className="w-full mt-[1rem] max-h-[2.5rem]!"
+					spinnerClasses="mt-[-0.25rem]"
 				>
 					Register Account
 				</SubmitButton>

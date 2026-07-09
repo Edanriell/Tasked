@@ -1,6 +1,6 @@
-import type { SVGProps } from "react";
+import type {SVGProps} from "react";
 
-import { ICON, IconType } from "./icon-config";
+import {ICON, IconType} from "./icon-config";
 
 type IconProps = SVGProps<SVGSVGElement> & {
 	type: IconType;
@@ -12,9 +12,9 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 		case ICON.Account:
 			return (
 				<svg
-					width={size ?? 24}
-					height={size ?? 24}
-					viewBox="0 0 24 24"
+					width={size ?? 16}
+					height={size ?? 16}
+					viewBox="0 0 16 16"
 					fill="none"
 					shapeRendering="geometricPrecision"
 					aria-hidden="true"
@@ -515,7 +515,6 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					/>
 				</svg>
 			);
-
 		case ICON.Grid:
 			return (
 				<svg
@@ -545,6 +544,24 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 						d="M7.24 13.43H5.34C3.15 13.43 2 14.58 2 16.76V18.66C2 20.85 3.15 22 5.33 22H7.23C9.41 22 10.56 20.85 10.56 18.67V16.77C10.57 14.58 9.42 13.43 7.24 13.43Z"
 						fill="currentColor"
 					/>
+				</svg>
+			);
+		case ICON.Filter:
+			return (
+				<svg
+					width={size ?? 16}
+					height={size ?? 16}
+					viewBox="0 0 16 16"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path d="M2 4.66699H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+					<path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+					<path d="M6.66699 11.333H9.33366" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 				</svg>
 			);
 	}
