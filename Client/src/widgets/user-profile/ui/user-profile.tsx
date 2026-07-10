@@ -5,12 +5,7 @@ import { useEffect, useRef, useState } from "react";
 
 import { Icon, ICON, MOTION_ICON, MotionIcon } from "@shared/ui";
 
-import {
-	TRANSITION_LAYOUT,
-	USER_PROFILE_CHEVRON_VARIANTS,
-	USER_PROFILE_CONTAINER_VARIANTS,
-	USER_PROFILE_VARIANTS
-} from "../config";
+import { TRANSITION_LAYOUT, USER_PROFILE_CHEVRON_VARIANTS, USER_PROFILE_CONTAINER_VARIANTS } from "../config";
 
 import { UserProfileNavigation } from "./user-profile-navigation";
 
@@ -20,21 +15,35 @@ export const UserProfile = () => {
 	const [userProfileState, setUserProfileState] = useState<UserProfileState>("closed");
 	const userProfileRef = useRef<HTMLDivElement>(null);
 
-	const isUserProfileOpened = userProfileState === "opened";
-
 	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
+		const handlePointerOutside = (event: MouseEvent) => {
 			if (userProfileRef.current && !userProfileRef.current.contains(event.target as Node)) {
 				setUserProfileState("closed");
 			}
 		};
 
-		document.addEventListener("mousedown", handleClickOutside);
+		document.addEventListener("pointerdown", handlePointerOutside);
 
 		return () => {
-			document.removeEventListener("mousedown", handleClickOutside);
+			document.removeEventListener("pointerdown", handlePointerOutside);
 		};
 	}, []);
+
+	useEffect(() => {
+		const handleKeyDown = (event: KeyboardEvent) => {
+			if (event.key === "Escape") {
+				setUserProfileState("closed");
+			}
+		};
+
+		document.addEventListener("keydown", handleKeyDown);
+
+		return () => {
+			document.removeEventListener("keydown", handleKeyDown);
+		};
+	}, []);
+
+	const isUserProfileOpened = userProfileState === "opened";
 
 	const handleUserProfileToggle = () => {
 		setUserProfileState((prev) => {
@@ -48,32 +57,35 @@ export const UserProfile = () => {
 
 	return (
 		<motion.div
-			tabIndex={0}
 			ref={userProfileRef}
-			className="absolute top-0 right-0 text-(--white-pallete-100) border-solid border-[0.063rem] rounded-[1.5rem] backdrop-blur-[1.25rem]"
-			initial={USER_PROFILE_VARIANTS.Closed}
-			animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
-			whileHover={USER_PROFILE_VARIANTS.Hovered}
+			className="absolute top-0 right-0 min-w-[10rem] overflow-hidden rounded-[0.75rem] border-[0.031rem] border-solid text-(--white-pallete-100) backdrop-blur-[3.625rem]"
+			initial="initial"
+			animate={isUserProfileOpened ? "opened" : "closed"}
+			whileHover="hovered"
 			variants={USER_PROFILE_CONTAINER_VARIANTS}
-			aria-label="User profile"
-			aria-expanded={isUserProfileOpened}
 			transition={{ layout: TRANSITION_LAYOUT }}
 		>
 			<motion.nav aria-label="User profile navigation" className="relative z-50">
-				<div
+				<button
+					type="button"
 					onClick={handleUserProfileToggle}
-					className="flex items-center gap-x-[0.5rem] py-[0.75rem] px-[1rem] cursor-pointer"
+					className="flex h-[2.5rem] w-full cursor-pointer items-center gap-x-[0.625rem] rounded-[0.75rem] py-[0.375rem] pr-[0.75rem] pl-[0.5rem] text-left transition-[color,box-shadow] duration-200 ease-out focus-visible:outline-none focus-visible:shadow-focus-blue"
+					aria-expanded={isUserProfileOpened}
+					aria-controls="user-profile-navigation"
 				>
-					<Icon type={ICON.Account} />
-					<span className="relative z-50 font-(family-name:--font-barlow) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em] text-(--white-pallete-100)">
+					<span className="flex h-[1.75rem] w-[1.75rem] shrink-0 items-center justify-center overflow-hidden rounded-full bg-(--geek-blue-primary-opacity-300) text-(--white-pallete-100)">
+						<Icon type={ICON.User} size={18} />
+					</span>
+					<span className="relative z-50 min-w-0 flex-1 truncate font-(family-name:--font-barlow) text-[0.875rem] font-bold leading-[1rem] tracking-[0.01em] text-(--white-pallete-100)">
 						Account
 					</span>
 					<MotionIcon
 						type={MOTION_ICON.Chevron}
-						animate={isUserProfileOpened ? USER_PROFILE_VARIANTS.Opened : USER_PROFILE_VARIANTS.Closed}
+						className="h-[1rem] w-[1rem] shrink-0 text-(--neutrals-3)"
+						animate={isUserProfileOpened ? "opened" : "closed"}
 						variants={USER_PROFILE_CHEVRON_VARIANTS}
 					/>
-				</div>
+				</button>
 				<UserProfileNavigation isUserProfileOpened={isUserProfileOpened} />
 			</motion.nav>
 		</motion.div>

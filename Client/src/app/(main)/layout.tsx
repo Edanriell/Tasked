@@ -20,7 +20,7 @@ type MarketingLayoutProps = {
 const MarketingLayout = ({ children }: Readonly<MarketingLayoutProps>) => {
 	return (
 		<Fragment>
-			<Header classes="relative z-50 mr-[2.5rem]">
+			<Header className="relative z-50 mr-[2.5rem]">
 				<UserProfile />
 			</Header>
 			<main className="z-50 flex-1">{children}</main>

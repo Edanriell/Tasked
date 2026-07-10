@@ -14,11 +14,6 @@ export const MAIN_NAVIGATION_ITEMS = [
 
 const NAVIGATION_ITEM_HEIGHT = 16 as const;
 
-const NAVIGATION_ITEM_VARIANTS = {
-	Hovered: "hovered",
-	Tapped: "tapped"
-} as const;
-
 const NAVIGATION_WRAPPER_VARIANTS = {
 	tapped: { scale: 0.9 }
 };
@@ -34,8 +29,8 @@ export const MainNavigation = () => {
 				{MAIN_NAVIGATION_ITEMS.map(({ href, label }) => (
 					<motion.li
 						key={href}
-						whileTap={NAVIGATION_ITEM_VARIANTS.Tapped}
-						whileHover={NAVIGATION_ITEM_VARIANTS.Hovered}
+						whileTap="tapped"
+						whileHover="hovered"
 						initial={false}
 						variants={NAVIGATION_WRAPPER_VARIANTS}
 					>

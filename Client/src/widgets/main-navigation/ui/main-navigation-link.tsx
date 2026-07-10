@@ -1,5 +1,3 @@
-"use client";
-
 import { clsx } from "clsx";
 import Link from "next/link";
 import { ReactNode } from "react";
@@ -18,8 +16,7 @@ export const MainNavigationLink = ({ href, icon, isActive, children }: Readonly<
 		<Link
 			className={clsx(
 				"flex items-center gap-x-[0.5rem] font-(family-name:--font-barlow) font-medium text-[0.875rem] leading-[129%] tracking-[0.01em] rounded-[0.75rem] p-[0.375rem]",
-				isActive && "text-(--white-pallete-100)",
-				!isActive && "text-(--neutrals-3)"
+				isActive ? "text-(--white-pallete-100)" : "text-(--neutrals-3)"
 			)}
 			href={href}
 		>

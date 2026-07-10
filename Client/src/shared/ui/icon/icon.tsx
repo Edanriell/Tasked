@@ -1,6 +1,6 @@
-import type {SVGProps} from "react";
+import type { SVGProps } from "react";
 
-import {ICON, IconType} from "./icon-config";
+import { ICON, IconType } from "./icon-config";
 
 type IconProps = SVGProps<SVGSVGElement> & {
 	type: IconType;
@@ -14,7 +14,7 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 				<svg
 					width={size ?? 16}
 					height={size ?? 16}
-					viewBox="0 0 16 16"
+					viewBox="0 0 24 24"
 					fill="none"
 					shapeRendering="geometricPrecision"
 					aria-hidden="true"
@@ -562,6 +562,94 @@ export const Icon = ({ type, size, ...props }: Readonly<IconProps>) => {
 					<path d="M2 4.66699H14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 					<path d="M4 8H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
 					<path d="M6.66699 11.333H9.33366" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+				</svg>
+			);
+		case ICON.UserBold:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M12 2C9.38 2 7.25 4.13 7.25 6.75C7.25 9.32 9.26 11.4 11.88 11.49C11.96 11.48 12.04 11.48 12.1 11.49C12.12 11.49 12.13 11.49 12.15 11.49C12.16 11.49 12.16 11.49 12.17 11.49C14.73 11.4 16.74 9.32 16.75 6.75C16.75 4.13 14.62 2 12 2Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M17.08 14.15C14.29 12.29 9.73996 12.29 6.92996 14.15C5.65996 15 4.95996 16.15 4.95996 17.38C4.95996 18.61 5.65996 19.75 6.91996 20.59C8.31996 21.53 10.16 22 12 22C13.84 22 15.68 21.53 17.08 20.59C18.34 19.74 19.04 18.6 19.04 17.36C19.03 16.13 18.34 14.99 17.08 14.15Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.UserSquare:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M16.19 2H7.81C4.17 2 2 4.17 2 7.81V16.19C2 19 3.29 20.93 5.56 21.66C6.22 21.89 6.98 22 7.81 22H16.19C17.02 22 17.78 21.89 18.44 21.66C20.71 20.93 22 19 22 16.19V7.81C22 4.17 19.83 2 16.19 2ZM20.5 16.19C20.5 18.33 19.66 19.68 17.97 20.24C17 18.33 14.7 16.97 12 16.97C9.3 16.97 7.01 18.32 6.03 20.24H6.02C4.35 19.7 3.5 18.34 3.5 16.2V7.81C3.5 4.99 4.99 3.5 7.81 3.5H16.19C19.01 3.5 20.5 4.99 20.5 7.81V16.19Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M11.9999 8C10.0199 8 8.41992 9.6 8.41992 11.58C8.41992 13.56 10.0199 15.17 11.9999 15.17C13.9799 15.17 15.5799 13.56 15.5799 11.58C15.5799 9.6 13.9799 8 11.9999 8Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.UserOctagon:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M16.59 3.85L10.65 0.42C9.68 -0.14 8.48 -0.14 7.5 0.42L1.57 3.85C0.6 4.41 0 5.45 0 6.58V13.42C0 14.54 0.6 15.58 1.57 16.15L7.51 19.58C8.48 20.14 9.68 20.14 10.66 19.58L16.6 16.15C17.57 15.59 18.17 14.55 18.17 13.42V6.58C18.16 5.45 17.56 4.42 16.59 3.85ZM9.08 5.34C10.37 5.34 11.41 6.38 11.41 7.67C11.41 8.96 10.37 10 9.08 10C7.79 10 6.75 8.96 6.75 7.67C6.75 6.39 7.79 5.34 9.08 5.34ZM11.76 14.66H6.4C5.59 14.66 5.12 13.76 5.57 13.09C6.25 12.08 7.57 11.4 9.08 11.4C10.59 11.4 11.91 12.08 12.59 13.09C13.04 13.75 12.56 14.66 11.76 14.66Z"
+						fill="currentColor"
+					/>
+				</svg>
+			);
+		case ICON.User:
+			return (
+				<svg
+					width={size ?? 24}
+					height={size ?? 24}
+					viewBox="0 0 24 24"
+					fill="none"
+					shapeRendering="geometricPrecision"
+					aria-hidden="true"
+					focusable="false"
+					xmlns="http://www.w3.org/2000/svg"
+					{...props}
+				>
+					<path
+						d="M12 12C14.7614 12 17 9.76142 17 7C17 4.23858 14.7614 2 12 2C9.23858 2 7 4.23858 7 7C7 9.76142 9.23858 12 12 12Z"
+						fill="currentColor"
+					/>
+					<path
+						d="M11.9999 14.5C6.98991 14.5 2.90991 17.86 2.90991 22C2.90991 22.28 3.12991 22.5 3.40991 22.5H20.5899C20.8699 22.5 21.0899 22.28 21.0899 22C21.0899 17.86 17.0099 14.5 11.9999 14.5Z"
+						fill="currentColor"
+					/>
 				</svg>
 			);
 	}

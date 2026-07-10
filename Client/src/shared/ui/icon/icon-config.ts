@@ -6,7 +6,7 @@ export const ICON = {
 	AddCircle: "AddCircle",
 	Home: "Home",
 	TaskSquare: "TaskSquare",
-	Projects: "Users",
+	Projects: "Projects",
 	Message: "Message",
 	Settings: "Settings",
 	LockedLock: "LockedLock",
@@ -22,7 +22,11 @@ export const ICON = {
 	Chevron: "Chevron",
 	Clock: "Clock",
 	Grid: "Grid",
-	Filter: "Filter"
+	Filter: "Filter",
+	User: "User",
+	UserBold: "UserBold",
+	UserSquare: "UserSquare",
+	UserOctagon: "UserOctagon"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];
