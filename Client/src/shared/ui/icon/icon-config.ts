@@ -26,7 +26,10 @@ export const ICON = {
 	User: "User",
 	UserBold: "UserBold",
 	UserSquare: "UserSquare",
-	UserOctagon: "UserOctagon"
+	UserOctagon: "UserOctagon",
+	SendBold: "SendBold",
+	Attach: "Attach",
+	Smileys: "Smileys"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

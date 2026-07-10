@@ -1,7 +1,10 @@
+import { clsx } from "clsx";
 import Image from "next/image";
 
 import { groupMessagesBySender } from "@entities/message";
-import { ICON, Icon } from "@shared/ui";
+
+import { getRelativeTime } from "@shared/lib/utils";
+import { Button, Icon, ICON } from "@shared/ui";
 
 type Attachment = {
 	id: string;
@@ -79,6 +82,10 @@ const ConversationPage = async ({ params }: { params: Promise<{ conversationId: 
 	const conversation = await getConversationDetails(conversationId);
 	const messageGroups = groupMessagesBySender(conversation.messages);
 
+	// TODO
+	// Get userId
+	const currentUserId = "1";
+
 	return (
 		<section className="relative flex flex-col h-full basis-[69%] border-[0.50px] border-solid border-(--white-pallete-10) rounded-[20px] bg-(--geek-blue-primary-opacity-100) backdrop-blur-[32px] overflow-hidden">
 			<header className="relative flex px-[20px] py-[12px] items-center justify-between border-b-[0.50px] border-solid border-(--geek-blue-primary-opacity-50) backdrop-blur-[50px] bg-(--geek-blue-primary-opacity-100)">
@@ -102,26 +109,58 @@ const ConversationPage = async ({ params }: { params: Promise<{ conversationId: 
 					<Icon type={ICON.TaskSquare} size={14} />
 				</button>
 			</header>
-			<ol className="relative z-10 flex h-full px-[24px] py-[24px] bg-[rgba(1,0,9,0.25)]">
+			<ol className="relative z-10 flex flex-col gap-y-[12px] h-full px-[24px] py-[24px] bg-[rgba(1,0,9,0.25)]">
 				{messageGroups.map((group) => {
 					const participant = conversation.participants.find((user) => user.id === group.senderId);
+
 					return (
-						<li key={group.senderId}>
-							<article>
-								<header>
+						<li className="relative" key={group.senderId}>
+							<article
+								className={clsx(
+									"flex flex-col gap-y-[8px]",
+									currentUserId !== group.senderId ? "items-end" : "items-start"
+								)}
+							>
+								<header
+									className={clsx(
+										"flex items-center gap-x-[12px]",
+										currentUserId !== group.senderId && "flex-row-reverse"
+									)}
+								>
 									<Image
 										src={participant?.imageUrl ?? ""}
 										alt={participant?.fullName ?? ""}
-										width={40}
-										height={40}
+										width={24}
+										height={24}
+										className="rounded-full w-[24px] h-[24px] object-cover bg-(--geek-blue-primary-opacity-400)"
 									/>
-									<strong>{participant?.fullName}</strong>
-								</header>
-								<ol>
+									<strong className="font-(family-name:--font-barlow) font-bold text-[12px] leading-[133%] tracking-[0.01em] text-(--white-pallete-100) capitalize">
+										{participant?.fullName}
+									</strong>
 									{group.messages.map((message) => (
-										<li key={message.id}>
-											<p>{message.text}</p>
-											<time dateTime={message.createdAt}>{message.createdAt}</time>
+										<time
+											key={"time" + "_" + message.id}
+											className="font-(family-name:--font-barlow) font-medium text-[12px] leading-[133%] tracking-[0.01em] text-(--neutrals-3)"
+											dateTime={message.createdAt}
+										>
+											{getRelativeTime(message.createdAt)}
+										</time>
+									))}
+								</header>
+								<ol className="flex flex-col gap-y-[8px]">
+									{group.messages.map((message) => (
+										<li
+											key={message.id}
+											className={clsx(
+												"w-[fit-content] max-w-[452px] px-[16px] py-[12px] rounded-bl-[24px] rounded-br-[24px]",
+												currentUserId !== group.senderId
+													? "bg-(--geek-blue-6) rounded-tl-[24px] rounded-tr-[0px]"
+													: "bg-(--geek-blue-primary-opacity-400) rounded-tl-[0px] rounded-tr-[24px]"
+											)}
+										>
+											<p className="font-(family-name:--font-barlow) font-medium text-[12px] leading-[133%] tracking-[0.01em] text-(--white-pallete-100)">
+												{message.text}
+											</p>
 										</li>
 									))}
 								</ol>
@@ -142,15 +181,23 @@ const ConversationPage = async ({ params }: { params: Promise<{ conversationId: 
 							id="message"
 							name="message"
 						/>
-						<button type="submit" className="cursor-pointer absolute top-0 left-0 bg-green-600">
-							<span>Send</span>
-						</button>
-						<button className="bg-red-600 absolute bottom-0 left-0" type="button">
-							Attach file
-						</button>
-						<button className="bg-red-800 absolute bottom-0 left-[30px]" type="button">
-							Add emoji
-						</button>
+						<Button
+							className="absolute bottom-[12px] right-[12px] px-[16px] py-[7px] rounded-[0.625rem]"
+							trailingIcon={<Icon type={ICON.SendBold} size={16} />}
+							type="submit"
+						>
+							Send
+						</Button>
+						<div className="flex gap-x-[10px] absolute bottom-[12px] left-[12px]">
+							<button className="cursor-pointer text-[#95ACCB] hover:text-[#fff]" type="button">
+								<span className="sr-only">Attach file</span>
+								<Icon size={16} type={ICON.Attach} />
+							</button>
+							<button className="cursor-pointer text-[#95ACCB] hover:text-[#fff]" type="button">
+								<span className="sr-only">Add emoji</span>
+								<Icon size={16} type={ICON.Smileys} />
+							</button>
+						</div>
 					</div>
 				</form>
 			</footer>

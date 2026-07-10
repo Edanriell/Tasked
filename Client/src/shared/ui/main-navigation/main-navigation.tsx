@@ -18,29 +18,37 @@ const NAVIGATION_WRAPPER_VARIANTS = {
 	tapped: { scale: 0.9 }
 };
 
-const NAVIGATION_LABEL_VARIANTS = {
-	hovered: { y: -NAVIGATION_ITEM_HEIGHT }
+const NAVIGATION_FIRST_LABEL_VARIANTS = {
+	hovered: { y: -NAVIGATION_ITEM_HEIGHT, opacity: 0, scale: 0.96 }
 };
+
+const NAVIGATION_SECOND_LABEL_VARIANTS = {
+	hovered: { y: -NAVIGATION_ITEM_HEIGHT, opacity: 1, scale: 1 }
+};
+
+// TODO
+// Fix aria labels
 
 export const MainNavigation = () => {
 	return (
 		<nav className="max-md:hidden" aria-label="Main navigation">
 			<ul className="flex items-center gap-x-[3.236rem] font-(family-name:--font-barlow) text-(--white-pallete-100) font-bold text-[0.875rem] leading-[1rem] tracking-[0.01em]">
-				{MAIN_NAVIGATION_ITEMS.map(({ href, label }) => (
+				{MAIN_NAVIGATION_ITEMS.map(({ href, label }, index) => (
 					<motion.li
-						key={href}
+						key={index}
 						whileTap="tapped"
 						whileHover="hovered"
 						initial={false}
 						variants={NAVIGATION_WRAPPER_VARIANTS}
 					>
-						<Link
-							className="flex flex-col overflow-hidden"
-							style={{ height: NAVIGATION_ITEM_HEIGHT }}
-							href={href}
-						>
-							<motion.span variants={NAVIGATION_LABEL_VARIANTS}>{label}</motion.span>
-							<motion.span variants={NAVIGATION_LABEL_VARIANTS}>{label}</motion.span>
+						<Link className="flex flex-col" style={{ height: NAVIGATION_ITEM_HEIGHT }} href={href}>
+							<motion.span variants={NAVIGATION_FIRST_LABEL_VARIANTS}>{label}</motion.span>
+							<motion.span
+								initial={{ opacity: 0, scale: 0.96 }}
+								variants={NAVIGATION_SECOND_LABEL_VARIANTS}
+							>
+								{label}
+							</motion.span>
 						</Link>
 					</motion.li>
 				))}

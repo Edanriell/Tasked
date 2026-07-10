@@ -5,6 +5,7 @@ import type { ComponentProps } from "react";
 
 import { Cog, Dashboard, Home, Lock, Messages, Projects, Search, Settings, Star, Tasks } from "./icons";
 
+import { Attach } from "@shared/ui/motion-icon/icons/attach";
 import { MOTION_ICON, type MotionIconType } from "./motion-icon-config";
 
 type MotionIconProps = ComponentProps<typeof motion.svg> & {
@@ -77,5 +78,7 @@ export const MotionIcon = ({ type, isActive, size, ...props }: Readonly<MotionIc
 			return <Cog isActive={isActive} {...props} />;
 		case MOTION_ICON.Search:
 			return <Search isActive={isActive} {...props} />;
+		case MOTION_ICON.Attach:
+			return <Attach isActive={isActive} {...props} />;
 	}
 };

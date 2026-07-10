@@ -10,7 +10,8 @@ export const MOTION_ICON = {
 	Star: "Star",
 	Lock: "Lock",
 	Cog: "Cog",
-	Search: "Search"
+	Search: "Search",
+	Attach: "Attach"
 } as const;
 
 export type MotionIconType = (typeof MOTION_ICON)[keyof typeof MOTION_ICON];
