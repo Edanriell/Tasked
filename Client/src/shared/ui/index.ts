@@ -1,7 +1,9 @@
 export * from "./avatar-stack";
 export * from "./badge";
 export * from "./button";
+export * from "./checkbox";
 export * from "./divider";
+export * from "./dropdown-menu";
 export * from "./gradient-border";
 export * from "./gradient-text";
 export * from "./icon";
@@ -15,4 +17,6 @@ export * from "./project-image";
 export * from "./skeleton";
 export * from "./spinner";
 export * from "./submit-button";
+export * from "./switch";
+export * from "./textarea";
 export * from "./validation-error-message";

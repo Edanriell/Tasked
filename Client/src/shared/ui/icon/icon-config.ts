@@ -25,11 +25,20 @@ export const ICON = {
 	Filter: "Filter",
 	User: "User",
 	UserBold: "UserBold",
-	UserSquare: "UserSquare",
+	UserSquareBold: "UserSquareBold",
+	UserSquareOutline: "UserSquareOutline",
 	UserOctagon: "UserOctagon",
 	SendBold: "SendBold",
 	Attach: "Attach",
-	Smileys: "Smileys"
+	Smileys: "Smileys",
+	SettingsOutline: "SettingsOutline",
+	SettingsBold: "SettingsBold",
+	CalendarAddOutline: "CalendarAddOutline",
+	NotificationsOutline: "NotificationsOutline",
+	NotificationsBold: "NotificationsBold",
+	ArrowRightOutline: "ArrowRightOutline",
+	TrashBold: "TrashBold",
+	CalendarAddBold: "CalendarAddBold"
 } as const;
 
 export type IconType = (typeof ICON)[keyof typeof ICON];

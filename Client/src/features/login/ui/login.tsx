@@ -1,16 +1,16 @@
 "use client";
 
-import {MotionConfig} from "motion/react";
+import { MotionConfig } from "motion/react";
 import Link from "next/link";
-import {useActionState} from "react";
+import { useActionState } from "react";
 
-import {ANIMATIONS_BASE, ROUTES} from "@shared/config";
-import {getActionError} from "@shared/lib/utils";
-import {Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage} from "@shared/ui";
+import { ANIMATIONS_BASE, ROUTES } from "@shared/config";
+import { getActionError } from "@shared/lib/utils";
+import { Button, Icon, ICON, Input, SubmitButton, ValidationErrorMessage } from "@shared/ui";
 
-import {loginAction} from "../api";
-import type {LoginState} from "../model";
-import {initialState} from "../model";
+import { loginAction } from "../api";
+import type { LoginState } from "../model";
+import { initialState } from "../model";
 
 const TopRightCornerGlowEffect = () => {
 	return (
@@ -159,7 +159,7 @@ export const Login = () => {
 				</form>
 				<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[1rem] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 					You don&#39;t have an account —{" "}
-					<Link className="text-(--geek-blue-4)" href={ROUTES.Registration}>
+					<Link className="text-(--geek-blue-4) focus-ring" href={ROUTES.Registration}>
 						Register Here
 					</Link>
 				</p>

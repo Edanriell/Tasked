@@ -1,15 +1,16 @@
-import {clsx} from "clsx";
+import { clsx } from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import {Fragment, ReactNode} from "react";
+import { Fragment, ReactNode } from "react";
 
-import {ViewHeader} from "@widgets/view-header";
+import { ViewHeader } from "@widgets/view-header";
 
-import {CreateTask} from "@features/create-task";
-import {Search} from "@features/search";
+import { CreateTask } from "@features/create-task";
+import { Search } from "@features/search";
 
-import {getRelativeTime} from "@shared/lib/utils";
-import {Icon, ICON} from "@shared/ui";
+import { ROUTES } from "@shared/config";
+import { getRelativeTime } from "@shared/lib/utils";
+import { Icon, ICON } from "@shared/ui";
 
 type MessagesLayoutProps = {
 	children: ReactNode;
@@ -65,9 +66,9 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "3",
+						id: "2",
 						participant: {
-							id: "3c",
+							id: "2c",
 							fullName: "Cody Fisher",
 							imageUrl: "/images/users/cody_fisher.jpg",
 							isOnline: false
@@ -80,9 +81,9 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "4",
+						id: "3",
 						participant: {
-							id: "4c",
+							id: "3c",
 							fullName: "Wade Warren",
 							imageUrl: "/images/users/wade_warren.jpg",
 							isOnline: false
@@ -95,10 +96,10 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "155",
+						id: "4",
 						participant: {
-							id: "155c",
-							fullName: "Kristin Watson",
+							id: "4c",
+							fullName: "Kirstin Watson",
 							imageUrl: "/images/users/kristin_watson.jpg",
 							isOnline: false
 						},
@@ -110,9 +111,9 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "15535",
+						id: "5",
 						participant: {
-							id: "15553c",
+							id: "5c",
 							fullName: "Guy Hawkins",
 							imageUrl: "/images/users/guy_hawkins.jpg",
 							isOnline: false
@@ -125,9 +126,9 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "13333",
+						id: "6",
 						participant: {
-							id: "123232c",
+							id: "6c",
 							fullName: "Esther Howard",
 							imageUrl: "/images/users/esther_howard.jpg",
 							isOnline: false
@@ -140,9 +141,9 @@ const getConversations = (): Promise<Conversations> => {
 						}
 					},
 					{
-						id: "1222",
+						id: "7",
 						participant: {
-							id: "2221c",
+							id: "7c",
 							fullName: "Floyd Miles",
 							imageUrl: "/images/users/floyd_miles.jpg",
 							isOnline: false
@@ -195,7 +196,7 @@ const MessagesLayout = async ({ children }: Readonly<MessagesLayoutProps>) => {
 						<ul className="relative">
 							{conversations.map((conversation, index) => (
 								<li key={conversation.id}>
-									<Link className="relative" href={`/messages/${conversation.id}`}>
+									<Link className="relative" href={ROUTES.Conversation(conversation.id)}>
 										<article
 											className={clsx(
 												"relative border-t-[0.50px] border-solid border-(--white-pallete-10) py-[12px] px-[20px] flex items-center hover:bg-(--geek-blue-primary-opacity-100)",

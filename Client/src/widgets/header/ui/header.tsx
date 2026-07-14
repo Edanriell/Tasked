@@ -12,7 +12,7 @@ export const Header = ({ className, children, ...props }: Readonly<HeaderProps>)
 	return (
 		<header className={clsx("flex items-center px-[2.5rem] relative z-[100] my-[2rem]", className)} {...props}>
 			<div className="flex items-center gap-x-[3rem]">
-				<Link href="/">
+				<Link className="focus-ring rounded-[0.375rem]" href="/">
 					<Logotype />
 				</Link>
 				<MainNavigation />

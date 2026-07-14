@@ -171,7 +171,7 @@ export const Registration = () => {
 			</form>
 			<p className="relative z-20 font-(family-name:--font-barlow) font-medium text-[0.75rem] leading-[1rem] tracking-[0.01em] text-center text-(--neutrals-3) my-[1rem]">
 				Already Have An Account —{" "}
-				<Link className="text-(--geek-blue-4)" href={ROUTES.Login}>
+				<Link className="text-(--geek-blue-4) focus-ring" href={ROUTES.Login}>
 					Sign In Here
 				</Link>
 			</p>

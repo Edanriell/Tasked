@@ -38,5 +38,19 @@
     --breakpoint-2xl: 1440px;
 
     --shadow-geek-blue: 0 0 24px 0 var(--geek-blue-primary-opacity-200);
-    --shadow-focus-blue: 0 0 0 2px var(--daybreak-blue-200);
+    --shadow-focus-blue: 0 0 24px 0 var(--daybreak-blue-400);
+}
+
+@utility focus-ring {
+    border-radius: 0.375rem;
+    outline: none;
+    transition-property: box-shadow, outline-color;
+    transition-duration: 200ms;
+    transition-timing-function: ease-out;
+
+    &:focus-visible {
+        outline: 0.125rem solid var(--daybreak-blue-1000);
+        outline-offset: 0.215rem;
+        box-shadow: var(--shadow-focus-blue);
+    }
 }

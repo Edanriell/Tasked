@@ -19,7 +19,7 @@ export const UserProfileNavigationLink = ({ href, icon, isActive, children }: Us
 		<Link
 			href={href}
 			className={clsx(
-				"relative z-20 flex items-center gap-x-[0.5rem] font-(family-name:--font-barlow) font-medium text-[0.875rem] leading-[129%] tracking-[0.01em] rounded-[0.75rem] p-[0.375rem]",
+				"relative z-20 flex items-center gap-x-[0.5rem] font-(family-name:--font-barlow) font-medium text-[0.875rem] leading-[129%] tracking-[0.01em] rounded-[0.75rem] p-[0.375rem] focus-ring",
 				isActive ? "text-(--white-pallete-100)" : "text-(--neutrals-3)"
 			)}
 		>

@@ -3,12 +3,12 @@ import type { ReactNode } from "react";
 import { Suspense } from "react";
 
 import { ChangeLog } from "@widgets/change-log";
-import { MainNavigation } from "@widgets/main-navigation";
 import { ProjectsNavigation } from "@widgets/projects-navigation";
 import { Sidebar } from "@widgets/sidebar";
 import { UserInfo, UserInfoSkeleton } from "@widgets/user-info";
 
 import { CreateProject } from "@features/create-project";
+import { MainNavigation } from "@widgets/main-navigation";
 
 export const metadata: Metadata = {
 	title: "Create Next App",

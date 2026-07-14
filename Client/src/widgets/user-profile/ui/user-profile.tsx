@@ -11,6 +11,9 @@ import { UserProfileNavigation } from "./user-profile-navigation";
 
 type UserProfileState = "opened" | "closed";
 
+// TODO
+// Cant see focus ring
+
 export const UserProfile = () => {
 	const [userProfileState, setUserProfileState] = useState<UserProfileState>("closed");
 	const userProfileRef = useRef<HTMLDivElement>(null);

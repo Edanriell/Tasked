@@ -20,6 +20,6 @@ export const USER_PROFILE_ITEMS: Array<UserProfileItem> = [
 		id: "settings",
 		icon: MOTION_ICON.Settings,
 		label: "Settings",
-		href: ROUTES.Settings
+		href: ROUTES.Account
 	}
 ] as const;
